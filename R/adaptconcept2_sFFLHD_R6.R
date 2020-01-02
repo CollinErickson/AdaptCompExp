@@ -22,7 +22,7 @@
 #' adaptive experiment.
 #' @format \code{\link{R6Class}} object.
 #' @examples
-#' a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=gaussian1,obj="desirability",
+#' a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=TestFunctions::gaussian1,obj="desirability",
 #'     des_func=des_func14, n0=12, take_until_maxpvar_below=.9,
 #'     package="GauPro", design='sFFLHD', selection_method="max_des_red")
 #' a$run(5)
@@ -90,7 +90,7 @@
 #' param_update = T, nug.update = self$nug.est)}}{This method updates the
 #' model, adding new data if given, then running optimization again.}
 #'   }
-adapt.concept2.sFFLHD.R6 <- R6::R6Class(classname = "adapt.concept2.sFFLHD.seq",
+adapt.concept2.sFFLHD.R6 <- R6Class(classname = "adapt.concept2.sFFLHD.seq",
                                         public = list(
                                           func = NULL, # "function",
                                           func_run_together = NULL, # Should the matrix of values to be run be passed

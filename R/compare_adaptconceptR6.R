@@ -1,8 +1,18 @@
 # source("adaptconcept2_sFFLHD_R6.R")
 # library(ggplot2)
+#' Title
+#'
+#' @param n num breaks
+#'
+#' @return function
+#' @export
+#' @importFrom grDevices axisTicks
+#'
+#' @examples
+#' base_breaks()
 base_breaks <- function(n = 10){
   function(x) {
-    axisTicks(log10(range(x, na.rm = TRUE)), log = TRUE, n = n)
+    axisTicks(log10(range(x, na.rm = TRUE)), log = TRUE, nint = n)
   }
 }
 
@@ -10,7 +20,7 @@ base_breaks <- function(n = 10){
 #' Class providing object with methods for adapt.concept2.sFFLHD.R6
 #'
 #' @docType class
-#' @importFrom R6 R6Class
+# @importFrom R6 R6Class
 #' @export
 #' @importFrom stats optim
 #' @keywords data, experiments, adaptive, sequential, simulation,
@@ -87,7 +97,7 @@ base_breaks <- function(n = 10){
 #' param_update = T, nug.update = self$nug.est)}}{This method updates the
 #' model, adding new data if given, then running optimization again.}
 #'   }
-compare.adaptR6 <- R6::R6Class("compare.adaptR6",
+compare.adaptR6 <- R6Class("compare.adaptR6",
   public=list(
     func = NULL,
     D = NULL,
