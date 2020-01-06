@@ -16,6 +16,7 @@
 #' @importFrom R6 R6Class
 #' @export
 #' @importFrom stats optim
+#' @importFrom IGP IGP
 #' @keywords data, experiments, adaptive, sequential, simulation,
 #' Gaussian process, regression
 #' @return Object of \code{\link{R6Class}} with methods for running an
