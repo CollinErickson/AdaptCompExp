@@ -14,6 +14,8 @@
 #'
 #' @docType class
 #' @importFrom R6 R6Class
+#' @importFrom graphics abline pairs plot
+#' @importFrom stats cor deriv ecdf pnorm runif setNames
 #' @export
 #' @importFrom stats optim
 #' @importFrom IGP IGP
