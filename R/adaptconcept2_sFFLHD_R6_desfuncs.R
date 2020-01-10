@@ -3,10 +3,17 @@
 #' Relmax des func
 #'
 #' A des func where output is scaled 0 to 1, max higher
+#'
 #' @param return_se whether the se prediction should be returned along with
 #'   the des, all will be returned in data.frame, this will save
 #'   time if calculating the werror function since it is faster
 #'   to predict both at once instead of separately
+#' @param mod mod
+#' @param XX XX
+#' @param N_add N_add
+#'
+#' @export
+#' @return des
 des_func_relmax <- function(mod, XX, return_se=F, N_add=1e3) {
   D <- if (is.matrix(XX)) ncol(XX) else length(XX)
   pred <- mod$predict(XX, se=return_se)
@@ -71,6 +78,19 @@ actual_des_func_relmax_borehole <- get_actual_des_func_relmax(f=borehole, fmin=0
 
 
 
+#' werror_func_relmax
+#'
+#' @param mod model
+#' @param XX XX
+#' @param alpha alpha
+#' @param split_speed T/F
+#' @importFrom sFFLHD split_matrix
+#'
+#' @return werror
+#' @export
+#'
+#' @examples
+#' # pass
 werror_func_relmax <- function(mod, XX, alpha=1000, split_speed=T) {#browser()
   D <- ncol(mod$X)
   # split_speed gives 3x speedup for 300 pts, 14x for 3000 pts
@@ -128,8 +148,9 @@ werror_func14 <- function(mod, XX, split_speed=T) {#browser()
 
 
 
-# Test desirability functions
-# A des func where output is scaled 0 to 1, max higher
+#' Test desirability functions
+#'
+#' A des func where output is scaled 0 to 1, max higher
 #' @param threshold Scalar in [0,1) thresholding how big the quantile should be.
 #' @param power The power the quantiles will be raised to after thresholding.
 #' @param return_se whether the se prediction should be returned along with
@@ -267,8 +288,9 @@ des_func_quantile_lowhigh <- function(mod, XX, threshold=c(.5, .5), power=1, ret
 
 
 
-# Test desirability functions
-# A des func where output is scaled 0 to 1, max higher
+#' Test desirability functions
+#'
+#' A des func where output is scaled 0 to 1, max higher
 #' @param return_se whether the se prediction should be returned along with
 #'   the des, all will be returned in data.frame, this will save
 #'   time if calculating the werror function since it is faster
@@ -336,8 +358,9 @@ des_func_plateau <- function(mod, XX, return_se=F, N_add=1e2) {
 }
 
 
-# Test desirability functions
-# A des func for finding large gradient
+#' Test desirability functions
+#'
+#' A des func for finding large gradient
 #' @param return_se whether the se prediction should be returned along with
 #'   the des, all will be returned in data.frame, this will save
 #'   time if calculating the werror function since it is faster
