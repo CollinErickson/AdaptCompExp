@@ -84,7 +84,7 @@ actual_des_func_relmax_borehole <- get_actual_des_func_relmax(f=borehole, fmin=0
 #' @param XX XX
 #' @param alpha alpha
 #' @param split_speed T/F
-#' @importFrom sFFLHD split_matrix
+# @importFrom sFFLHD split_matrix
 #'
 #' @return werror
 #' @export
@@ -98,7 +98,7 @@ werror_func_relmax <- function(mod, XX, alpha=1000, split_speed=T) {#browser()
     pred <- mod$predict(XX, se=T)
   } else { # Fastest to predict 100 to 150 at a time, maybe go bigger so fewer to recombine
     # Factor of 10x for n=3000, 25 for n=10,000
-    XX.split <- split_matrix(XX, rowspergroup=150, shuffle=FALSE)
+    XX.split <- sFFLHD::split_matrix(XX, rowspergroup=150, shuffle=FALSE)
     #sapply(XX.split, function(XXX) {mod$predict(XXX, se=T)})
     pred <- data.table::rbindlist(lapply(XX.split, function(XXX) {as.data.frame(mod$predict(XXX, se=T))}))
   }
@@ -137,7 +137,7 @@ werror_func14 <- function(mod, XX, split_speed=T) {#browser()
     pred <- mod$predict(XX, se=T)
   } else { # Fastest to predict 100 to 150 at a time, maybe go bigger so fewer to recombine
     # Factor of 10x for n=3000, 25 for n=10,000
-    XX.split <- split_matrix(XX, rowspergroup=150, shuffle=FALSE)
+    XX.split <- sFFLHD::split_matrix(XX, rowspergroup=150, shuffle=FALSE)
     #sapply(XX.split, function(XXX) {mod$predict(XXX, se=T)})
     pred <- data.table::rbindlist(lapply(XX.split, function(XXX) {as.data.frame(mod$predict(XXX, se=T))}))
   }
@@ -316,8 +316,9 @@ des_func_relmaxgrad <- function(mod, XX, return_se=F, N_add=1e3) {
   des
 }
 
-# Test desirability functions
-# A des func for finding plateau
+#' Test desirability functions
+#'
+#' A des func for finding plateau
 #' @param return_se whether the se prediction should be returned along with
 #'   the des, all will be returned in data.frame, this will save
 #'   time if calculating the werror function since it is faster
