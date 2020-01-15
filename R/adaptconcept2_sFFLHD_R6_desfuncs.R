@@ -88,6 +88,7 @@ actual_des_func_relmax_borehole <- get_actual_des_func_relmax(f=borehole, fmin=0
 #'
 #' @return werror
 #' @export
+#' @importFrom data.table rbindlist
 #'
 #' @examples
 #' # pass
@@ -323,6 +324,7 @@ des_func_relmaxgrad <- function(mod, XX, return_se=F, N_add=1e3) {
 #'   the des, all will be returned in data.frame, this will save
 #'   time if calculating the werror function since it is faster
 #'   to predict both at once instead of separately
+#' @importFrom numDeriv hessian
 des_func_plateau <- function(mod, XX, return_se=F, N_add=1e2) {
   D <- if (is.matrix(XX)) ncol(XX) else length(XX)
   #browser()
@@ -756,6 +758,18 @@ get_num_actual_des_func_grad_norm2_mean <- function(funcforgrad) {
     })
   }
 }
+
+#' Test des func
+#'
+#' @param func
+#' @param actual
+#' @param d
+#' @param n
+#'
+#' @return
+# @export
+#' @importFrom lhs randomLHS
+# @examples
 test_des_func_grad_norm2_mean <- function(func, actual, d, n=1e3) {
   xx <- lhs::randomLHS(n=n, k=d)
   getfunc <- get_num_actual_des_func_grad_norm2_mean(func)

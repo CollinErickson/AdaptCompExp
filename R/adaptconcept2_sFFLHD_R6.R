@@ -586,7 +586,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(classname = "adapt.concept2.sFFLHD.seq",
                                             }
                                           },
                                           plot_mean = function(cex=1, plot.axes=TRUE) {
-                                            cf_func(self$mod$predict,batchmax=500, pretitle="Predicted Mean ",
+                                            ContourFunctions::cf_func(self$mod$predict,batchmax=500, pretitle="Predicted Mean ",
                                                     cex=cex, plot.axes=plot.axes,
                                                     afterplotfunc=function(){
                                                       points(self$X,pch=19)
@@ -597,7 +597,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(classname = "adapt.concept2.sFFLHD.seq",
                                             )
                                           },
                                           plot_se = function(cex=1, plot.axes=TRUE) {
-                                            cf_func(self$mod$predict.se,batchmax=500, pretitle="Predicted SE ",
+                                            ContourFunctions::cf_func(self$mod$predict.se,batchmax=500, pretitle="Predicted SE ",
                                                     cex=cex, plot.axes=plot.axes,
                                                     afterplotfunc=function(){
                                                       points(self$X,pch=19)
@@ -610,7 +610,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(classname = "adapt.concept2.sFFLHD.seq",
                                             )
                                           },
                                           plot_abserr = function(cex=1, plot.axes=TRUE) {
-                                            cf_func(function(xx){sqrt((
+                                            ContourFunctions::cf_func(function(xx){sqrt((
                                               self$mod$predict(xx) - apply(xx, 1, self$func))^2)},
                                               n = 20, mainminmax_minmax = F, pretitle="AbsErr ", batchmax=Inf,
                                               cex=cex, plot.axes=plot.axes)
@@ -807,7 +807,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(classname = "adapt.concept2.sFFLHD.seq",
                                             if (self$func_fast) {
                                               screen(3) # Actual func
                                               par(mar=c(2,2,0,0.5)) # 5.1 4.1 4.1 2.1 BLTR
-                                              cf_func(self$func, n = 20, mainminmax_minmax = F, pretitle="Actual ",
+                                              ContourFunctions::cf_func(self$func, n = 20, mainminmax_minmax = F, pretitle="Actual ",
                                                       cex=cex_small, plot.axes=FALSE)
                                             }
 
@@ -822,7 +822,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(classname = "adapt.concept2.sFFLHD.seq",
                                               screen(5) # plot des
                                               if (self$des_func_fast && !is.null(self$des_func)) {
                                                 # Option to not plot if it is slow
-                                                cf_func(function(XX) {self$des_func(XX=XX, mod=self$mod)},
+                                                ContourFunctions::cf_func(function(XX) {self$des_func(XX=XX, mod=self$mod)},
                                                         n=20, mainminmax_minmax = F, pretitle="Des ",
                                                         cex=cex_small, plot.axes=FALSE, batchmax=Inf)
                                               }
