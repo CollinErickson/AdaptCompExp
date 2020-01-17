@@ -7,7 +7,16 @@
 test_des_func_grad_norm2_mean(func, actual, d, n = 1000)
 }
 \arguments{
-\item{n}{}
+\item{func}{function}
+
+\item{actual}{actual values}
+
+\item{d}{dimension}
+
+\item{n}{number of points}
+}
+\value{
+value
 }
 \description{
 Test des func

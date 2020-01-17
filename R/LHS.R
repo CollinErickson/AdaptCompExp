@@ -15,7 +15,7 @@ is.LHS <- function(m,scaled=TRUE) {
   stop('Error 0239357')
 }
 is.OA <- function(m,strength=2) {
-  
+
 }
 simple.grid <- function(n,d,scaled=TRUE,random=TRUE,centered=FALSE,scaledto=NULL) {
   m <- matrix(1:n,ncol=1)
@@ -32,7 +32,7 @@ simple.grid <- function(n,d,scaled=TRUE,random=TRUE,centered=FALSE,scaledto=NULL
   if(scaled) m <- (m - ifelse(random,0,.5)) / n
   if(!is.null(scaledto)) {#browser()
     m <- m * matrix(scaledto[,2]-scaledto[,1],nrow=nrow(m),ncol=ncol(m),byrow=T) + matrix(scaledto[,1],nrow=nrow(m),ncol=ncol(m),byrow=T)
-  } 
+  }
   if(centered) m <- m - ifelse(scaled,.5,n/2+.5)
   m
 }
@@ -40,13 +40,24 @@ simple.random <- function(n,d,scaledto=NULL) {
   m <- matrix(runif(n*d), ncol=d, nrow=n)
   if(!is.null(scaledto)) {#browser()
     m <- m * matrix(scaledto[,2]-scaledto[,1],nrow=nrow(m),ncol=ncol(m),byrow=T) + matrix(scaledto[,1],nrow=nrow(m),ncol=ncol(m),byrow=T)
-  } 
+  }
   m
 }
 
 #m <- simple.LHS(10,2)
 #plot(m,xlim=0:1,ylim=0:1,pch=19)
 
+#' phi_p
+#'
+#' @param X
+#' @param p
+#' @param t
+#'
+#' @return
+# @export
+#' @importFrom stats dist
+#'
+# @examples
 phi_p <- function(X,p=50,t=1) {
   if(t==1) method='manhattan'
   else stop('no method')
@@ -94,7 +105,7 @@ trans.prop.LHS.2D <- function(np,nv,s,scaled=TRUE) {
   ns2 <- dim(s2)[1]
   createTPLHD <- function(s,ns,nps,nds,nv) {# Get the full design
     X <- matrix(0,nps,nps)
-    nss <- nps/nds 
+    nss <- nps/nds
     # first get first row
     for(i in 1:nds) {
       X[((i-1)*nss+1):((i-1)*nss+1+ns-1),i:(i+ns-1)] <- s
@@ -168,7 +179,7 @@ trans.prop.LHS <- function(np,s,scaled=TRUE) {
   createTPLHD <- function(s,ns,nps,nds,nv) {#browser()# Get the full design
     X <- s
     #X <- matrix(0,nps,nps)
-    nss <- nps/nds 
+    nss <- nps/nds
     # first get first row
     #Xtemp <- X
     #for(i in 2:nds) {
@@ -197,7 +208,7 @@ trans.prop.LHS <- function(np,s,scaled=TRUE) {
         }
         if(j<nv){
           #for(jj in range((j+1):nv)){
-            Xtemp[,(j+1):nv] <- Xtemp[,(j+1):nv] + 2^(j-1)            
+            Xtemp[,(j+1):nv] <- Xtemp[,(j+1):nv] + 2^(j-1)
           #}
         }
         X <- rbind(X,Xtemp)
@@ -271,7 +282,7 @@ if(F) {
       print(c(seed.size,ss,phi_p(tp41)))
     }
   }
-  
+
   # 8d test
   for(seed.size in 1:5){
     #print(seed.size)
