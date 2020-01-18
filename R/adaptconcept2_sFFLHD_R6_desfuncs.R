@@ -189,7 +189,8 @@ des_func_quantile <- function(mod, XX, threshold=0, power=1, return_se=F, N_add=
   pow_thresh_quants <- threshold_jump + (1-threshold_jump) * pow_thresh_quants
 
   if (return_se) {
-    return(data.frame(des=des, se=se_toreturn))
+    stop()
+    # return(data.frame(des=des, se=se_toreturn))
   }
   pow_thresh_quants
 }
@@ -297,9 +298,13 @@ des_func_quantile_lowhigh <- function(mod, XX, threshold=c(.5, .5), power=1, ret
 #' Test desirability functions
 #'
 #' A des func where output is scaled 0 to 1, max higher
+#'
 #' @param return_se whether the se prediction should be returned along with
 #'   the des, all will be returned in data.frame, this will save
 #'   time if calculating the werror function since it is faster
+#' @param mod model
+#' @param XX design matrix
+#' @param N_add number of points to add
 #'   to predict both at once instead of separately
 des_func_relmaxgrad <- function(mod, XX, return_se=F, N_add=1e3) {
   D <- if (is.matrix(XX)) ncol(XX) else length(XX)
@@ -333,10 +338,9 @@ des_func_relmaxgrad <- function(mod, XX, return_se=F, N_add=1e3) {
 #'
 #' @param mod model
 #' @param XX design matrix
-#' @param return_se should the sd be returned?
 #' @param N_add number to add
 #'
-#' @return
+#' @return des value
 # @export
 #'
 #' @examples
@@ -480,37 +484,37 @@ get_des_func_grad_norm2_mean_alpha <- function(alpha) {
 }
 actual_des_func_grad_norm2_mean_logistic_plateau <- function(XX, mod) {
   apply(XX, 1, function(x) {
-    f1 <- logistic(x, offset=.85, scl=15)
-    f2 <- logistic(x, offset=.15, scl=15)
+    f1 <- TestFunctions::logistic(x, offset=.85, scl=15)
+    f2 <- TestFunctions::logistic(x, offset=.15, scl=15)
     (15 * (f1*(1-f1) - f2*(1-f2))) ^ 2
   })
 }
 actual_des_func_grad_norm2_mean_logistic15 <- function(XX, mod) {
   apply(XX, 1, function(x) {
-    f1 <- logistic(x, offset=.5,scl=15)
+    f1 <- TestFunctions::logistic(x, offset=.5,scl=15)
     (15 * (f1*(1-f1))) ^ 2
   })
 }
 actual_des_func_grad_norm2_mean_banana <- function(XX, mod) {
   apply(XX, 1, function(x) {
-    sum(banana_grad(x) ^ 2)
+    sum(TestFunctions::banana_grad(x) ^ 2)
   })
 }
 actual_des_func_grad_norm2_mean_f4 <- function(XX, mod) {
   # f4 <- function(x) {sin(2*pi*x[1]) + .5*sin(4*pi*x[1]) + x[2]^2}
-  # gf4 <- function(x) {c(2*pi*cos(2*pi*x[1]) + .5*4*pi*cos(4*pi*x[1]), 2*x[2])}
+  gf4 <- function(x) {c(2*pi*cos(2*pi*x[1]) + .5*4*pi*cos(4*pi*x[1]), 2*x[2])}
   apply(XX, 1, function(x) {
     sum(gf4(x) ^ 2)
   })
 }
 actual_des_func_grad_norm2_mean_vertigrad <- function(XX, mod) {
   apply(XX, 1, function(x) {
-    sum(vertigrad_grad(x) ^ 2)
+    sum(TestFunctions::vertigrad_grad(x) ^ 2)
   })
 }
 actual_des_func_grad_norm2_mean_quad_peaks <- function(XX, mod) {
   apply(XX, 1, function(x) {
-    sum(numDeriv::grad(quad_peaks, x) ^ 2)
+    sum(numDeriv::grad(TestFunctions::quad_peaks, x) ^ 2)
   })
 }
 actual_des_func_grad_norm2_mean_branin <- function(XX, mod) {

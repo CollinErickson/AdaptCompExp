@@ -17,11 +17,9 @@ time if calculating the werror function since it is faster
 to predict both at once instead of separately}
 
 \item{N_add}{number to add}
-
-\item{return_se}{should the sd be returned?}
 }
 \value{
-
+des value
 }
 \description{
 A des func for finding plateau

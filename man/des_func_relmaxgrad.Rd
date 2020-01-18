@@ -7,9 +7,15 @@
 des_func_relmaxgrad(mod, XX, return_se = F, N_add = 1000)
 }
 \arguments{
+\item{mod}{model}
+
+\item{XX}{design matrix}
+
 \item{return_se}{whether the se prediction should be returned along with
 the des, all will be returned in data.frame, this will save
-time if calculating the werror function since it is faster
+time if calculating the werror function since it is faster}
+
+\item{N_add}{number of points to add
 to predict both at once instead of separately}
 }
 \description{

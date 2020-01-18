@@ -2,7 +2,7 @@
 % Please edit documentation in R/adaptconcept2_sFFLHD_R6_desfuncs.R
 \name{des_func_quantile}
 \alias{des_func_quantile}
-\title{Test desirability functions}
+\title{Desirability function quantile}
 \usage{
 des_func_quantile(mod, XX, threshold = 0, power = 1, return_se = F,
   N_add = 1000, threshold_jump = 0)
