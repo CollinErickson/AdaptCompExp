@@ -288,7 +288,8 @@ des_func_quantile_lowhigh <- function(mod, XX, threshold=c(.5, .5), power=1, ret
   }
 
   if (return_se) {
-    return(data.frame(des=des, se=se_toreturn))
+    stop()
+    # return(data.frame(des=des, se=se_toreturn))
   }
   pow_thresh_quants
 }
@@ -590,6 +591,16 @@ actual_des_func_grad_norm2_mean_gramacy2Dexp <- function(XX, mod) {
               "gradient") * scalediff) ^ 2)
   })
 }
+#' actual des func
+#'
+#' @param XX design matrix
+#' @param mod mod
+#'
+#' @return values
+# @importFrom Deriv Deriv
+# @export
+#'
+# @examples
 actual_des_func_grad_norm2_mean_gramacy2Dexp3hole <- function(XX, mod) {#browser()
   g2D3hole <- Deriv::Deriv(~
                              {
