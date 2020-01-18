@@ -49,9 +49,9 @@ simple.random <- function(n,d,scaledto=NULL) {
 
 #' phi_p
 #'
-#' @param X
-#' @param p
-#' @param t
+#' @param X design matrix
+#' @param p Power
+#' @param t distance metric, don't change
 #'
 #' @return
 # @export

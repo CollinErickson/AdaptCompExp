@@ -7,10 +7,14 @@
 des_func_grad_norm2_mean(mod, XX, return_se = F)
 }
 \arguments{
+\item{mod}{model}
+
+\item{XX}{Design matrix
+to predict both at once instead of separately}
+
 \item{return_se}{whether the se prediction should be returned along with
 the des, all will be returned in data.frame, this will save
-time if calculating the werror function since it is faster
-to predict both at once instead of separately}
+time if calculating the werror function since it is faster}
 }
 \description{
 A des func for finding large gradient

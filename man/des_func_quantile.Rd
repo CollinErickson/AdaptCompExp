@@ -8,13 +8,21 @@ des_func_quantile(mod, XX, threshold = 0, power = 1, return_se = F,
   N_add = 1000, threshold_jump = 0)
 }
 \arguments{
+\item{mod}{model}
+
+\item{XX}{design matrix}
+
 \item{threshold}{Scalar in [0,1) thresholding how big the quantile should be.}
 
 \item{power}{The power the quantiles will be raised to after thresholding.}
 
 \item{return_se}{whether the se prediction should be returned along with
 the des, all will be returned in data.frame, this will save
-time if calculating the werror function since it is faster
+time if calculating the werror function since it is faster}
+
+\item{N_add}{number of points to add}
+
+\item{threshold_jump}{amount the threshold should jump
 to predict both at once instead of separately}
 }
 \description{

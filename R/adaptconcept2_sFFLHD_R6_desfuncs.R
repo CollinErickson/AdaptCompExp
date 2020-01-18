@@ -149,14 +149,19 @@ werror_func14 <- function(mod, XX, split_speed=T) {#browser()
 
 
 
-#' Test desirability functions
+#' Desirability function quantile
 #'
 #' A des func where output is scaled 0 to 1, max higher
+#'
 #' @param threshold Scalar in [0,1) thresholding how big the quantile should be.
 #' @param power The power the quantiles will be raised to after thresholding.
 #' @param return_se whether the se prediction should be returned along with
 #'   the des, all will be returned in data.frame, this will save
 #'   time if calculating the werror function since it is faster
+#' @param mod  model
+#' @param XX design matrix
+#' @param N_add number of points to add
+#' @param threshold_jump amount the threshold should jump
 #'   to predict both at once instead of separately
 des_func_quantile <- function(mod, XX, threshold=0, power=1, return_se=F, N_add=1e3, threshold_jump=0) {
   D <- if (is.matrix(XX)) ncol(XX) else length(XX)
@@ -325,6 +330,16 @@ des_func_relmaxgrad <- function(mod, XX, return_se=F, N_add=1e3) {
 #'   time if calculating the werror function since it is faster
 #'   to predict both at once instead of separately
 # @importFrom numDeriv hessian
+#'
+#' @param mod model
+#' @param XX design matrix
+#' @param return_se should the sd be returned?
+#' @param N_add number to add
+#'
+#' @return
+# @export
+#'
+#' @examples
 des_func_plateau <- function(mod, XX, return_se=F, N_add=1e2) {
   D <- if (is.matrix(XX)) ncol(XX) else length(XX)
   #browser()
@@ -364,9 +379,12 @@ des_func_plateau <- function(mod, XX, return_se=F, N_add=1e2) {
 #' Test desirability functions
 #'
 #' A des func for finding large gradient
+#'
 #' @param return_se whether the se prediction should be returned along with
 #'   the des, all will be returned in data.frame, this will save
 #'   time if calculating the werror function since it is faster
+#' @param mod model
+#' @param XX Design matrix
 #'   to predict both at once instead of separately
 des_func_grad_norm2_mean <- function(mod, XX, return_se=F) {
   if ("IGP_GauPro_kernel" %in% class(mod)) {

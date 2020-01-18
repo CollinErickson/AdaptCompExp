@@ -7,10 +7,21 @@
 des_func_plateau(mod, XX, return_se = F, N_add = 100)
 }
 \arguments{
+\item{mod}{model}
+
+\item{XX}{design matrix}
+
 \item{return_se}{whether the se prediction should be returned along with
 the des, all will be returned in data.frame, this will save
 time if calculating the werror function since it is faster
 to predict both at once instead of separately}
+
+\item{N_add}{number to add}
+
+\item{return_se}{should the sd be returned?}
+}
+\value{
+
 }
 \description{
 A des func for finding plateau

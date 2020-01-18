@@ -7,7 +7,11 @@
 phi_p(X, p = 50, t = 1)
 }
 \arguments{
-\item{t}{}
+\item{X}{design matrix}
+
+\item{p}{Power}
+
+\item{t}{distance metric, don't change}
 }
 \description{
 phi_p
