@@ -598,7 +598,7 @@ actual_des_func_grad_norm2_mean_gramacy2Dexp <- function(XX, mod) {
 #'
 #' @return values
 # @importFrom Deriv Deriv
-# @export
+#' @export
 #'
 # @examples
 actual_des_func_grad_norm2_mean_gramacy2Dexp3hole <- function(XX, mod) {#browser()
