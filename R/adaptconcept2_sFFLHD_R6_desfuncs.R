@@ -391,6 +391,7 @@ des_func_plateau <- function(mod, XX, return_se=F, N_add=1e2) {
 #' @param mod model
 #' @param XX Design matrix
 #'   to predict both at once instead of separately
+#' @export
 des_func_grad_norm2_mean <- function(mod, XX, return_se=F) {
   if ("IGP_GauPro_kernel" %in% class(mod)) {
     # des <- mod$mod$grad_norm2_dist(XX=XX)$mean
