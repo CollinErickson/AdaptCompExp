@@ -127,10 +127,11 @@ model, adding new data if given, then running optimization again.}
 }
 
 \examples{
-a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=gaussian1,obj="desirability",
-    des_func=des_func14, n0=12, take_until_maxpvar_below=.9,
-    package="GauPro", design='sFFLHD', selection_method="max_des_red")
-a$run(5)
+ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
+                           n0=6, obj="desirability",
+                           selection_method=c('max_des', 'SMED'),
+                           des_func=c('des_func_relmax', NA))$run_all()$plot()
+
 }
 \keyword{Gaussian}
 \keyword{adaptive,}

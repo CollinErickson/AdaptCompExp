@@ -53,7 +53,7 @@ simple.random <- function(n,d,scaledto=NULL) {
 #' @param p Power
 #' @param t distance metric, don't change
 #'
-#' @return
+#' @return design phi_p value
 # @export
 #' @importFrom stats dist
 #'
