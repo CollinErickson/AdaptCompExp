@@ -32,7 +32,8 @@ base_breaks <- function(n = 10){
 #' ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
 #'                            n0=6, obj="desirability",
 #'                            selection_method=c('max_des', 'SMED'),
-#'                            des_func=c('des_func_relmax', NA))$run_all()$plot()
+#'                            des_func=c('des_func_relmax', 'des_func_relmax')
+#'                            )$run_all()$plot()
 #'
 #' @field X Design matrix
 #' @field Z Responses
