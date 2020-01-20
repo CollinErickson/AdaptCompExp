@@ -321,6 +321,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(classname = "adapt.concept2.sFFLHD.seq",
                                                 }
                                               }
                                             }
+                                            if (self$actual_des_func == "NULL") {
+                                              self$actual_des_func <- NULL
+                                            }
                                             if ('actual_intwerror_func' %in% names(list(...))) {
                                               stop("Don't do it like this")
                                             }

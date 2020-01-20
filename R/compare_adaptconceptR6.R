@@ -193,6 +193,11 @@ compare.adaptR6 <- R6Class("compare.adaptR6",
                                self$weight_const <- weight_const
                                self$error_power <- error_power
                                self$actual_des_func <- actual_des_func
+                               if (is.null(self$actual_des_func)) {
+                                 actual_des_func <- "NULL"
+                                 self$actual_des_func <- "NULL"
+                                 stopifnot(length(actual_des_func) > 0)
+                               }
                                self$pass_list <- pass_list
                                self$parallel <- parallel
                                self$parallel_cores <- parallel_cores
@@ -221,6 +226,7 @@ compare.adaptR6 <- R6Class("compare.adaptR6",
                                if (any(is.function(func))) {
 
                                }
+
                                self$rungrid <- reshape::expand.grid.df(
                                  data.frame(
                                    func=func_string, func_string=func_string,
@@ -256,6 +262,9 @@ compare.adaptR6 <- R6Class("compare.adaptR6",
                                                  'force_old', 'force_pvar', 'n0','package',
                                                  'selection_method', 'design', 'des_func')) {
                                  evalparsei <- eval(parse(text=i_input))
+                                 print(i_input)
+                                 print(list(length(evalparsei), evalparsei))
+                                 print(length(evalparsei) > 1 && !all(evalparsei == evalparsei[1]))
                                  if (length(evalparsei) > 1 && !all(evalparsei == evalparsei[1])) {
                                    #self$rungrid$Group <- paste(self$rungrid$Group, self$rungrid[,i_input])
                                    group_names <- c(group_names, i_input)

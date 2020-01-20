@@ -13,6 +13,9 @@ phi_p(X, p = 50, t = 1)
 
 \item{t}{distance metric, don't change}
 }
+\value{
+design phi_p value
+}
 \description{
 phi_p
 }
