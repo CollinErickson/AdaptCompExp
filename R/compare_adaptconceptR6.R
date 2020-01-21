@@ -166,7 +166,7 @@ compare.adaptR6 <- R6Class("compare.adaptR6",
                                                    , folder_name,
                                                    parallel=FALSE, parallel_cores="detect"
                              ) {
-                               print('creating compad')
+                               # print('creating compad')
                                self$func <- func
                                self$D <- D
                                self$L <- L
@@ -263,9 +263,6 @@ compare.adaptR6 <- R6Class("compare.adaptR6",
                                                  'force_old', 'force_pvar', 'n0','package',
                                                  'selection_method', 'design', 'des_func')) {
                                  evalparsei <- eval(parse(text=i_input))
-                                 print(i_input)
-                                 print(list(length(evalparsei), evalparsei))
-                                 print(length(evalparsei) > 1 && !all(evalparsei == evalparsei[1]))
                                  if (length(evalparsei) > 1 && !all(evalparsei == evalparsei[1])) {
                                    #self$rungrid$Group <- paste(self$rungrid$Group, self$rungrid[,i_input])
                                    group_names <- c(group_names, i_input)
@@ -404,14 +401,23 @@ compare.adaptR6 <- R6Class("compare.adaptR6",
                                systime <- system.time(u$run(row_grid$batches,noplot=noplot))
                                end_time <- Sys.time()
 
+                               NA_if_null <- function(x) {if (is.null(x)) {NA} else {x}}
+
                                newdf0 <- data.frame(batch=u$stats$iteration, mse=u$stats$mse,
                                                     pvar=u$stats$pvar, pamv=u$stats$pamv,
                                                     pred_intwerror=u$stats$intwerror,
                                                     actual_intwerror=u$stats$actual_intwerror,
                                                     actual_intwvar=u$stats$actual_intwvar,
-                                                    do.call(rbind, lapply(u$stats$actual_intwquants, function(df) {data.frame(actual_intabserquants       =t((df$abserrquant)))})),
-                                                    do.call(rbind, lapply(u$stats$actual_intwquants, function(df) {data.frame(actual_intsqerrquants       =t((df$sqerrquant)))})),
-                                                    do.call(rbind, lapply(u$stats$actual_intwquants, function(df) {data.frame(actual_preddesabserrquants  =t((df$preddesabserrquant)))})),
+                                                    actual_intabserquants = NA_if_null(
+                                                      do.call(rbind, lapply(u$stats$actual_intwquants,
+                                                                            function(df) {data.frame(actual_intabserquants       =t((df$abserrquant)))}))),
+                                                    actual_intsqerrquants = NA_if_null(
+                                                      do.call(rbind, lapply(u$stats$actual_intwquants,
+                                                                            function(df) {data.frame(actual_intsqerrquants       =t((df$sqerrquant)))}))),
+                                                    actual_preddesabserrquants = NA_if_null(
+                                                      do.call(rbind, lapply(u$stats$actual_intwquants,
+                                                                            function(df) {
+                                                                              data.frame(actual_preddesabserrquants  =t((df$preddesabserrquant)))}))),
                                                     n=u$stats$n,
                                                     #obj=row_grid$obj,
                                                     num=paste0(row_grid$obj,row_grid$repl),

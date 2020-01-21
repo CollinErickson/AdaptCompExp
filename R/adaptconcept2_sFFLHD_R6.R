@@ -324,7 +324,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
           }
         }
       }
-      if (self$actual_des_func == "NULL") {
+      if (!is.null(self$actual_des_func) && self$actual_des_func == "NULL") {
         self$actual_des_func <- NULL
       }
       if ('actual_intwerror_func' %in% names(list(...))) {
