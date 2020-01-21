@@ -12,4 +12,4 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: R6, IGP
 Suggests: TestFunctions, sFFLHD, lhs, numDeriv, data.table, GauPro, Deriv,
-  ContourFunctions, laGP, reshape
+  ContourFunctions, laGP, reshape, SMED

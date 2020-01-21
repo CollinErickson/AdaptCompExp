@@ -972,7 +972,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       }
       Y0 <- Yall[1:nrow(self$X)]
       Yopt <- Yall[(nrow(self$X)+1):length(Yall)]
-      bestL <- SMED_selectYC(n=self$b, X0=self$X, Xopt=self$Xopts, Y0=Y0,
+      bestL <- SMED::SMED_selectYC(n=self$b, X0=self$X, Xopt=self$Xopts, Y0=Y0,
                              Yopt=Yopt,
                              theta=if (self$useSMEDtheta) {self$mod$theta()}
                              else {rep(1,ncol(self$X))})
