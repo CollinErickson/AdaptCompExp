@@ -404,32 +404,35 @@ compare.adaptR6 <- R6Class(
 
       NA_if_null <- function(x) {if (is.null(x)) {NA} else {x}}
 
-      newdf0 <- data.frame(batch=u$stats$iteration, mse=u$stats$mse,
-                           pvar=u$stats$pvar, pamv=u$stats$pamv,
-                           pred_intwerror=u$stats$intwerror,
-                           actual_intwerror=u$stats$actual_intwerror,
-                           actual_intwvar=u$stats$actual_intwvar,
-                           actual_intabserquants = NA_if_null(
-                             do.call(rbind, lapply(u$stats$actual_intwquants,
-                                                   function(df) {data.frame(actual_intabserquants       =t((df$abserrquant)))}))),
-                           actual_intsqerrquants = NA_if_null(
-                             do.call(rbind, lapply(u$stats$actual_intwquants,
-                                                   function(df) {data.frame(actual_intsqerrquants       =t((df$sqerrquant)))}))),
-                           actual_preddesabserrquants = NA_if_null(
-                             do.call(rbind, lapply(u$stats$actual_intwquants,
-                                                   function(df) {
-                                                     data.frame(actual_preddesabserrquants  =t((df$preddesabserrquant)))}))),
-                           n=u$stats$n,
-                           #obj=row_grid$obj,
-                           num=paste0(row_grid$obj,row_grid$repl),
-                           time = systime[3], #repl=row_grid$repl,
-                           start_time=start_time, end_time=end_time,
-                           run_number=irow,
-                           #force_old=row_grid$force_old, force_pvar=row_grid$force_pvar,
-                           force2=paste0(row_grid$force_old, '_', row_grid$force_pvar),
+      newdf0 <- data.frame(
+        batch=u$stats$iteration, mse=u$stats$mse,
+        pvar=u$stats$pvar, pamv=u$stats$pamv,
+        pred_intwerror=u$stats$intwerror,
+        actual_intwerror=u$stats$actual_intwerror,
+        actual_intwvar=u$stats$actual_intwvar,
+        actual_intabserquants = NA_if_null(
+          do.call(rbind, lapply(u$stats$actual_intwquants,
+                                function(df) {
+                                  data.frame(actual_intabserquants=t((df$abserrquant)))}))),
+        actual_intsqerrquants = NA_if_null(
+          do.call(rbind, lapply(u$stats$actual_intwquants,
+                                function(df) {
+                                  data.frame(actual_intsqerrquants=t((df$sqerrquant)))}))),
+        actual_preddesabserrquants = NA_if_null(
+          do.call(rbind, lapply(u$stats$actual_intwquants,
+                                function(df) {
+                                  data.frame(actual_preddesabserrquants=t((df$preddesabserrquant)))}))),
+        n=u$stats$n,
+        #obj=row_grid$obj,
+        num=paste0(row_grid$obj,row_grid$repl),
+        time = systime[3], #repl=row_grid$repl,
+        start_time=start_time, end_time=end_time,
+        run_number=irow,
+        #force_old=row_grid$force_old, force_pvar=row_grid$force_pvar,
+        force2=paste0(row_grid$force_old, '_', row_grid$force_pvar),
 
-                           row.names=NULL,
-                           stringsAsFactors = FALSE
+        row.names=NULL,
+        stringsAsFactors = FALSE
       )
       newdf1 <- cbind(row_grid, newdf0, row.names=NULL)
       u$delete()
@@ -537,7 +540,9 @@ compare.adaptR6 <- R6Class(
         png(filename = paste0(self$folder_path,"/plotMSE.png"),
             width = 480, height = 480)
       }
-      p <- ggplot2::ggplot(data=self$outdf, ggplot2::aes(x=batch, y=mse, group = interaction(num,Group), colour = Group)) +
+      p <- ggplot2::ggplot(data=self$outdf,
+                           ggplot2::aes(x=batch, y=mse,
+                                        group = interaction(num,Group), colour = Group)) +
         ggplot2::geom_line() +
         ggplot2::geom_line(inherit.aes = F, data=self$meanlogdf,
                            ggplot2::aes(x=batch, y=mse, colour = Group, size=3, alpha=.5)) +
@@ -569,7 +574,7 @@ compare.adaptR6 <- R6Class(
           ) +
           ggplot2::geom_point() +
           # scale_y_log10(breaks = base_breaks()) + #pretty(self$outdf$actual_intwerror, n=5)) +
-          scale_y_continuous(trans="log", breaks = base_breaks()) +
+          ggplot2::scale_y_continuous(trans="log", breaks = base_breaks()) +
           #pretty(self$outdf$actual_intwerror, n=5)) +
           ggplot2::xlab("Batch") + ggplot2::ylab("actual_intwerror") +
           ggplot2::guides(size=FALSE, alpha=FALSE)
@@ -605,7 +610,8 @@ compare.adaptR6 <- R6Class(
         ggplot2::ggplot(data=self$outdf,
                         ggplot2::aes(x=mse, y=pvar, group = interaction(num,Group), colour = Group)) +
           ggplot2::geom_line() + # Line for each rep
-          ggplot2::geom_line(inherit.aes=F, data=self$meanlogdf, aes(x=mse, y=pvar, size=4, colour=Group), alpha=.5
+          ggplot2::geom_line(inherit.aes=F, data=self$meanlogdf,
+                             ggplot2::aes(x=mse, y=pvar, size=4, colour=Group), alpha=.5
           ) +# Line for mean
           ggplot2::geom_point() + # Points for each rep
           ggplot2::geom_point(inherit.aes=F, data=self$enddf,
@@ -632,7 +638,8 @@ compare.adaptR6 <- R6Class(
                              ggplot2::aes(x=rmse, y=prmse, size=4, colour = Group), alpha=.5
           ) +# Line for mean
           ggplot2::geom_point() + # Points for each rep
-          ggplot2::geom_point(inherit.aes=F, data=self$enddf, aes(x=rmse, y=prmse, size=4, colour = Group)
+          ggplot2::geom_point(inherit.aes=F, data=self$enddf,
+                              ggplot2::aes(x=rmse, y=prmse, size=4, colour = Group)
           ) + # Big points at end
           ggplot2::geom_abline(intercept = 0, slope = 1) + # y=x line, expected for good model
           ggplot2::xlab("RMSE") + ggplot2::ylab("PRMSE") +
