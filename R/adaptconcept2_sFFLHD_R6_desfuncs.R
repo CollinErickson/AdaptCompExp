@@ -344,7 +344,7 @@ des_func_relmaxgrad <- function(mod, XX, return_se=F, N_add=1e3) {
 #' @return des value
 # @export
 #'
-#' @examples
+# @examples
 des_func_plateau <- function(mod, XX, return_se=F, N_add=1e2) {
   D <- if (is.matrix(XX)) ncol(XX) else length(XX)
   #browser()
