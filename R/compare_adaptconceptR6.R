@@ -557,19 +557,22 @@ compare.adaptR6 <- R6Class(
             width = 480, height = 480)
       }
       print(
-        ggplot(data=self$outdf, aes(x=batch, y=actual_intwerror,
-                                    group = interaction(num,Group),
-                                    colour = Group)) +
-          geom_line() +
-          geom_line(inherit.aes = F,
-                    data=self$meanlogdf, aes(x=batch, y=actual_intwerror,
-                                             colour = Group, size=3, alpha=.5)
+        ggplot2::ggplot(data=self$outdf,
+                        ggplot2::aes(x=batch, y=actual_intwerror,
+                                     group = interaction(num,Group),
+                                     colour = Group)) +
+          ggplot2::geom_line() +
+          ggplot2::geom_line(inherit.aes = F,
+                             data=self$meanlogdf,
+                             ggplot2::aes(x=batch, y=actual_intwerror,
+                                          colour = Group, size=3, alpha=.5)
           ) +
-          geom_point() +
+          ggplot2::geom_point() +
           # scale_y_log10(breaks = base_breaks()) + #pretty(self$outdf$actual_intwerror, n=5)) +
           scale_y_continuous(trans="log", breaks = base_breaks()) +
           #pretty(self$outdf$actual_intwerror, n=5)) +
-          xlab("Batch") + ylab("actual_intwerror") + guides(size=FALSE, alpha=FALSE)
+          ggplot2::xlab("Batch") + ggplot2::ylab("actual_intwerror") +
+          ggplot2::guides(size=FALSE, alpha=FALSE)
       )
       if (save_output) {dev.off()}
       invisible(self)
@@ -580,8 +583,8 @@ compare.adaptR6 <- R6Class(
         png(filename = paste0(self$folder_path,"/plot_actual_intwerror_boxplot.png"),
             width = 480, height = 480)
       }
-      p1 <- ggplot(data=self$enddf,
-                   aes(x=Group, y=actual_intwerror, colour = Group)
+      p1 <- ggplot2::ggplot(data=self$enddf,
+                            ggplot2::aes(x=Group, y=actual_intwerror, colour = Group)
       )# +  geom_jitter(width=.1)
       if (boxpl) {p1 <- p1 + geom_boxplot()}
       p1 <- p1 + geom_jitter(width=.1)
@@ -599,17 +602,19 @@ compare.adaptR6 <- R6Class(
             width = 480, height = 480)
       }
       print(
-        ggplot(data=self$outdf, aes(x=mse, y=pvar, group = interaction(num,Group), colour = Group)) +
-          geom_line() + # Line for each rep
-          geom_line(inherit.aes=F, data=self$meanlogdf, aes(x=mse, y=pvar, size=4, colour=Group), alpha=.5
+        ggplot2::ggplot(data=self$outdf,
+                        ggplot2::aes(x=mse, y=pvar, group = interaction(num,Group), colour = Group)) +
+          ggplot2::geom_line() + # Line for each rep
+          ggplot2::geom_line(inherit.aes=F, data=self$meanlogdf, aes(x=mse, y=pvar, size=4, colour=Group), alpha=.5
           ) +# Line for mean
-          geom_point() + # Points for each rep
-          geom_point(inherit.aes=F, data=self$enddf,
-                     aes(x=mse, y=pvar, size=4, colour=Group)
+          ggplot2::geom_point() + # Points for each rep
+          ggplot2::geom_point(inherit.aes=F, data=self$enddf,
+                              ggplot2::aes(x=mse, y=pvar, size=4, colour=Group)
           ) + # Big points at end
-          geom_abline(intercept = 0, slope = 1) + # y=x line, expected for good model
-          xlab("MSE") + ylab("PVar") + guides(size=FALSE) +
-          scale_x_log10() + scale_y_log10()
+          ggplot2::geom_abline(intercept = 0, slope = 1) + # y=x line, expected for good model
+          ggplot2::xlab("MSE") + ggplot2::ylab("PVar") +
+          ggplot2::guides(size=FALSE) +
+          ggplot2::scale_x_log10() + ggplot2::scale_y_log10()
       )
       if (save_output) {dev.off()}
       invisible(self)
@@ -620,17 +625,19 @@ compare.adaptR6 <- R6Class(
             width = 480, height = 480)
       }
       print(
-        ggplot(data=self$outdf, aes(x=rmse, y=prmse, group = interaction(num,Group), colour = Group)) +
-          geom_line() + # Line for each rep
-          geom_line(inherit.aes=F, data=self$meanlogdf,
-                    aes(x=rmse, y=prmse, size=4, colour = Group), alpha=.5
+        ggplot2::ggplot(data=self$outdf,
+                        ggplot2::aes(x=rmse, y=prmse, group = interaction(num,Group), colour = Group)) +
+          ggplot2::geom_line() + # Line for each rep
+          ggplot2::geom_line(inherit.aes=F, data=self$meanlogdf,
+                             ggplot2::aes(x=rmse, y=prmse, size=4, colour = Group), alpha=.5
           ) +# Line for mean
-          geom_point() + # Points for each rep
-          geom_point(inherit.aes=F, data=self$enddf, aes(x=rmse, y=prmse, size=4, colour = Group)
+          ggplot2::geom_point() + # Points for each rep
+          ggplot2::geom_point(inherit.aes=F, data=self$enddf, aes(x=rmse, y=prmse, size=4, colour = Group)
           ) + # Big points at end
-          geom_abline(intercept = 0, slope = 1) + # y=x line, expected for good model
-          xlab("RMSE") + ylab("PRMSE") + guides(size=FALSE) +
-          scale_x_log10() + scale_y_log10()
+          ggplot2::geom_abline(intercept = 0, slope = 1) + # y=x line, expected for good model
+          ggplot2::xlab("RMSE") + ggplot2::ylab("PRMSE") +
+          ggplot2::guides(size=FALSE) +
+          ggplot2::scale_x_log10() + ggplot2::scale_y_log10()
       )
       if (save_output) {dev.off()}
       invisible(self)
