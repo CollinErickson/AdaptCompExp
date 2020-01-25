@@ -4,7 +4,7 @@ language: R
 cache: packages
 
 r_github_packages:
-  - CollinErickson/SMED
+  - CollinErickson/SMED-Code
 
 after_success:
   - Rscript -e 'covr::codecov()'
