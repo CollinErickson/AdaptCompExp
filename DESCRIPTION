@@ -4,12 +4,12 @@ Title: What the Package Does (Title Case)
 Version: 0.1.0
 Author: Collin Erickson
 Maintainer: Collin Erickson <collinberickson@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Implementations of adaptive computer experiments
+    based on the PhD work of Collin Erickson.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Imports: R6, IGP
 Suggests: 
     TestFunctions,
@@ -24,6 +24,6 @@ Suggests:
     reshape,
     SMED,
     ggplot2,
-    covr
-
+    covr,
+    testthat (>= 2.1.0)
 Remotes: CollinErickson/SMED-Code
