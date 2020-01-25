@@ -33,6 +33,7 @@ model, adding new data if given, then running optimization again.}
 
 \examples{
 ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
+                           batches=2, reps=2,
                            n0=6, obj="desirability",
                            selection_method=c('max_des', 'SMED'),
                            des_func=c('des_func_relmax', 'des_func_relmax')
