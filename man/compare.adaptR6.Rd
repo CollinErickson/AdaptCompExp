@@ -5,18 +5,50 @@
 \alias{compare.adaptR6}
 \title{Class providing object with methods for adapt.concept2.sFFLHD.R6}
 \format{\code{\link{R6Class}} object.}
-\usage{
-compare.adaptR6
-}
 \value{
 Object of \code{\link{R6Class}} with methods for running an
 adaptive experiment.
 }
 \description{
 Class providing object with methods for adapt.concept2.sFFLHD.R6
-}
-\section{Fields}{
 
+Class providing object with methods for adapt.concept2.sFFLHD.R6
+}
+\section{Methods}{
+
+\describe{
+  \item{Documentation}{For full documentation of each method go to
+  https://github.com/CollinErickson/DOE-Code}
+  \item{\code{new(X, Z, corr="Gauss", verbose=0, separable=T,
+  useC=F,useGrad=T,
+         parallel=T, nug.est=T, ...)}}{This method is used to create object
+         of this class with \code{X} and \code{Z} as the data.}
+
+  \item{\code{update(Xnew=NULL, Znew=NULL, Xall=NULL, Zall=NULL,
+restarts = 5,
+param_update = T, nug.update = self$nug.est)}}{This method updates the
+model, adding new data if given, then running optimization again.}
+  }
+}
+
+\examples{
+ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
+                           n0=6, obj="desirability",
+                           selection_method=c('max_des', 'SMED'),
+                           des_func=c('des_func_relmax', 'des_func_relmax')
+                           )$run_all()$plot()
+
+}
+\keyword{Gaussian}
+\keyword{adaptive,}
+\keyword{data,}
+\keyword{experiments,}
+\keyword{process,}
+\keyword{regression}
+\keyword{sequential,}
+\keyword{simulation,}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
 \describe{
 \item{\code{X}}{Design matrix}
 
@@ -107,38 +139,298 @@ not known in practice}
 
 \item{\code{verbose}}{How much detail should be printed to the console. 0 is
 minimal, 1 is medium, 2 is a lot.}
-}}
-
-\section{Methods}{
-
+}
+\if{html}{\out{</div>}}
+}
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-  \item{Documentation}{For full documentation of each method go to
-  https://github.com/CollinErickson/DOE-Code}
-  \item{\code{new(X, Z, corr="Gauss", verbose=0, separable=T,
-  useC=F,useGrad=T,
-         parallel=T, nug.est=T, ...)}}{This method is used to create object
-         of this class with \code{X} and \code{Z} as the data.}
+\item{\code{X}}{Design matrix}
 
-  \item{\code{update(Xnew=NULL, Znew=NULL, Xall=NULL, Zall=NULL,
-restarts = 5,
-param_update = T, nug.update = self$nug.est)}}{This method updates the
-model, adding new data if given, then running optimization again.}
-  }
+\item{\code{Z}}{Responses}
+
+\item{\code{nb}}{Number of batches, if you know before starting}
+
+\item{\code{Xopts}}{Available points}
+
+\item{\code{X0}}{Initial design}
+
+\item{\code{stats}}{List of tracked stats}
+
+\item{\code{iteration}}{Which iteration}
+
+\item{\code{mod}}{The GP model from}
+
+\item{\code{func_run_together}}{Whether points should be passed to func separately
+as vectors or all together as a matrix whose rows are the points.}
+
+\item{\code{func_fast}}{If the function is fast. If TRUE then full plots are made.
+In practice this is alway FALSE.}
+
+\item{\code{new_batches_per_batch}}{How many batches of candidate points are added
+for each batch taken.}
+
+\item{\code{X_tracker}}{data.frame tracking the points of X, such as when they were
+selected.}
+
+\item{\code{X0}}{An initial matrix of points to be used.}
+
+\item{\code{Xopts}}{A matrix of candidate (option) points.}
+
+\item{\code{Xopts_tracker}}{A data.frame tracking the points of Xopts.}
+
+\item{\code{batch.tracker}}{Tracks when points were added to Xopts.}
+
+\item{\code{Xopts_removed}}{A matrix of points removed from Xopts.}
+
+\item{\code{s}}{The design object for generating candidate points.}
+
+\item{\code{stats}}{A data.frame giving stats for each iteration.}
+
+\item{\code{iteration}}{The current iteration.}
+
+\item{\code{obj_func}}{A function for the objective.}
+
+\item{\code{take_until_maxpvar_below}}{A number, if the proportion of points near
+the maximum variance of the GP model, then it will take
+space-filling points.}
+
+\item{\code{des_func_fast}}{Whether the des_func is fast for candidate points.}
+
+\item{\code{verbose}}{How much detail should be printed to the console. 0 is
+minimal, 1 is medium, 2 is a lot.}
+}
+\if{html}{\out{</div>}}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{compare.adaptR6$new()}}
+\item \href{#method-set_folder_name}{\code{compare.adaptR6$set_folder_name()}}
+\item \href{#method-create_output_folder}{\code{compare.adaptR6$create_output_folder()}}
+\item \href{#method-run_all}{\code{compare.adaptR6$run_all()}}
+\item \href{#method-run_one}{\code{compare.adaptR6$run_one()}}
+\item \href{#method-add_result_of_one}{\code{compare.adaptR6$add_result_of_one()}}
+\item \href{#method-postprocess_outdf}{\code{compare.adaptR6$postprocess_outdf()}}
+\item \href{#method-plot_MSE_over_batch}{\code{compare.adaptR6$plot_MSE_over_batch()}}
+\item \href{#method-plot_AWE_over_batch}{\code{compare.adaptR6$plot_AWE_over_batch()}}
+\item \href{#method-plot_AWE_over_group}{\code{compare.adaptR6$plot_AWE_over_group()}}
+\item \href{#method-plot_MSE_PVar}{\code{compare.adaptR6$plot_MSE_PVar()}}
+\item \href{#method-plot_RMSE_PRMSE}{\code{compare.adaptR6$plot_RMSE_PRMSE()}}
+\item \href{#method-plot}{\code{compare.adaptR6$plot()}}
+\item \href{#method-plot_run_times}{\code{compare.adaptR6$plot_run_times()}}
+\item \href{#method-save_self}{\code{compare.adaptR6$save_self()}}
+\item \href{#method-delete_save_folder_if_empty}{\code{compare.adaptR6$delete_save_folder_if_empty()}}
+\item \href{#method-recover_parallel_temp_save}{\code{compare.adaptR6$recover_parallel_temp_save()}}
+\item \href{#method-parallel_efficiency}{\code{compare.adaptR6$parallel_efficiency()}}
+\item \href{#method-clone}{\code{compare.adaptR6$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$new(
+  func,
+  D,
+  L,
+  b = NULL,
+  batches = 10,
+  reps = 5,
+  obj = c("nonadapt", "grad"),
+  force_old = c(0),
+  force_pvar = c(0),
+  n0 = 0,
+  stage1batches = 0,
+  save_output = F,
+  func_string = NULL,
+  seed_start = as.numeric(Sys.time()),
+  design_seed_start = as.numeric(Sys.time()),
+  package = "laGP",
+  selection_method = "SMED",
+  design = "sFFLHD",
+  des_func = NA,
+  alpha_des = 1,
+  weight_const = 0,
+  error_power = 1,
+  actual_des_func = NULL,
+  pass_list = list(),
+  folder_name,
+  parallel = FALSE,
+  parallel_cores = "detect"
+)}\if{html}{\out{</div>}}
 }
 
-\examples{
-ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
-                           n0=6, obj="desirability",
-                           selection_method=c('max_des', 'SMED'),
-                           des_func=c('des_func_relmax', 'des_func_relmax')
-                           )$run_all()$plot()
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-set_folder_name"></a>}}
+\subsection{Method \code{set_folder_name()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$set_folder_name(folder_name, add_timestamp = FALSE)}\if{html}{\out{</div>}}
+}
 
 }
-\keyword{Gaussian}
-\keyword{adaptive,}
-\keyword{data,}
-\keyword{experiments,}
-\keyword{process,}
-\keyword{regression}
-\keyword{sequential,}
-\keyword{simulation,}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-create_output_folder"></a>}}
+\subsection{Method \code{create_output_folder()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$create_output_folder(add_timestamp = FALSE)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-run_all"></a>}}
+\subsection{Method \code{run_all()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$run_all(
+  redo = FALSE,
+  noplot = FALSE,
+  save_every = FALSE,
+  run_order,
+  parallel = self$parallel,
+  parallel_temp_save = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-run_one"></a>}}
+\subsection{Method \code{run_one()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$run_one(
+  irow = NULL,
+  save_output = self$save_output,
+  noplot = FALSE,
+  is_parallel = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-add_result_of_one"></a>}}
+\subsection{Method \code{add_result_of_one()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$add_result_of_one(irow, newdf1, save_output = self$save_output)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-postprocess_outdf"></a>}}
+\subsection{Method \code{postprocess_outdf()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$postprocess_outdf(save_output = self$save_output)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_MSE_over_batch"></a>}}
+\subsection{Method \code{plot_MSE_over_batch()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_MSE_over_batch(
+  save_output = self$save_output,
+  legend_labels = NULL
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_AWE_over_batch"></a>}}
+\subsection{Method \code{plot_AWE_over_batch()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_AWE_over_batch(save_output = self$save_output)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_AWE_over_group"></a>}}
+\subsection{Method \code{plot_AWE_over_group()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_AWE_over_group(
+  save_output = self$save_output,
+  boxpl = TRUE,
+  logy = TRUE
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_MSE_PVar"></a>}}
+\subsection{Method \code{plot_MSE_PVar()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_MSE_PVar(save_output = self$save_output)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_RMSE_PRMSE"></a>}}
+\subsection{Method \code{plot_RMSE_PRMSE()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_RMSE_PRMSE(save_output = self$save_output)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot"></a>}}
+\subsection{Method \code{plot()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot(save_output = self$save_output)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_run_times"></a>}}
+\subsection{Method \code{plot_run_times()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_run_times()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-save_self"></a>}}
+\subsection{Method \code{save_self()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$save_self(object_name = "object")}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-delete_save_folder_if_empty"></a>}}
+\subsection{Method \code{delete_save_folder_if_empty()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$delete_save_folder_if_empty()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-recover_parallel_temp_save"></a>}}
+\subsection{Method \code{recover_parallel_temp_save()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$recover_parallel_temp_save(save_if_any_recovered = TRUE)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-parallel_efficiency"></a>}}
+\subsection{Method \code{parallel_efficiency()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$parallel_efficiency()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

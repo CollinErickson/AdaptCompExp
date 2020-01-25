@@ -4,8 +4,15 @@
 \alias{des_func_quantile}
 \title{Desirability function quantile}
 \usage{
-des_func_quantile(mod, XX, threshold = 0, power = 1, return_se = F,
-  N_add = 1000, threshold_jump = 0)
+des_func_quantile(
+  mod,
+  XX,
+  threshold = 0,
+  power = 1,
+  return_se = F,
+  N_add = 1000,
+  threshold_jump = 0
+)
 }
 \arguments{
 \item{mod}{model}

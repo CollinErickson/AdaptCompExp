@@ -5,18 +5,64 @@
 \alias{adapt.concept2.sFFLHD.R6}
 \title{Class providing object with methods for adapt.concept2.sFFLHD.R6}
 \format{\code{\link{R6Class}} object.}
-\usage{
-adapt.concept2.sFFLHD.R6
-}
 \value{
 Object of \code{\link{R6Class}} with methods for running an
 adaptive experiment.
 }
 \description{
 Class providing object with methods for adapt.concept2.sFFLHD.R6
-}
-\section{Fields}{
 
+Class providing object with methods for adapt.concept2.sFFLHD.R6
+}
+\section{Methods}{
+
+\describe{
+  \item{Documentation}{For full documentation of each method go to
+  https://github.com/CollinErickson/DOE-Code}
+  \item{\code{new(X, Z, corr="Gauss", verbose=0, separable=T,
+  useC=F,useGrad=T,
+         parallel=T, nug.est=T, ...)}}{This method is used to create object
+         of this class with \code{X} and \code{Z} as the data.}
+
+  \item{\code{update(Xnew=NULL, Znew=NULL, Xall=NULL, Zall=NULL,
+restarts = 5,
+param_update = T, nug.update = self$nug.est)}}{This method updates the
+model, adding new data if given, then running optimization again.}
+  }
+}
+
+\examples{
+a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=TestFunctions::gaussian1,obj="desirability",
+    des_func=des_func_relmax, n0=12, take_until_maxpvar_below=.9,
+    package="GauPro", design='sFFLHD', selection_method="max_des_red",
+    alpha_des=1)
+a$run(2)
+
+
+# limnonpoly, grad_norm2_mean, laGP_GauPro_kernel
+set.seed(1); ContourFunctions::csa(); a <- adapt.concept2.sFFLHD.R6$new(
+  D=2,L=3,func=TestFunctions::limnonpoly, nugget = 1e-7,estimate.nugget = TRUE,
+  obj="desirability", des_func=des_func_grad_norm2_mean,
+  actual_des_func=NULL,#get_num_actual_des_func_grad_norm2_mean(),
+  stage1batches=2, alpha_des=1, weight_const=0,
+  package="laGP_GauPro_kernel", design='sFFLHD',
+  error_power=2,
+  selection_method="max_des_red_all_best"
+  # selection_method="ALC_all_best"
+); a$run(1)
+a$run(2)
+
+}
+\keyword{Gaussian}
+\keyword{adaptive,}
+\keyword{data,}
+\keyword{experiments,}
+\keyword{process,}
+\keyword{regression}
+\keyword{sequential,}
+\keyword{simulation,}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
 \describe{
 \item{\code{X}}{Design matrix}
 
@@ -107,52 +153,479 @@ not known in practice}
 
 \item{\code{verbose}}{How much detail should be printed to the console. 0 is
 minimal, 1 is medium, 2 is a lot.}
-}}
-
-\section{Methods}{
-
+}
+\if{html}{\out{</div>}}
+}
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-  \item{Documentation}{For full documentation of each method go to
-  https://github.com/CollinErickson/DOE-Code}
-  \item{\code{new(X, Z, corr="Gauss", verbose=0, separable=T,
-  useC=F,useGrad=T,
-         parallel=T, nug.est=T, ...)}}{This method is used to create object
-         of this class with \code{X} and \code{Z} as the data.}
-
-  \item{\code{update(Xnew=NULL, Znew=NULL, Xall=NULL, Zall=NULL,
-restarts = 5,
-param_update = T, nug.update = self$nug.est)}}{This method updates the
-model, adding new data if given, then running optimization again.}
-  }
+\item{\code{nb}}{Number of batches, if you know before starting}
+}
+\if{html}{\out{</div>}}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{adapt.concept2.sFFLHD.R6$new()}}
+\item \href{#method-run}{\code{adapt.concept2.sFFLHD.R6$run()}}
+\item \href{#method-run1}{\code{adapt.concept2.sFFLHD.R6$run1()}}
+\item \href{#method-add_data}{\code{adapt.concept2.sFFLHD.R6$add_data()}}
+\item \href{#method-update_obj_nu}{\code{adapt.concept2.sFFLHD.R6$update_obj_nu()}}
+\item \href{#method-update_mod}{\code{adapt.concept2.sFFLHD.R6$update_mod()}}
+\item \href{#method-set_params}{\code{adapt.concept2.sFFLHD.R6$set_params()}}
+\item \href{#method-update_stats}{\code{adapt.concept2.sFFLHD.R6$update_stats()}}
+\item \href{#method-mse_func}{\code{adapt.concept2.sFFLHD.R6$mse_func()}}
+\item \href{#method-plot_mean}{\code{adapt.concept2.sFFLHD.R6$plot_mean()}}
+\item \href{#method-plot_se}{\code{adapt.concept2.sFFLHD.R6$plot_se()}}
+\item \href{#method-plot_abserr}{\code{adapt.concept2.sFFLHD.R6$plot_abserr()}}
+\item \href{#method-plot_mse}{\code{adapt.concept2.sFFLHD.R6$plot_mse()}}
+\item \href{#method-plot_iwe}{\code{adapt.concept2.sFFLHD.R6$plot_iwe()}}
+\item \href{#method-plot_ppu}{\code{adapt.concept2.sFFLHD.R6$plot_ppu()}}
+\item \href{#method-plot_des_v_acc}{\code{adapt.concept2.sFFLHD.R6$plot_des_v_acc()}}
+\item \href{#method-plot_y_acc}{\code{adapt.concept2.sFFLHD.R6$plot_y_acc()}}
+\item \href{#method-plot_1D}{\code{adapt.concept2.sFFLHD.R6$plot_1D()}}
+\item \href{#method-plot_2D}{\code{adapt.concept2.sFFLHD.R6$plot_2D()}}
+\item \href{#method-plot1}{\code{adapt.concept2.sFFLHD.R6$plot1()}}
+\item \href{#method-add_new_batches_to_Xopts}{\code{adapt.concept2.sFFLHD.R6$add_new_batches_to_Xopts()}}
+\item \href{#method-Xopts_tracker_add}{\code{adapt.concept2.sFFLHD.R6$Xopts_tracker_add()}}
+\item \href{#method-Xopts_tracker_remove}{\code{adapt.concept2.sFFLHD.R6$Xopts_tracker_remove()}}
+\item \href{#method-select_new_points_from_old_or_pvar}{\code{adapt.concept2.sFFLHD.R6$select_new_points_from_old_or_pvar()}}
+\item \href{#method-select_new_points_from_SMED}{\code{adapt.concept2.sFFLHD.R6$select_new_points_from_SMED()}}
+\item \href{#method-select_new_points_from_max_des}{\code{adapt.concept2.sFFLHD.R6$select_new_points_from_max_des()}}
+\item \href{#method-select_new_points_from_max_des_red}{\code{adapt.concept2.sFFLHD.R6$select_new_points_from_max_des_red()}}
+\item \href{#method-int_werror_after_adding}{\code{adapt.concept2.sFFLHD.R6$int_werror_after_adding()}}
+\item \href{#method-add_newL_points_to_design}{\code{adapt.concept2.sFFLHD.R6$add_newL_points_to_design()}}
+\item \href{#method-calculate_Z}{\code{adapt.concept2.sFFLHD.R6$calculate_Z()}}
+\item \href{#method-weight_func}{\code{adapt.concept2.sFFLHD.R6$weight_func()}}
+\item \href{#method-werror_func}{\code{adapt.concept2.sFFLHD.R6$werror_func()}}
+\item \href{#method-intwerror_func}{\code{adapt.concept2.sFFLHD.R6$intwerror_func()}}
+\item \href{#method-int_pvar_red_for_opts}{\code{adapt.concept2.sFFLHD.R6$int_pvar_red_for_opts()}}
+\item \href{#method-int_pvar_red_for_one}{\code{adapt.concept2.sFFLHD.R6$int_pvar_red_for_one()}}
+\item \href{#method-actual_intwerror_func}{\code{adapt.concept2.sFFLHD.R6$actual_intwerror_func()}}
+\item \href{#method-print_results}{\code{adapt.concept2.sFFLHD.R6$print_results()}}
+\item \href{#method-delete}{\code{adapt.concept2.sFFLHD.R6$delete()}}
+\item \href{#method-clone}{\code{adapt.concept2.sFFLHD.R6$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$new(
+  D,
+  L,
+  b = NULL,
+  package = NULL,
+  obj = NULL,
+  n0 = 0,
+  stage1batches = NULL,
+  force_old = 0,
+  force_pvar = 0,
+  useSMEDtheta = F,
+  func,
+  func_run_together = FALSE,
+  func_fast = TRUE,
+  take_until_maxpvar_below = NULL,
+  design = "sFFLHD",
+  selection_method,
+  X0 = NULL,
+  Xopts = NULL,
+  des_func,
+  des_func_fast = TRUE,
+  alpha_des = 1,
+  new_batches_per_batch = 5,
+  parallel = FALSE,
+  parallel_cores = "detect",
+  nugget = 1e-06,
+  estimate.nugget = TRUE,
+  verbose = 1,
+  design_seed = numeric(0),
+  weight_const = 0,
+  error_power = 1,
+  nconsider = Inf,
+  nconsider_random = 0,
+  ...
+)}\if{html}{\out{</div>}}
 }
 
-\examples{
-a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=TestFunctions::gaussian1,obj="desirability",
-    des_func=des_func_relmax, n0=12, take_until_maxpvar_below=.9,
-    package="GauPro", design='sFFLHD', selection_method="max_des_red",
-    alpha_des=1)
-a$run(2)
-
-
-# limnonpoly, grad_norm2_mean, laGP_GauPro_kernel
-set.seed(1); ContourFunctions::csa(); a <- adapt.concept2.sFFLHD.R6$new(
-  D=2,L=3,func=TestFunctions::limnonpoly, nugget = 1e-7,estimate.nugget = TRUE,
-  obj="desirability", des_func=des_func_grad_norm2_mean,
-  actual_des_func=NULL,#get_num_actual_des_func_grad_norm2_mean(),
-  stage1batches=2, alpha_des=1, weight_const=0,
-  package="laGP_GauPro_kernel", design='sFFLHD',
-  error_power=2,
-  selection_method="max_des_red_all_best"
-  # selection_method="ALC_all_best"
-); a$run(1)
-a$run(2)
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-run"></a>}}
+\subsection{Method \code{run()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$run(maxit, plotlastonly = F, noplot = F)}\if{html}{\out{</div>}}
+}
 
 }
-\keyword{Gaussian}
-\keyword{adaptive,}
-\keyword{data,}
-\keyword{experiments,}
-\keyword{process,}
-\keyword{regression}
-\keyword{sequential,}
-\keyword{simulation,}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-run1"></a>}}
+\subsection{Method \code{run1()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$run1(plotit = TRUE)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-add_data"></a>}}
+\subsection{Method \code{add_data()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$add_data()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-update_obj_nu"></a>}}
+\subsection{Method \code{update_obj_nu()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$update_obj_nu(Xnew, Znew)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-update_mod"></a>}}
+\subsection{Method \code{update_mod()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$update_mod()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-set_params"></a>}}
+\subsection{Method \code{set_params()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$set_params()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-update_stats"></a>}}
+\subsection{Method \code{update_stats()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$update_stats()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-mse_func"></a>}}
+\subsection{Method \code{mse_func()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$mse_func()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_mean"></a>}}
+\subsection{Method \code{plot_mean()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_mean(cex = 1, plot.axes = TRUE)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_se"></a>}}
+\subsection{Method \code{plot_se()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_se(cex = 1, plot.axes = TRUE)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_abserr"></a>}}
+\subsection{Method \code{plot_abserr()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_abserr(cex = 1, plot.axes = TRUE)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_mse"></a>}}
+\subsection{Method \code{plot_mse()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_mse(statsdf, cex = 1)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_iwe"></a>}}
+\subsection{Method \code{plot_iwe()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_iwe(statsdf, cex = 1)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_ppu"></a>}}
+\subsection{Method \code{plot_ppu()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_ppu(statsdf, cex)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_des_v_acc"></a>}}
+\subsection{Method \code{plot_des_v_acc()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_des_v_acc(cex, cex.axis)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_y_acc"></a>}}
+\subsection{Method \code{plot_y_acc()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_y_acc(residual = FALSE)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_1D"></a>}}
+\subsection{Method \code{plot_1D()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_1D()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot_2D"></a>}}
+\subsection{Method \code{plot_2D()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_2D(twoplot = FALSE, cex = 1)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-plot1"></a>}}
+\subsection{Method \code{plot1()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot1(twoplot = FALSE, cex = 1)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-add_new_batches_to_Xopts"></a>}}
+\subsection{Method \code{add_new_batches_to_Xopts()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$add_new_batches_to_Xopts(
+  num_batches_to_take = self$new_batches_per_batch
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Xopts_tracker_add"></a>}}
+\subsection{Method \code{Xopts_tracker_add()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$Xopts_tracker_add(Xnew)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Xopts_tracker_remove"></a>}}
+\subsection{Method \code{Xopts_tracker_remove()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$Xopts_tracker_remove(newL)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-select_new_points_from_old_or_pvar"></a>}}
+\subsection{Method \code{select_new_points_from_old_or_pvar()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$select_new_points_from_old_or_pvar()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-select_new_points_from_SMED"></a>}}
+\subsection{Method \code{select_new_points_from_SMED()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$select_new_points_from_SMED()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-select_new_points_from_max_des"></a>}}
+\subsection{Method \code{select_new_points_from_max_des()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$select_new_points_from_max_des()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-select_new_points_from_max_des_red"></a>}}
+\subsection{Method \code{select_new_points_from_max_des_red()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$select_new_points_from_max_des_red()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-int_werror_after_adding"></a>}}
+\subsection{Method \code{int_werror_after_adding()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$int_werror_after_adding(
+  Xnew = NULL,
+  Znew = NULL,
+  Xnew_Xoptsrow = NULL,
+  n = 10000,
+  int_points = NULL,
+  seed = NULL,
+  ...
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-add_newL_points_to_design"></a>}}
+\subsection{Method \code{add_newL_points_to_design()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$add_newL_points_to_design(
+  newL = NULL,
+  use_X0 = FALSE,
+  reason
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-calculate_Z"></a>}}
+\subsection{Method \code{calculate_Z()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$calculate_Z(X)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-weight_func"></a>}}
+\subsection{Method \code{weight_func()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$weight_func(
+  ...,
+  XX,
+  mod = self$mod,
+  des_func = self$des_func,
+  alpha = self$alpha_des,
+  weight_const = self$weight_const
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-werror_func"></a>}}
+\subsection{Method \code{werror_func()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$werror_func(
+  ...,
+  XX,
+  mod = self$mod,
+  des_func = self$des_func,
+  alpha = self$alpha_des,
+  weight_const = self$weight_const,
+  weight_func = self$weight_func,
+  error_power = self$error_power
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-intwerror_func"></a>}}
+\subsection{Method \code{intwerror_func()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$intwerror_func(
+  ...,
+  XX = NULL,
+  N = 10000,
+  mod = self$mod,
+  des_func = self$des_func,
+  alpha = self$alpha_des,
+  weight_const = self$weight_const,
+  weight_func = self$weight_func,
+  error_power = self$error_power
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-int_pvar_red_for_opts"></a>}}
+\subsection{Method \code{int_pvar_red_for_opts()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$int_pvar_red_for_opts(
+  ...,
+  Xopts,
+  XX = NULL,
+  N = 10000,
+  mod = self$mod,
+  des_func = self$des_func,
+  alpha = self$alpha_des,
+  weight_const = self$weight_const,
+  weight_func = self$weight_func,
+  delta_pvar_func = mean
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-int_pvar_red_for_one"></a>}}
+\subsection{Method \code{int_pvar_red_for_one()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$int_pvar_red_for_one(
+  v,
+  X_,
+  XX,
+  corr_func,
+  Kinv,
+  s2,
+  K_X_XX,
+  delta_pvar_func = mean
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-actual_intwerror_func"></a>}}
+\subsection{Method \code{actual_intwerror_func()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$actual_intwerror_func(
+  ...,
+  N = 2000,
+  mod = self$mod,
+  f = self$func,
+  error_power = self$error_power,
+  nquantilegroups
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-print_results"></a>}}
+\subsection{Method \code{print_results()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$print_results()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-delete"></a>}}
+\subsection{Method \code{delete()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$delete()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}
