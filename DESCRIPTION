@@ -26,4 +26,9 @@ Suggests:
     ggplot2,
     covr,
     testthat (>= 2.1.0)
-Remotes: CollinErickson/SMED-Code
+Remotes: 
+    CollinErickson/SMED-Code,
+    CollinErickson/IGP,
+    CollinErickson/sFFLHD,
+    CollinErickson/TestFunctions,
+    CollinErickson/GauPro

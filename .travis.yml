@@ -5,6 +5,10 @@ cache: packages
 
 r_github_packages:
   - CollinErickson/SMED-Code
+  - CollinErickson/IGP
+  - CollinErickson/sFFLHD
+  - CollinErickson/TestFunctions
+  - CollinErickson/GauPro
 
 after_success:
   - Rscript -e 'covr::codecov()'
