@@ -7,3 +7,16 @@ test_that("multiplication works", {
   expect_is(a, "adapt.concept2.sFFLHD.seq")
   expect_is(a, "R6")
 })
+
+test_that("multiplication works", {
+
+  ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
+                             batches=2, reps=2,
+                             n0=6, obj="desirability",
+                             selection_method=c('max_des', 'SMED'),
+                             des_func=c('des_func_relmax', 'des_func_relmax')
+  )
+
+  expect_is(ca1, "compare.adaptR6")
+  expect_is(ca1, "R6")
+})
