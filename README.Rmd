@@ -1,0 +1,55 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# AdaptCompExp
+
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/CollinErickson/AdaptCompExp.svg?branch=master)](https://travis-ci.org/CollinErickson/AdaptCompExp)
+[![Codecov test coverage](https://codecov.io/gh/CollinErickson/AdaptCompExp/branch/master/graph/badge.svg)](https://codecov.io/gh/CollinErickson/AdaptCompExp?branch=master)
+<!-- badges: end -->
+
+The goal of AdaptCompExp is to implement algorithms for adaptive computer
+experiments.
+
+## Installation
+
+You can install the released version of AdaptCompExp from [CRAN](https://CRAN.R-project.org) with:
+
+```
+# install.packages("AdaptCompExp")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+```
+# install.packages("devtools")
+devtools::install_github("CollinErickson/AdaptCompExp")
+```
+
+## Example
+
+```{r library}
+library(AdaptCompExp)
+```
+
+
+```{r example exp1}
+a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=TestFunctions::gaussian1,obj="desirability",
+                                  des_func=des_func_relmax, n0=20, take_until_maxpvar_below=.9,
+                                  package="GauPro", design='sFFLHD', selection_method="max_des_red",
+                                  alpha_des=1)
+a$run(2)
+```
+
