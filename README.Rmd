@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+set.seed(0)
 ```
 
 # AdaptCompExp
@@ -51,5 +53,19 @@ a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=TestFunctions::gaussian1,obj="des
                                   package="GauPro", design='sFFLHD', selection_method="max_des_red",
                                   alpha_des=1)
 a$run(2)
+```
+
+
+## Example of a comparison
+
+```{r compare adapt example 1}
+ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
+                           batches=2, reps=2,
+                           n0=6, obj="desirability",
+                           selection_method=c('max_des', 'SMED'),
+                           des_func=c('des_func_relmax', 'des_func_relmax')
+)
+ca1$run_all(noplot = T)
+ca1$plot()
 ```
 
