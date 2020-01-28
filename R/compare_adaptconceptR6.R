@@ -501,7 +501,7 @@ compare.adaptR6 <- R6Class(
       )
       # Get warning if any NA in self$outdf[,meanColNames]
       # Give message so it's clear where it comes from
-      if (any(apply(self$outdf[,meanColNames], 2, is.nan))) {
+      if (F && any(apply(self$outdf[,meanColNames], 2, is.nan))) {
         message(paste0("Some values in $outdf are NaN,",
                        " warning comes from making meanlogdf #92538"))
       }
