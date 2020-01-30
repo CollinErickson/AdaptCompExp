@@ -7,7 +7,7 @@ simple.LHS <- function(n,d,scaled=TRUE,centered=FALSE) {
 }
 is.LHS <- function(m,scaled=TRUE) {
   if(is.matrix(m)) {
-    return(apply(m,2,function(mm){is.LHS(m=mm,scaled=scaled)}))
+    return(all(apply(m,2,function(mm){is.LHS(m=mm,scaled=scaled)})))
   } else {
     if(scaled) m <- ceiling(m*length(m))
     return(all(sort(m) == 1:length(m)))
@@ -15,7 +15,7 @@ is.LHS <- function(m,scaled=TRUE) {
   stop('Error 0239357')
 }
 is.OA <- function(m,strength=2) {
-
+  stop("Not yet implemented (is.OA)")
 }
 simple.grid <- function(n,d,scaled=TRUE,random=TRUE,centered=FALSE,scaledto=NULL) {
   m <- matrix(1:n,ncol=1)
