@@ -47,7 +47,7 @@ library(AdaptCompExp)
 ```
 
 
-```{r example exp1}
+```{r example_exp1}
 a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=TestFunctions::gaussian1,obj="desirability",
                                   des_func=des_func_relmax, n0=20, take_until_maxpvar_below=.9,
                                   package="GauPro", design='sFFLHD', selection_method="max_des_red",
@@ -58,7 +58,7 @@ a$run(2)
 
 ## Example of a comparison
 
-```{r compare adapt example 1}
+```{r compare_adapt_example_1}
 ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
                            batches=2, reps=2,
                            n0=6, obj="desirability",
