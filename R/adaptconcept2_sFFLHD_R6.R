@@ -1115,11 +1115,11 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
                                                "max_des_all_best")
       # TODO put line above earlier, and make sure selection method is valid
       if (uses_ALM) { # max_des or ALM
-        warning("uses_ALM, why was this a browser spot?")
+        #warning("uses_ALM, why was this a browser spot?")
         add_points_weights <- self$weight_func(XX=self$Xopts)
         # TODO rename int_werrors_red_func to obj_to_max
         int_werrors_red_func <- function(add_points_indices) {
-          warning("This was a browser spot too #92348")
+          #warning("This was a browser spot too #92348")
           add_points <- self$Xopts[add_points_indices, ]
           if (self$error_power==2) {
             pp <- gpc$predict.var(XX=add_points)
