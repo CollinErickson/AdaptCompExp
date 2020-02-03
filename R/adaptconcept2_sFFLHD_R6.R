@@ -95,6 +95,8 @@
 #' @field parallel Should new values be calculated in parallel?
 #' @field verbose How much detail should be printed to the console. 0 is
 #'          minimal, 1 is medium, 2 is a lot.
+#' @field twoplot If yes, only the two main plots are shown. Default it FALSE.
+#' @field cex Size of plot.
 #' @section Methods:
 #' \describe{
 #'   \item{Documentation}{For full documentation of each method go to

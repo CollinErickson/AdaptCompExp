@@ -153,6 +153,10 @@ not known in practice}
 
 \item{\code{verbose}}{How much detail should be printed to the console. 0 is
 minimal, 1 is medium, 2 is a lot.}
+
+\item{\code{twoplot}}{If yes, only the two main plots are shown. Default it FALSE.}
+
+\item{\code{cex}}{Size of plot.}
 }
 \if{html}{\out{</div>}}
 }
@@ -160,6 +164,10 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
 \item{\code{nb}}{Number of batches, if you know before starting}
+
+\item{\code{twoplot}}{If yes, only the two main plots are shown. Default it FALSE.}
+
+\item{\code{cex}}{Size of plot.}
 }
 \if{html}{\out{</div>}}
 }
