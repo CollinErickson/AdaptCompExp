@@ -51,11 +51,6 @@
 #' @field func Actual function to get experiment values from
 #' @field nb Number of batches, if you know before starting
 #' @field D Dimension of data
-#' @field Xopts Available points
-#' @field X0 Initial design
-#' @field package Which GP package to use in IGP
-#' @field stats List of tracked stats
-#' @field iteration Which iteration
 #' @field mod The GP model from
 #' @field func_run_together Whether points should be passed to func separately
 #'          as vectors or all together as a matrix whose rows are the points.
@@ -80,7 +75,7 @@
 #' @field take_until_maxpvar_below A number, if the proportion of points near
 #'          the maximum variance of the GP model, then it will take
 #'          space-filling points.
-#' @field package Which GP package should be used by IGP.
+#' @field package Which GP package should be used by IGP
 #' @field force_old A number saying how often the oldest candidate points
 #'          should be forced into the design.
 #' @field force_pvar A number saying how often the points with the highest
