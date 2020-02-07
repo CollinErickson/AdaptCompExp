@@ -1524,6 +1524,17 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       # Now letting you pass in func, can weight them, or sqrt * weight
       delta_pvar_func(reds)
     },
+
+    #' @param ... Forces you to name arguments
+    #' @param N Number of integration points
+    #' @param mod Model to use that predicts the function f
+    #' @param f True function you are estimating
+    #' @param error_power What power should the error be to?
+    #' Either 1, 2, or c(1,2)
+    #' @param nquantilegroups Number of quantile groups.
+    #'
+    #' @description
+    #' Calculate the actual integrated weighted error
     actual_intwerror_func = function(..., N=2e3, mod=self$mod, f=self$func,
                                      error_power=self$error_power,
                                      nquantilegroups) {

@@ -76,16 +76,6 @@ a$run(2)
 
 \item{\code{D}}{Dimension of data}
 
-\item{\code{Xopts}}{Available points}
-
-\item{\code{X0}}{Initial design}
-
-\item{\code{package}}{Which GP package to use in IGP}
-
-\item{\code{stats}}{List of tracked stats}
-
-\item{\code{iteration}}{Which iteration}
-
 \item{\code{mod}}{The GP model from}
 
 \item{\code{func_run_together}}{Whether points should be passed to func separately
@@ -128,7 +118,7 @@ selected.}
 the maximum variance of the GP model, then it will take
 space-filling points.}
 
-\item{\code{package}}{Which GP package should be used by IGP.}
+\item{\code{package}}{Which GP package should be used by IGP}
 
 \item{\code{force_old}}{A number saying how often the oldest candidate points
 should be forced into the design.}
@@ -592,6 +582,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-actual_intwerror_func"></a>}}
 \subsection{Method \code{actual_intwerror_func()}}{
+Calculate the actual integrated weighted error
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$actual_intwerror_func(
   ...,
@@ -603,6 +594,24 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{Forces you to name arguments}
+
+\item{\code{N}}{Number of integration points}
+
+\item{\code{mod}}{Model to use that predicts the function f}
+
+\item{\code{f}}{True function you are estimating}
+
+\item{\code{error_power}}{What power should the error be to?
+Either 1, 2, or c(1,2)}
+
+\item{\code{nquantilegroups}}{Number of quantile groups.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print_results"></a>}}
