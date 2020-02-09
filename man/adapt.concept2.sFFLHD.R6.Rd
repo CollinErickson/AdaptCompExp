@@ -528,6 +528,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-intwerror_func"></a>}}
 \subsection{Method \code{intwerror_func()}}{
+Calculate integrated weighted error
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$intwerror_func(
   ...,
@@ -542,10 +543,35 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{Forces you to name arguments}
+
+\item{\code{XX}}{Integration points}
+
+\item{\code{N}}{Number of integration points if XX not given}
+
+\item{\code{mod}}{GP model}
+
+\item{\code{des_func}}{Desirability function}
+
+\item{\code{alpha}}{Alpha}
+
+\item{\code{weight_const}}{Weight constant}
+
+\item{\code{weight_func}}{Weight function}
+
+\item{\code{error_power}}{Error power}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-int_pvar_red_for_opts"></a>}}
 \subsection{Method \code{int_pvar_red_for_opts()}}{
+Calculate integrated predictive variance reduction for
+candidate points.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$int_pvar_red_for_opts(
   ...,
@@ -561,6 +587,31 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{Forces you to name arguments}
+
+\item{\code{Xopts}}{Candidate points}
+
+\item{\code{XX}}{Integration points}
+
+\item{\code{N}}{Number of points}
+
+\item{\code{mod}}{GP model}
+
+\item{\code{des_func}}{Desirability function}
+
+\item{\code{alpha}}{Alpha}
+
+\item{\code{weight_const}}{Weight constant}
+
+\item{\code{weight_func}}{Weight function}
+
+\item{\code{delta_pvar_func}}{Delta pvar func}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-int_pvar_red_for_one"></a>}}

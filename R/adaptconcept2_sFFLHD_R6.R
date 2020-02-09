@@ -1466,6 +1466,17 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
              err^2 * weight_func_out)
       } else {stop("error_power not recognized in werror_func #825376")}
     },
+    #' @description
+    #' Calculate integrated weighted error
+    #' @param ... Forces you to name arguments
+    #' @param XX Integration points
+    #' @param N Number of integration points if XX not given
+    #' @param mod GP model
+    #' @param des_func Desirability function
+    #' @param alpha Alpha
+    #' @param weight_const Weight constant
+    #' @param weight_func Weight function
+    #' @param error_power Error power
     intwerror_func = function(..., XX=NULL, N=1e4, mod=self$mod,
                               des_func=self$des_func, alpha=self$alpha_des,
                               weight_const=self$weight_const,
@@ -1484,6 +1495,19 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
         mean(werror_func_out)
       }
     },
+    #' @description
+    #' Calculate integrated predictive variance reduction for
+    #' candidate points.
+    #' @param ... Forces you to name arguments
+    #' @param Xopts Candidate points
+    #' @param XX Integration points
+    #' @param N Number of points
+    #' @param mod GP model
+    #' @param des_func Desirability function
+    #' @param alpha Alpha
+    #' @param weight_const Weight constant
+    #' @param weight_func Weight function
+    #' @param delta_pvar_func Delta pvar func
     int_pvar_red_for_opts = function(..., Xopts, XX=NULL, N=1e4, mod=self$mod,
                                      des_func=self$des_func,
                                      alpha=self$alpha_des,
