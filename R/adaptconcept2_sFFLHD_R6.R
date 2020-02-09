@@ -970,9 +970,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       Y0 <- Yall[1:nrow(self$X)]
       Yopt <- Yall[(nrow(self$X)+1):length(Yall)]
       bestL <- SMED::SMED_selectYC(n=self$b, X0=self$X, Xopt=self$Xopts, Y0=Y0,
-                             Yopt=Yopt,
-                             theta=if (self$useSMEDtheta) {self$mod$theta()}
-                             else {rep(1,ncol(self$X))})
+                                   Yopt=Yopt,
+                                   theta=if (self$useSMEDtheta) {self$mod$theta()}
+                                   else {rep(1,ncol(self$X))})
       newL <- bestL
       newL
     },
@@ -1501,6 +1501,17 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
                   delta_pvar_func=delta_pvar_func)
       to
     },
+    #' @description
+    #' Calculate the integrated predictive variance reduction
+    #'
+    #' @param v Something
+    #' @param X_ Points
+    #' @param XX Integration points
+    #' @param corr_func correlation function
+    #' @param Kinv Inverse of correlation matrix
+    #' @param s2 Variance term
+    #' @param K_X_XX Correlation between X_ and XX
+    #' @param delta_pvar_func which function to use
     int_pvar_red_for_one = function(v, X_, XX, corr_func, Kinv, s2, K_X_XX,
                                     delta_pvar_func=mean) {
       X <- X_ # can't pass X through apply since it matches first arg

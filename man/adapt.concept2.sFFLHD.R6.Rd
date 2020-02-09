@@ -565,6 +565,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-int_pvar_red_for_one"></a>}}
 \subsection{Method \code{int_pvar_red_for_one()}}{
+Calculate the integrated predictive variance reduction
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$int_pvar_red_for_one(
   v,
@@ -578,6 +579,27 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{v}}{Something}
+
+\item{\code{X_}}{Points}
+
+\item{\code{XX}}{Integration points}
+
+\item{\code{corr_func}}{correlation function}
+
+\item{\code{Kinv}}{Inverse of correlation matrix}
+
+\item{\code{s2}}{Variance term}
+
+\item{\code{K_X_XX}}{Correlation between X_ and XX}
+
+\item{\code{delta_pvar_func}}{which function to use}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-actual_intwerror_func"></a>}}
