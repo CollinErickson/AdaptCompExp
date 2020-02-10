@@ -1357,6 +1357,15 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       # Return bestL
       bestL
     },
+    #' @description
+    #' Calculate integrated weighted error after adding Xnew
+    #' @param Xnew New X points
+    #' @param Znew Z at those new points
+    #' @param Xnew_Xoptsrow Rows
+    #' @param n Number of points
+    #' @param int_points Integration points
+    #' @param seed Random seed
+    #' @param ... Passed through
     int_werror_after_adding = function(Xnew=NULL, Znew=NULL, Xnew_Xoptsrow=NULL,
                                        n=1e4, int_points=NULL,
                                        seed=NULL,
@@ -1383,6 +1392,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       mn <- mean(self$werror_func(XX=int_points, mod=mod, ...))
       mn
     },
+    #' @description Add new L points to design
+    #' @param newL Which rows of Xopts to add
+    #' @param use_X0 Should X0 be used?
+    #' @param reason Reason selected, is logged in summary DF
     add_newL_points_to_design = function(newL=NULL, use_X0=FALSE, reason) {
       if (use_X0) { # If X0 given and first iter, add them
         Xnew <- self$X0
@@ -1423,6 +1436,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
 
       self$update_obj_nu(Xnew=Xnew, Znew=Znew)
     },
+    #' @description
+    #' Evaluate chosen X points using given function
+    #' @param X Matrix whose rows are new points to evaluate
     calculate_Z = function(X) {
       # Used to just be apply(self$X, 1, self$func)
       if (self$parallel && inherits(self$parallel_cluster, "cluster")) {
@@ -1445,7 +1461,16 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
         browser("Shouldn't be here error #132817585")
       }
     },
-    # The weighted error function sigmahat * (1 + alpha * delta())
+    #' @description
+    #' The weighted error function sigmahat * (1 + alpha * delta())
+    #' @param ... Forces you to name arguments
+    #' @param XX X points
+    #' @param mod GP model
+    #' @param des_func Desirability function
+    #' @param alpha alpha
+    #' @param weight_const Weight constant
+    #' @param weight_func Weight function
+    #' @param error_power Error power
     werror_func = function(..., XX, mod=self$mod, des_func=self$des_func,
                            alpha=self$alpha_des, weight_const=self$weight_const,
                            weight_func=self$weight_func,
@@ -1629,7 +1654,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
         parallel::stopCluster(cl = self$parallel_cluster)
       }
     }
-  )
+)
 )
 
 if (F) {

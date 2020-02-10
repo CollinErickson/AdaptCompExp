@@ -460,6 +460,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-int_werror_after_adding"></a>}}
 \subsection{Method \code{int_werror_after_adding()}}{
+Calculate integrated weighted error after adding Xnew
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$int_werror_after_adding(
   Xnew = NULL,
@@ -472,10 +473,30 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{Xnew}}{New X points}
+
+\item{\code{Znew}}{Z at those new points}
+
+\item{\code{Xnew_Xoptsrow}}{Rows}
+
+\item{\code{n}}{Number of points}
+
+\item{\code{int_points}}{Integration points}
+
+\item{\code{seed}}{Random seed}
+
+\item{\code{...}}{Passed through}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_newL_points_to_design"></a>}}
 \subsection{Method \code{add_newL_points_to_design()}}{
+Add new L points to design
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$add_newL_points_to_design(
   newL = NULL,
@@ -484,14 +505,33 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{newL}}{Which rows of Xopts to add}
+
+\item{\code{use_X0}}{Should X0 be used?}
+
+\item{\code{reason}}{Reason selected, is logged in summary DF}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-calculate_Z"></a>}}
 \subsection{Method \code{calculate_Z()}}{
+Evaluate chosen X points using given function
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$calculate_Z(X)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{X}}{Matrix whose rows are new points to evaluate}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-weight_func"></a>}}
@@ -511,6 +551,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-werror_func"></a>}}
 \subsection{Method \code{werror_func()}}{
+The weighted error function sigmahat * (1 + alpha * delta())
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$werror_func(
   ...,
@@ -524,6 +565,27 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{Forces you to name arguments}
+
+\item{\code{XX}}{X points}
+
+\item{\code{mod}}{GP model}
+
+\item{\code{des_func}}{Desirability function}
+
+\item{\code{alpha}}{alpha}
+
+\item{\code{weight_const}}{Weight constant}
+
+\item{\code{weight_func}}{Weight function}
+
+\item{\code{error_power}}{Error power}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-intwerror_func"></a>}}
