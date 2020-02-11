@@ -338,46 +338,95 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_mse"></a>}}
 \subsection{Method \code{plot_mse()}}{
+Plot MSE and PVar over iterations
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_mse(statsdf, cex = 1)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{statsdf}}{DF with stats for points}
+
+\item{\code{cex}}{Size parameter}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_iwe"></a>}}
 \subsection{Method \code{plot_iwe()}}{
+Plot integrate weighted error
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_iwe(statsdf, cex = 1)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{statsdf}}{DF with stats for each point}
+
+\item{\code{cex}}{Size parameter}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_ppu"></a>}}
 \subsection{Method \code{plot_ppu()}}{
+Plot percentage of points used by iteration
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_ppu(statsdf, cex)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{statsdf}}{data frame with stats of when points were taken}
+
+\item{\code{cex}}{Size parameter}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_des_v_acc"></a>}}
 \subsection{Method \code{plot_des_v_acc()}}{
+Plot desirability vs prediction accuracy
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_des_v_acc(cex, cex.axis)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{cex}}{Size parameter}
+
+\item{\code{cex.axis}}{Size parameter for axis}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_y_acc"></a>}}
 \subsection{Method \code{plot_y_acc()}}{
+Plot predicted vs actual with error bars
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_y_acc(residual = FALSE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{residual}}{Should residuals be plotted?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_1D"></a>}}
 \subsection{Method \code{plot_1D()}}{
+Plot for experiments with 1D input
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_1D()}\if{html}{\out{</div>}}
 }
@@ -386,48 +435,97 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_2D"></a>}}
 \subsection{Method \code{plot_2D()}}{
+Plot for experiments with 2D input
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_2D(twoplot = FALSE, cex = 1)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{twoplot}}{Should only predicted surface
+and predicted error be shown, or more plots?}
+
+\item{\code{cex}}{Size parameter}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot1"></a>}}
 \subsection{Method \code{plot1()}}{
+Plot at one instance
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot1(twoplot = FALSE, cex = 1)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{twoplot}}{Should only predicted surface
+and predicted error be shown, or more plots?}
+
+\item{\code{cex}}{Size parameter}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_new_batches_to_Xopts"></a>}}
 \subsection{Method \code{add_new_batches_to_Xopts()}}{
+Add new batches of points to Xopts matrix
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$add_new_batches_to_Xopts(
   num_batches_to_take = self$new_batches_per_batch
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{num_batches_to_take}}{Number of batches of points
+to add to Xopts from the design $s}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Xopts_tracker_add"></a>}}
 \subsection{Method \code{Xopts_tracker_add()}}{
+Points to add to Xopts_tracker
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$Xopts_tracker_add(Xnew)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{Xnew}}{Matrix of points to add}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Xopts_tracker_remove"></a>}}
 \subsection{Method \code{Xopts_tracker_remove()}}{
+Remove points from Xopts_tracker
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$Xopts_tracker_remove(newL)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{newL}}{Vector of indices of points to remove}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-select_new_points_from_old_or_pvar"></a>}}
 \subsection{Method \code{select_new_points_from_old_or_pvar()}}{
+Select new points from Xopts that are oldest
+or have highest predictive variance
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$select_new_points_from_old_or_pvar()}\if{html}{\out{</div>}}
 }
@@ -436,6 +534,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-select_new_points_from_SMED"></a>}}
 \subsection{Method \code{select_new_points_from_SMED()}}{
+Select new points from Xopts using SMED
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$select_new_points_from_SMED()}\if{html}{\out{</div>}}
 }
@@ -444,6 +543,8 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-select_new_points_from_max_des"></a>}}
 \subsection{Method \code{select_new_points_from_max_des()}}{
+Select new points from Xopts with maximum
+desirability
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$select_new_points_from_max_des()}\if{html}{\out{</div>}}
 }
@@ -452,6 +553,8 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-select_new_points_from_max_des_red"></a>}}
 \subsection{Method \code{select_new_points_from_max_des_red()}}{
+Select new points from Xopts using maximum
+reduction in desirability
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$select_new_points_from_max_des_red()}\if{html}{\out{</div>}}
 }

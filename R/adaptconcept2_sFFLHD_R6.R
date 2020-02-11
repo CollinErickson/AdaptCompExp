@@ -618,6 +618,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
         n = 20, mainminmax_minmax = F, pretitle="AbsErr ", batchmax=Inf,
         cex=cex, plot.axes=plot.axes)
     },
+    #' @description
+    #' Plot MSE and PVar over iterations
+    #' @param statsdf DF with stats for points
+    #' @param cex Size parameter
     plot_mse = function(statsdf, cex=1) { # Plot MSE and PVar over iterations
       par(mar=c(2,2,0,0.5)) # 5.1 4.1 4.1 2.1 BLTR
       if (missing(statsdf)) {
@@ -632,6 +636,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       points(statsdf$iter, statsdf$mse, type='o', pch=19)
       points(statsdf$iter, statsdf$pvar, type='o', pch = 19, col=2)
     },
+    #' @description
+    #' Plot integrate weighted error
+    #' @param statsdf DF with stats for each point
+    #' @param cex Size parameter
     plot_iwe = function(statsdf, cex=1) {
       par(mar=c(2,2,0,0.5)) # 5.1 4.1 4.1 2.1 BLTR
       if (missing(statsdf)) {
@@ -646,6 +654,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       points(statsdf$iter, statsdf$actual_intwerror, type='o', pch=19)
       points(statsdf$iter, statsdf$intwerror, type='o', pch = 19, col=2)
     },
+    #' @description
+    #' Plot percentage of points used by iteration
+    #' @param statsdf data frame with stats of when points were taken
+    #' @param cex Size parameter
     plot_ppu = function(statsdf, cex) {
       # Plot percentage of points used over iteration
       if (missing(statsdf)) {
@@ -657,6 +669,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
            xlab="Iteration")
       legend('bottomleft',legend="% pts",fill=1, cex=cex)
     },
+    #' @description
+    #' Plot desirability vs prediction accuracy
+    #' @param cex Size parameter
+    #' @param cex.axis Size parameter for axis
     plot_des_v_acc = function(cex, cex.axis) {
       Xplot <- matrix(runif(self$D*100), ncol=self$D)
       Xplot_des <- self$des_func(XX=Xplot, mod=self$mod)
@@ -678,6 +694,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
              cex.axis=cex.axis)#, log='xy')
       }
     },
+    #' @description
+    #' Plot predicted vs actual with error bars
+    #' @param residual Should residuals be plotted?
     plot_y_acc = function(residual=FALSE) {
       # Plot predicted vs actual with error bars
 
@@ -735,6 +754,8 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
                                   ylab="Predicted", pch=19)}
       points(self$Z, Zused.pred, col=2, pch=19)
     },
+    #' @description
+    #' Plot for experiments with 1D input
     plot_1D = function() {
       x <- matrix(seq(0,1,l=300), ncol=1)
       preds <- self$mod$predict(x, se=T)
@@ -775,6 +796,11 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
                col='yellow',pch=19, cex=.5)
       }
     },
+    #' @description
+    #' Plot for experiments with 2D input
+    #' @param twoplot Should only predicted surface
+    #' and predicted error be shown, or more plots?
+    #' @param cex Size parameter
     plot_2D = function(twoplot = FALSE, cex=1) {
       cex_small = .55 * cex
       # twoplot only plots mean and se
@@ -848,6 +874,11 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       }
       close.screen(all = TRUE)
     },
+    #' @description
+    #' Plot at one instance
+    #' @param twoplot Should only predicted surface
+    #' and predicted error be shown, or more plots?
+    #' @param cex Size parameter
     plot1 = function(twoplot=FALSE, cex=1) {
       if (self$D == 1) {
         self$plot_1D()
@@ -883,6 +914,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
         par(mfrow=oparmfrow)
       }
     },
+    #' @description
+    #' Add new batches of points to Xopts matrix
+    #' @param num_batches_to_take Number of batches of points
+    #' to add to Xopts from the design $s
     add_new_batches_to_Xopts = function(num_batches_to_take=self$new_batches_per_batch) {
       if (is.null(self$s)) { # If all options are given by user,
         #  don't add new points
@@ -907,6 +942,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
         #                            self$Xopts_tracker_add(Xnew))
       }
     },
+    #' @description
+    #' Points to add to Xopts_tracker
+    #' @param Xnew Matrix of points to add
     Xopts_tracker_add = function(Xnew) {
       n <- nrow(Xnew)
       Xnewdf <- data.frame(iteration_added=rep(self$iteration, n),
@@ -918,6 +956,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       # }
       self$Xopts_tracker <- rbind(self$Xopts_tracker, Xnewdf)
     },
+    #' @description
+    #' Remove points from Xopts_tracker
+    #' @param newL Vector of indices of points to remove
     Xopts_tracker_remove = function(newL) {
       # newL is index of pt to remove from Xopts
       # Remove from Xopts_tracker, add to X_tracker
@@ -927,6 +968,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       self$Xopts_tracker <- self$Xopts_tracker[-newL,, drop=FALSE]
       removed_rows
     },
+    #' @description
+    #' Select new points from Xopts that are oldest
+    #' or have highest predictive variance
     select_new_points_from_old_or_pvar = function() {
       newL <- NULL
       # Check if forcing old or pvar
@@ -951,6 +995,8 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       }
       newL
     },
+    #' @description
+    #' Select new points from Xopts using SMED
     select_new_points_from_SMED = function() {
       #bestL <- SMED_selectC(f=self$obj_func, n=self$b,
       #                      X0=self$X, Xopt=self$Xopts,
@@ -976,6 +1022,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       newL <- bestL
       newL
     },
+    #' @description
+    #' Select new points from Xopts with maximum
+    #' desirability
     select_new_points_from_max_des = function() {
       # take point with max desirability, update model, requires using se or
       #   pvar so adding a point goes to zero
@@ -1007,6 +1056,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       rm(gpc, objall, objopt, bestopt, bestL)
       newL
     },
+    #' @description
+    #' Select new points from Xopts using maximum
+    #' reduction in desirability
     select_new_points_from_max_des_red = function() {
       # Use max weighted error reduction to select batch of points from self$Xopts
       # Returns indices of points to use from Xopts
