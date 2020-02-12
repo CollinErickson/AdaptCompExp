@@ -314,26 +314,56 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_mean"></a>}}
 \subsection{Method \code{plot_mean()}}{
+Contour plot of the predicted mean. Only for 2D input.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_mean(cex = 1, plot.axes = TRUE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{cex}}{Size parameter}
+
+\item{\code{plot.axes}}{Should the axes included in the plot.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_se"></a>}}
 \subsection{Method \code{plot_se()}}{
+Contour plot of the predicted standard error. Only for 2D input.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_se(cex = 1, plot.axes = TRUE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{cex}}{Size parameter}
+
+\item{\code{plot.axes}}{Should the axes included in the plot.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_abserr"></a>}}
 \subsection{Method \code{plot_abserr()}}{
+Contour plot of the absolute error. Only for 2D input.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$plot_abserr(cex = 1, plot.axes = TRUE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{cex}}{Size parameter}
+
+\item{\code{plot.axes}}{Should the axes included in the plot.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_mse"></a>}}

@@ -588,6 +588,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
         NaN
       }
     },
+    #' @description
+    #' Contour plot of the predicted mean. Only for 2D input.
+    #' @param cex Size parameter
+    #' @param plot.axes Should the axes included in the plot.
     plot_mean = function(cex=1, plot.axes=TRUE) {
       ContourFunctions::cf_func(self$mod$predict,batchmax=500, pretitle="Predicted Mean ",
                                 cex=cex, plot.axes=plot.axes,
@@ -599,6 +603,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
                                 }
       )
     },
+    #' @description
+    #' Contour plot of the predicted standard error. Only for 2D input.
+    #' @param cex Size parameter
+    #' @param plot.axes Should the axes included in the plot.
     plot_se = function(cex=1, plot.axes=TRUE) {
       ContourFunctions::cf_func(self$mod$predict.se,batchmax=500, pretitle="Predicted SE ",
                                 cex=cex, plot.axes=plot.axes,
@@ -612,6 +620,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
                                 }
       )
     },
+    #' @description
+    #' Contour plot of the absolute error. Only for 2D input.
+    #' @param cex Size parameter
+    #' @param plot.axes Should the axes included in the plot.
     plot_abserr = function(cex=1, plot.axes=TRUE) {
       ContourFunctions::cf_func(function(xx){sqrt((
         self$mod$predict(xx) - apply(xx, 1, self$func))^2)},
