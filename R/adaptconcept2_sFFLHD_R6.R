@@ -172,6 +172,43 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
     #   own variable
     verbose = NULL, # 0 prints only essential, 2 prints a lot
 
+    #' @description Create a new adapt concept object
+    #' @param D Number of input dimensions. Should all be 0 to 1.
+    #' @param L Batch size
+    #' @param b Batch size to add each iteration
+    #' @param package Gaussian process model package to use
+    #' @param obj Objective type
+    #' @param n0 Number of points to start experiment with
+    #' @param stage1batches Number of batches to be run in "stage 1,"
+    #' aka nonadaptively, chosen to be space filling
+    #' @param force_old Proportion of points to be force added
+    #' from Xopts because they are old.
+    #' @param force_pvar Proportion of points to be force added
+    #' from Xopts because they have highest predictive variance
+    #' @param useSMEDtheta Should theta be used when SMED is used?
+    #' Theta is the correlation parameter in each dimension. Helps
+    #' space things properly
+    #' @param func The true function. Should take a matrix as input with
+    #' D columns, each row is an X point. Or just each point as a vector,
+    #' depends on func_run_together
+    #' @func_run_together If TRUE, X points will be passed to func as a matrix
+    #' @param func_fast Is func, the true function, fast to evaluate? If yes,
+    #' will be run repeatedly to calculate true MSE. Never true in practice.
+    #' @param take_until_maxpvar_below If given, nonadaptive batches will
+    #' be taken instead of adaptive until max pvar is below this value.
+    #' @param design The design to take candidate points from.
+    #' @param selection_method How should points be selected?
+    #' @param X0 If given, an initial matrix of points that have already
+    #' been evaluated.
+    #' @param Xopts If given, the initial set of Xopts, the candidate
+    #' points from which points can be selected.
+    #' @param des_func The desirability function
+    #' @param des_func_fast Same as func_fast but for des_func
+    #' @param alpha_des Alpha value for the desirability function
+    #' @param new_batches_per_batch Each time a batch is added,
+    #' how many batches of points should be added as candidates
+    #' @param parallel Should points be evaluated in parallel
+    #' @param parallel_cores Number of parallel cores to be used.
     initialize = function(D,L,b=NULL, package=NULL, obj=NULL,
                           n0=0, stage1batches=NULL,
                           force_old=0, force_pvar=0,
@@ -356,6 +393,11 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
           spec = self$parallel_cores, type = "SOCK")
       }
     },
+    #' @description Run multiple iterations
+    #' @param maxit Number of iterations to run
+    #' @param plotlastonly Should the plots only be made
+    #' after the last iteration (when maxit>1)
+    #' @param noplot Should plots not be made after any iteration?
     run = function(maxit, plotlastonly=F, noplot=F) {
       # Run multiple iterations
       i <- 1
@@ -369,6 +411,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       }
       invisible(self)
     },
+    #' @description Run a single iteration
     run1 = function(plotit=TRUE) {
       # Run single iteration
       if (is.null(self$s)) { # If no design s, then we can only add points when
@@ -388,6 +431,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       self$iteration <- self$iteration + 1
       invisible(self)
     },
+    #' @description Add data from Xopts to X
     add_data = function() {
       # newL will be the L points selected from Xopts
       #   to add to the design
@@ -512,6 +556,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
 
       self$add_newL_points_to_design(newL = newL, reason=reason)
     },
+    #' @description Update nu for objective
+    #' @param Xnew Matrix of X points
+    #' @param Znew Corresponding function values
     update_obj_nu = function(Xnew, Znew) {
       if (is.null(self$mod$X)) {return(rep(NA, nrow(Xnew)))}
       if (is.nan(self$obj_nu)) return()
@@ -533,12 +580,14 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       }
       print(paste('alpha changed to ', self$obj_nu))
     },
+    #' @description Update the GP model on all the data.
     update_mod = function() {
       # Update GP model for data
       self$mod$update(Xall=self$X, Zall=self$Z)
     },
-    set_params = function() {
-    },
+    # set_params = function() {
+    # },
+    #' @description Update stats after every iteration
     update_stats = function() {
       # Keep stats of progress over course of experiment
       # self$stats$ <- c(self$stats$, )
@@ -581,6 +630,10 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
         self$stats$intwerror01 <- c(self$stats$intwerror01, NaN)
       }
     },
+    #' @description
+    #' Calculate mean squared error using random sample
+    #' of points. Only works when func_fast is TRUE and the
+    #' true function func is given.
     mse_func = function() {
       if (self$func_fast) {
         msecalc(self$func,self$mod$predict,cbind(rep(0,self$D),rep(1,self$D)))

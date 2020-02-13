@@ -170,7 +170,6 @@ minimal, 1 is medium, 2 is a lot.}
 \item \href{#method-add_data}{\code{adapt.concept2.sFFLHD.R6$add_data()}}
 \item \href{#method-update_obj_nu}{\code{adapt.concept2.sFFLHD.R6$update_obj_nu()}}
 \item \href{#method-update_mod}{\code{adapt.concept2.sFFLHD.R6$update_mod()}}
-\item \href{#method-set_params}{\code{adapt.concept2.sFFLHD.R6$set_params()}}
 \item \href{#method-update_stats}{\code{adapt.concept2.sFFLHD.R6$update_stats()}}
 \item \href{#method-mse_func}{\code{adapt.concept2.sFFLHD.R6$mse_func()}}
 \item \href{#method-plot_mean}{\code{adapt.concept2.sFFLHD.R6$plot_mean()}}
@@ -208,6 +207,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
 \subsection{Method \code{new()}}{
+Create a new adapt concept object
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$new(
   D,
@@ -246,18 +246,95 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{D}}{Number of input dimensions. Should all be 0 to 1.}
+
+\item{\code{L}}{Batch size}
+
+\item{\code{b}}{Batch size to add each iteration}
+
+\item{\code{package}}{Gaussian process model package to use}
+
+\item{\code{obj}}{Objective type}
+
+\item{\code{n0}}{Number of points to start experiment with}
+
+\item{\code{stage1batches}}{Number of batches to be run in "stage 1,"
+aka nonadaptively, chosen to be space filling}
+
+\item{\code{force_old}}{Proportion of points to be force added
+from Xopts because they are old.}
+
+\item{\code{force_pvar}}{Proportion of points to be force added
+from Xopts because they have highest predictive variance}
+
+\item{\code{useSMEDtheta}}{Should theta be used when SMED is used?
+Theta is the correlation parameter in each dimension. Helps
+space things properly}
+
+\item{\code{func}}{The true function. Should take a matrix as input with
+D columns, each row is an X point. Or just each point as a vector,
+depends on func_run_together}
+
+\item{\code{func_fast}}{Is func, the true function, fast to evaluate? If yes,
+will be run repeatedly to calculate true MSE. Never true in practice.}
+
+\item{\code{take_until_maxpvar_below}}{If given, nonadaptive batches will
+be taken instead of adaptive until max pvar is below this value.}
+
+\item{\code{design}}{The design to take candidate points from.}
+
+\item{\code{selection_method}}{How should points be selected?}
+
+\item{\code{X0}}{If given, an initial matrix of points that have already
+been evaluated.}
+
+\item{\code{Xopts}}{If given, the initial set of Xopts, the candidate
+points from which points can be selected.}
+
+\item{\code{des_func}}{The desirability function}
+
+\item{\code{des_func_fast}}{Same as func_fast but for des_func}
+
+\item{\code{alpha_des}}{Alpha value for the desirability function}
+
+\item{\code{new_batches_per_batch}}{Each time a batch is added,
+how many batches of points should be added as candidates}
+
+\item{\code{parallel}}{Should points be evaluated in parallel}
+
+\item{\code{parallel_cores}}{Number of parallel cores to be used.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-run"></a>}}
 \subsection{Method \code{run()}}{
+Run multiple iterations
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$run(maxit, plotlastonly = F, noplot = F)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{maxit}}{Number of iterations to run}
+
+\item{\code{plotlastonly}}{Should the plots only be made
+after the last iteration (when maxit>1)}
+
+\item{\code{noplot}}{Should plots not be made after any iteration?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-run1"></a>}}
 \subsection{Method \code{run1()}}{
+Run a single iteration
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$run1(plotit = TRUE)}\if{html}{\out{</div>}}
 }
@@ -266,6 +343,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_data"></a>}}
 \subsection{Method \code{add_data()}}{
+Add data from Xopts to X
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$add_data()}\if{html}{\out{</div>}}
 }
@@ -274,30 +352,34 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-update_obj_nu"></a>}}
 \subsection{Method \code{update_obj_nu()}}{
+Update nu for objective
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$update_obj_nu(Xnew, Znew)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{Xnew}}{Matrix of X points}
+
+\item{\code{Znew}}{Corresponding function values}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-update_mod"></a>}}
 \subsection{Method \code{update_mod()}}{
+Update the GP model on all the data.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$update_mod()}\if{html}{\out{</div>}}
 }
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-set_params"></a>}}
-\subsection{Method \code{set_params()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$set_params()}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-update_stats"></a>}}
 \subsection{Method \code{update_stats()}}{
+Update stats after every iteration
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$update_stats()}\if{html}{\out{</div>}}
 }
@@ -306,6 +388,9 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-mse_func"></a>}}
 \subsection{Method \code{mse_func()}}{
+Calculate mean squared error using random sample
+of points. Only works when func_fast is TRUE and the
+true function func is given.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$mse_func()}\if{html}{\out{</div>}}
 }
