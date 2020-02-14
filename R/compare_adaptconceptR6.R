@@ -668,6 +668,9 @@ compare.adaptR6 <- R6Class(
       )
       invisible(self)
     },
+    #' @description Save this object to file.
+    #' @param object_name Name of object to save in file.
+    #' By default it is "object".
     save_self = function(object_name="object") { # Save compare R6 object
       file_path <- paste0(self$folder_path,"/",object_name,".rds")
       cat("Saving to ", file_path, "\n")
@@ -681,6 +684,8 @@ compare.adaptR6 <- R6Class(
     #     dir.create(self$folder_path)
     #   }
     # },
+    #' @description Deletes the save folder if empty.
+    #' Prevents empty folders from being left behind.
     delete_save_folder_if_empty = function() {
       if (length(list.files(path=self$folder_path, all.files = TRUE, no.. = TRUE)) == 0) {
         unlink(self$folder_path, recursive = TRUE)
@@ -689,6 +694,10 @@ compare.adaptR6 <- R6Class(
       }
       invisible(self)
     },
+    #' @description Recover temporary files that were saved while
+    #' running in parallel if it crashed previously while running.
+    #' @param save_if_any_recovered Should the object be saved immediately
+    #' if it was able to recover files?
     recover_parallel_temp_save = function(save_if_any_recovered=TRUE) {
       # Read in and save
       any_recovered <- FALSE

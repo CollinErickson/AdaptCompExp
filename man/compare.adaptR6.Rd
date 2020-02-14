@@ -389,14 +389,25 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-save_self"></a>}}
 \subsection{Method \code{save_self()}}{
+Save this object to file.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$save_self(object_name = "object")}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{object_name}}{Name of object to save in file.
+By default it is "object".}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-delete_save_folder_if_empty"></a>}}
 \subsection{Method \code{delete_save_folder_if_empty()}}{
+Deletes the save folder if empty.
+Prevents empty folders from being left behind.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$delete_save_folder_if_empty()}\if{html}{\out{</div>}}
 }
@@ -405,10 +416,20 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-recover_parallel_temp_save"></a>}}
 \subsection{Method \code{recover_parallel_temp_save()}}{
+Recover temporary files that were saved while
+running in parallel if it crashed previously while running.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$recover_parallel_temp_save(save_if_any_recovered = TRUE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{save_if_any_recovered}}{Should the object be saved immediately
+if it was able to recover files?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-parallel_efficiency"></a>}}
