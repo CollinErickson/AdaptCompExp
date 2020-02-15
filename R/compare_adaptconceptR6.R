@@ -557,6 +557,9 @@ compare.adaptR6 <- R6Class(
       if (save_output) {dev.off()}
       invisible(self)
     },
+    #' @description Ploted average weighted integrated weighted error
+    #' by batch.
+    #' @param save_output Should the plot be saved?
     plot_AWE_over_batch = function(save_output = self$save_output) {
       if (save_output) {
         png(filename = paste0(self$folder_path,"/plot_actual_intwerror.png"),
@@ -583,6 +586,10 @@ compare.adaptR6 <- R6Class(
       if (save_output) {dev.off()}
       invisible(self)
     },
+    #' @description Plot actual integrated weighted error by group
+    #' @param save_output Should the plot be saved?
+    #' @param boxpl Should it be a box plot?
+    #' @param Should the y axis be on the log scale?
     plot_AWE_over_group = function(save_output = self$save_output, boxpl=TRUE, logy=TRUE) {
 
       if (save_output) {
@@ -602,6 +609,8 @@ compare.adaptR6 <- R6Class(
       if (save_output) {dev.off()}
       invisible(self)
     },
+    #' @description Plot Predicted variance vs mean squared error
+    #' @param save_output Should the plot be saved?
     plot_MSE_PVar = function(save_output = self$save_output) {
       if (save_output) {
         png(filename = paste0(self$folder_path,"/plotMSEPVar.png"),
@@ -626,6 +635,8 @@ compare.adaptR6 <- R6Class(
       if (save_output) {dev.off()}
       invisible(self)
     },
+    #' @description Plot Predicted RMSE vs RMSE
+    #' @param save_output Should the plot be saved?
     plot_RMSE_PRMSE = function(save_output = self$save_output) {
       if (save_output) {
         png(filename = paste0(self$folder_path,"/plotRMSEPRMSE.png"),
@@ -650,6 +661,7 @@ compare.adaptR6 <- R6Class(
       if (save_output) {dev.off()}
       invisible(self)
     },
+    #' @description Make plots
     plot = function(save_output = self$save_output) {
       self$plot_MSE_PVar(save_output=save_output)
       self$plot_RMSE_PRMSE(save_output=save_output)
@@ -657,6 +669,7 @@ compare.adaptR6 <- R6Class(
       self$plot_AWE_over_batch(save_output=save_output)
       invisible(self)
     },
+    #' @description Plot the time it took to run each one.
     plot_run_times = function() {
       print(
         ggplot2::ggplot(self$outrawdf) +

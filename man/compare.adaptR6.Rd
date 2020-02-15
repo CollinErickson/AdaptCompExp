@@ -337,14 +337,24 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_AWE_over_batch"></a>}}
 \subsection{Method \code{plot_AWE_over_batch()}}{
+Ploted average weighted integrated weighted error
+by batch.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_AWE_over_batch(save_output = self$save_output)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{save_output}}{Should the plot be saved?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_AWE_over_group"></a>}}
 \subsection{Method \code{plot_AWE_over_group()}}{
+Plot actual integrated weighted error by group
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_AWE_over_group(
   save_output = self$save_output,
@@ -353,26 +363,54 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{save_output}}{Should the plot be saved?}
+
+\item{\code{boxpl}}{Should it be a box plot?}
+
+\item{\code{Should}}{the y axis be on the log scale?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_MSE_PVar"></a>}}
 \subsection{Method \code{plot_MSE_PVar()}}{
+Plot Predicted variance vs mean squared error
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_MSE_PVar(save_output = self$save_output)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{save_output}}{Should the plot be saved?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_RMSE_PRMSE"></a>}}
 \subsection{Method \code{plot_RMSE_PRMSE()}}{
+Plot Predicted RMSE vs RMSE
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_RMSE_PRMSE(save_output = self$save_output)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{save_output}}{Should the plot be saved?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot"></a>}}
 \subsection{Method \code{plot()}}{
+Make plots
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot(save_output = self$save_output)}\if{html}{\out{</div>}}
 }
@@ -381,6 +419,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_run_times"></a>}}
 \subsection{Method \code{plot_run_times()}}{
+Plot the time it took to run each one.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_run_times()}\if{html}{\out{</div>}}
 }
