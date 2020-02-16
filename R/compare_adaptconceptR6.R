@@ -149,6 +149,37 @@ compare.adaptR6 <- R6Class(
     parallel = NULL,
     parallel_cores = NULL,
     parallel_cluster = NULL,
+    #' @description Initialize the R6 object
+    #' @param func The true function. Should take a matrix as input with
+    #' D columns, each row is an X point. Or just each point as a vector,
+    #' depends on func_run_together
+    #' @param D Number of input dimensions. Should all be 0 to 1.
+    #' @param L Batch size
+    #' @param b Batch size to add each iteration
+    #' @param batches Number of batches to run for
+    #' @param reps Number of replicates of each combination
+    #' @param package Gaussian process model package to use
+    #' @param obj Objective type
+    #' @param n0 Number of points to start experiment with
+    #' @param stage1batches Number of batches to be run in "stage 1,"
+    #' aka nonadaptively, chosen to be space filling
+    #' @param force_old Proportion of points to be force added
+    #' from Xopts because they are old.
+    #' @param force_pvar Proportion of points to be force added
+    #' from Xopts because they have highest predictive variance
+    #' @param useSMEDtheta Should theta be used when SMED is used?
+    #' Theta is the correlation parameter in each dimension. Helps
+    #' space things properly
+    #' @param take_until_maxpvar_below If given, nonadaptive batches will
+    #' be taken instead of adaptive until max pvar is below this value.
+    #' @param design The design to take candidate points from.
+    #' @param selection_method How should points be selected?
+    #' @param des_func The desirability function
+    #' @param alpha_des Alpha value for the desirability function
+    #' @param new_batches_per_batch Each time a batch is added,
+    #' how many batches of points should be added as candidates
+    #' @param parallel Should points be evaluated in parallel
+    #' @param parallel_cores Number of parallel cores to be used.
     initialize = function(func, D, L, b=NULL, batches=10, reps=5,
                           obj=c("nonadapt", "grad"),
                           #plot_after=c(), plot_every=c(),
@@ -286,6 +317,9 @@ compare.adaptR6 <- R6Class(
       self$completed_runs <- rep(FALSE, self$number_runs)
       #self$outrawdf <- data.frame()
     },
+    #' @description Set the folder name where this will be saved
+    #' @param folder_name Name of the folder to use
+    #' @param add_timestamp Should the timestamp be included in the folder name?
     set_folder_name = function(folder_name, add_timestamp=FALSE) {
       if (missing(folder_name)) {
         folderTime0 <- gsub(" ","_", Sys.time())
@@ -301,6 +335,8 @@ compare.adaptR6 <- R6Class(
       self$folder_name <- folder_name
       self$folder_path <- paste0("./compare_adaptconcept_output/",self$folder_name)
     },
+    #' @description Create the folder to save the output
+    #' @param add_timestamp Not used.
     create_output_folder = function(add_timestamp = FALSE) {
       # if (self$folder_created) {return(invisible(self))}
       if (!dir.exists(self$folder_path)) {
@@ -311,6 +347,16 @@ compare.adaptR6 <- R6Class(
       }
       invisible(self)
     },
+    #' @description Run all remaining simulations
+    #' @param redo Should already completed ones be redone?
+    #' @param noplot Should plots not be made?
+    #' @param save_every Should the object be saved after each simulation,
+    #' or just at the end?
+    #' @param run_order In what order should they be run?
+    #' @param parallel Should it be run in parallel?
+    #' @param parallel_temp_save Should temporary files be saved by each
+    #' core when running in parallel? Useful if it crashes in the middle,
+    #' can just recover from the files afterward.
     run_all = function(redo = FALSE, noplot=FALSE, save_every=FALSE, run_order,
                        parallel=self$parallel, parallel_temp_save=FALSE) {
       if (!redo) { # Only run ones that haven't been run yet
@@ -363,6 +409,11 @@ compare.adaptR6 <- R6Class(
       self$postprocess_outdf()
       invisible(self)
     },
+    #' @description Run a single simulation
+    #' @param irow The simulation number to be run
+    #' @param save_output Should the output be saved?
+    #' @param noplot Should the plots not be made?
+    #' @param is_parallel Is it running in a parallel environment?
     run_one = function(irow=NULL, save_output=self$save_output, noplot=FALSE, is_parallel=FALSE) {
       if (is.null(irow)) { # If irow not given, set to next not run
         if (any(self$completed_runs == FALSE)) {
@@ -448,6 +499,10 @@ compare.adaptR6 <- R6Class(
       self$add_result_of_one(irow=irow, newdf1=newdf1)
       invisible(self)
     },
+    #' @description Add result of one simulation run to the results
+    #' @param irow The simulation number that was run
+    #' @param newdf1 The output data frame from that run
+    #' @param save_output Should the output be saved?
     add_result_of_one = function(irow, newdf1, save_output=self$save_output) {
 
       if (nrow(self$outrawdf) == 0) {
@@ -476,6 +531,8 @@ compare.adaptR6 <- R6Class(
       }
       self$completed_runs[irow] <- TRUE
     },
+    #' @description Postprocess the output in outdf
+    #' @param save_output Should the output be saved?
     postprocess_outdf = function(save_output=self$save_output) {
       self$outdf <- self$outrawdf
       self$outdf$rmse <- sqrt(ifelse(self$outdf$mse>=0, self$outdf$mse, 1e-16))
@@ -536,6 +593,9 @@ compare.adaptR6 <- R6Class(
       if (self$save_output) {self$save_self()}
       invisible(self)
     },
+    #' @description Plot MSE by batch
+    #' @param save_output Should the plot be saved?
+    #' @param legend_labels Override the legend labels
     plot_MSE_over_batch = function(save_output = self$save_output, legend_labels=NULL) {
       if (save_output) {
         png(filename = paste0(self$folder_path,"/plotMSE.png"),

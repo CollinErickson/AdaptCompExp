@@ -230,6 +230,7 @@ minimal, 1 is medium, 2 is a lot.}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
 \subsection{Method \code{new()}}{
+Initialize the R6 object
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$new(
   func,
@@ -262,26 +263,101 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{func}}{The true function. Should take a matrix as input with
+D columns, each row is an X point. Or just each point as a vector,
+depends on func_run_together}
+
+\item{\code{D}}{Number of input dimensions. Should all be 0 to 1.}
+
+\item{\code{L}}{Batch size}
+
+\item{\code{b}}{Batch size to add each iteration}
+
+\item{\code{batches}}{Number of batches to run for}
+
+\item{\code{reps}}{Number of replicates of each combination}
+
+\item{\code{obj}}{Objective type}
+
+\item{\code{force_old}}{Proportion of points to be force added
+from Xopts because they are old.}
+
+\item{\code{force_pvar}}{Proportion of points to be force added
+from Xopts because they have highest predictive variance}
+
+\item{\code{n0}}{Number of points to start experiment with}
+
+\item{\code{stage1batches}}{Number of batches to be run in "stage 1,"
+aka nonadaptively, chosen to be space filling}
+
+\item{\code{package}}{Gaussian process model package to use}
+
+\item{\code{selection_method}}{How should points be selected?}
+
+\item{\code{design}}{The design to take candidate points from.}
+
+\item{\code{des_func}}{The desirability function}
+
+\item{\code{alpha_des}}{Alpha value for the desirability function}
+
+\item{\code{parallel}}{Should points be evaluated in parallel}
+
+\item{\code{parallel_cores}}{Number of parallel cores to be used.}
+
+\item{\code{useSMEDtheta}}{Should theta be used when SMED is used?
+Theta is the correlation parameter in each dimension. Helps
+space things properly}
+
+\item{\code{take_until_maxpvar_below}}{If given, nonadaptive batches will
+be taken instead of adaptive until max pvar is below this value.}
+
+\item{\code{new_batches_per_batch}}{Each time a batch is added,
+how many batches of points should be added as candidates}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-set_folder_name"></a>}}
 \subsection{Method \code{set_folder_name()}}{
+Set the folder name where this will be saved
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$set_folder_name(folder_name, add_timestamp = FALSE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{folder_name}}{Name of the folder to use}
+
+\item{\code{add_timestamp}}{Should the timestamp be included in the folder name?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-create_output_folder"></a>}}
 \subsection{Method \code{create_output_folder()}}{
+Create the folder to save the output
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$create_output_folder(add_timestamp = FALSE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{add_timestamp}}{Not used.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-run_all"></a>}}
 \subsection{Method \code{run_all()}}{
+Run all remaining simulations
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$run_all(
   redo = FALSE,
@@ -293,10 +369,31 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{redo}}{Should already completed ones be redone?}
+
+\item{\code{noplot}}{Should plots not be made?}
+
+\item{\code{save_every}}{Should the object be saved after each simulation,
+or just at the end?}
+
+\item{\code{run_order}}{In what order should they be run?}
+
+\item{\code{parallel}}{Should it be run in parallel?}
+
+\item{\code{parallel_temp_save}}{Should temporary files be saved by each
+core when running in parallel? Useful if it crashes in the middle,
+can just recover from the files afterward.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-run_one"></a>}}
 \subsection{Method \code{run_one()}}{
+Run a single simulation
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$run_one(
   irow = NULL,
@@ -306,26 +403,60 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{irow}}{The simulation number to be run}
+
+\item{\code{save_output}}{Should the output be saved?}
+
+\item{\code{noplot}}{Should the plots not be made?}
+
+\item{\code{is_parallel}}{Is it running in a parallel environment?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_result_of_one"></a>}}
 \subsection{Method \code{add_result_of_one()}}{
+Add result of one simulation run to the results
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$add_result_of_one(irow, newdf1, save_output = self$save_output)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{irow}}{The simulation number that was run}
+
+\item{\code{newdf1}}{The output data frame from that run}
+
+\item{\code{save_output}}{Should the output be saved?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-postprocess_outdf"></a>}}
 \subsection{Method \code{postprocess_outdf()}}{
+Postprocess the output in outdf
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$postprocess_outdf(save_output = self$save_output)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{save_output}}{Should the output be saved?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_MSE_over_batch"></a>}}
 \subsection{Method \code{plot_MSE_over_batch()}}{
+Plot MSE by batch
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot_MSE_over_batch(
   save_output = self$save_output,
@@ -333,6 +464,15 @@ minimal, 1 is medium, 2 is a lot.}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{save_output}}{Should the plot be saved?}
+
+\item{\code{legend_labels}}{Override the legend labels}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_AWE_over_batch"></a>}}
