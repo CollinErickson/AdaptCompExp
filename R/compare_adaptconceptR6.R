@@ -180,6 +180,16 @@ compare.adaptR6 <- R6Class(
     #' how many batches of points should be added as candidates
     #' @param parallel Should points be evaluated in parallel
     #' @param parallel_cores Number of parallel cores to be used.
+    #' @param folder_name Where should the files be saved?
+    #' @param pass_list List of things to pass to adapt concept for each.
+    #' @param actual_des_func The actual des func
+    #' @param error_power Which error power should be saved? Either 0, 1, or
+    #' maybe c(0,1)?
+    #' @param weight_const What is the weight constant?
+    #' @param design_seed_start A seed to be set for the design points
+    #' @param seed_start A seed to be set for each run
+    #' @param func_string The name of the function
+    #' @param save_output Should the output be saved regularly?
     initialize = function(func, D, L, b=NULL, batches=10, reps=5,
                           obj=c("nonadapt", "grad"),
                           #plot_after=c(), plot_every=c(),
@@ -649,7 +659,7 @@ compare.adaptR6 <- R6Class(
     #' @description Plot actual integrated weighted error by group
     #' @param save_output Should the plot be saved?
     #' @param boxpl Should it be a box plot?
-    #' @param Should the y axis be on the log scale?
+    #' @param logy Should the y axis be on the log scale?
     plot_AWE_over_group = function(save_output = self$save_output, boxpl=TRUE, logy=TRUE) {
 
       if (save_output) {
@@ -722,6 +732,7 @@ compare.adaptR6 <- R6Class(
       invisible(self)
     },
     #' @description Make plots
+    #' @param save_output Should the plots be saved?
     plot = function(save_output = self$save_output) {
       self$plot_MSE_PVar(save_output=save_output)
       self$plot_RMSE_PRMSE(save_output=save_output)

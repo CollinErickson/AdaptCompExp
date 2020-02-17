@@ -293,6 +293,14 @@ from Xopts because they have highest predictive variance}
 \item{\code{stage1batches}}{Number of batches to be run in "stage 1,"
 aka nonadaptively, chosen to be space filling}
 
+\item{\code{save_output}}{Should the output be saved regularly?}
+
+\item{\code{func_string}}{The name of the function}
+
+\item{\code{seed_start}}{A seed to be set for each run}
+
+\item{\code{design_seed_start}}{A seed to be set for the design points}
+
 \item{\code{package}}{Gaussian process model package to use}
 
 \item{\code{selection_method}}{How should points be selected?}
@@ -302,6 +310,17 @@ aka nonadaptively, chosen to be space filling}
 \item{\code{des_func}}{The desirability function}
 
 \item{\code{alpha_des}}{Alpha value for the desirability function}
+
+\item{\code{weight_const}}{What is the weight constant?}
+
+\item{\code{error_power}}{Which error power should be saved? Either 0, 1, or
+maybe c(0,1)?}
+
+\item{\code{actual_des_func}}{The actual des func}
+
+\item{\code{pass_list}}{List of things to pass to adapt concept for each.}
+
+\item{\code{folder_name}}{Where should the files be saved?}
 
 \item{\code{parallel}}{Should points be evaluated in parallel}
 
@@ -510,7 +529,7 @@ Plot actual integrated weighted error by group
 
 \item{\code{boxpl}}{Should it be a box plot?}
 
-\item{\code{Should}}{the y axis be on the log scale?}
+\item{\code{logy}}{Should the y axis be on the log scale?}
 }
 \if{html}{\out{</div>}}
 }
@@ -555,6 +574,13 @@ Make plots
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$plot(save_output = self$save_output)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{save_output}}{Should the plots be saved?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_run_times"></a>}}
