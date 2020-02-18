@@ -42,11 +42,7 @@ base_breaks <- function(n = 10){
 #' @field func Actual function to get experiment values from
 #' @field nb Number of batches, if you know before starting
 #' @field D Dimension of data
-#' @field Xopts Available points
-#' @field X0 Initial design
 #' @field package Which GP package to use in IGP
-#' @field stats List of tracked stats
-#' @field iteration Which iteration
 #' @field mod The GP model from
 #' @field func_run_together Whether points should be passed to func separately
 #'          as vectors or all together as a matrix whose rows are the points.
@@ -63,7 +59,7 @@ base_breaks <- function(n = 10){
 #' @field Xopts_removed A matrix of points removed from Xopts.
 #' @field s The design object for generating candidate points.
 #' @field design A string saying which design object should be used.
-#' @field stats A data.frame giving stats for each iteration.
+#' @field stats A list giving stats for each iteration.
 #' @field iteration The current iteration.
 #' @field obj A string saying what the objective is.
 #' @field obj_func A function for the objective.
@@ -71,7 +67,6 @@ base_breaks <- function(n = 10){
 #' @field take_until_maxpvar_below A number, if the proportion of points near
 #'          the maximum variance of the GP model, then it will take
 #'          space-filling points.
-#' @field package Which GP package should be used by IGP.
 #' @field force_old A number saying how often the oldest candidate points
 #'          should be forced into the design.
 #' @field force_pvar A number saying how often the points with the highest
@@ -803,6 +798,7 @@ compare.adaptR6 <- R6Class(
       self$delete_save_folder_if_empty()
       invisible(self)
     },
+    #' @description Calculate the parallel efficiency
     parallel_efficiency = function() {
       sum(self$enddf$time) /
         as.numeric(max(self$enddf$end_time) - min(self$enddf$start_time),

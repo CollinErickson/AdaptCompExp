@@ -63,15 +63,7 @@ ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
 
 \item{\code{D}}{Dimension of data}
 
-\item{\code{Xopts}}{Available points}
-
-\item{\code{X0}}{Initial design}
-
 \item{\code{package}}{Which GP package to use in IGP}
-
-\item{\code{stats}}{List of tracked stats}
-
-\item{\code{iteration}}{Which iteration}
 
 \item{\code{mod}}{The GP model from}
 
@@ -101,7 +93,7 @@ selected.}
 
 \item{\code{design}}{A string saying which design object should be used.}
 
-\item{\code{stats}}{A data.frame giving stats for each iteration.}
+\item{\code{stats}}{A list giving stats for each iteration.}
 
 \item{\code{iteration}}{The current iteration.}
 
@@ -114,8 +106,6 @@ selected.}
 \item{\code{take_until_maxpvar_below}}{A number, if the proportion of points near
 the maximum variance of the GP model, then it will take
 space-filling points.}
-
-\item{\code{package}}{Which GP package should be used by IGP.}
 
 \item{\code{force_old}}{A number saying how often the oldest candidate points
 should be forced into the design.}
@@ -152,14 +142,6 @@ minimal, 1 is medium, 2 is a lot.}
 
 \item{\code{nb}}{Number of batches, if you know before starting}
 
-\item{\code{Xopts}}{Available points}
-
-\item{\code{X0}}{Initial design}
-
-\item{\code{stats}}{List of tracked stats}
-
-\item{\code{iteration}}{Which iteration}
-
 \item{\code{mod}}{The GP model from}
 
 \item{\code{func_run_together}}{Whether points should be passed to func separately
@@ -186,7 +168,7 @@ selected.}
 
 \item{\code{s}}{The design object for generating candidate points.}
 
-\item{\code{stats}}{A data.frame giving stats for each iteration.}
+\item{\code{stats}}{A list giving stats for each iteration.}
 
 \item{\code{iteration}}{The current iteration.}
 
@@ -639,6 +621,7 @@ if it was able to recover files?}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-parallel_efficiency"></a>}}
 \subsection{Method \code{parallel_efficiency()}}{
+Calculate the parallel efficiency
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{compare.adaptR6$parallel_efficiency()}\if{html}{\out{</div>}}
 }
