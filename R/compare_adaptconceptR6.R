@@ -36,25 +36,15 @@ base_breaks <- function(n = 10){
 #'                            des_func=c('des_func_relmax', 'des_func_relmax')
 #'                            )$run_all()$plot()
 #'
-#' @field X Design matrix
-#' @field Z Responses
+#' @field L batch size
+#' @field batches Number of batches to run each for
+#' @field reps Number of replicates of each
+#' @field forces Can force values
+#' @field force_vals Can force values
 #' @field b batch size
 #' @field func Actual function to get experiment values from
-#' @field nb Number of batches, if you know before starting
 #' @field D Dimension of data
 #' @field package Which GP package to use in IGP
-#' @field mod The GP model from
-#' @field func_run_together Whether points should be passed to func separately
-#'          as vectors or all together as a matrix whose rows are the points.
-#' @field func_fast If the function is fast. If TRUE then full plots are made.
-#'          In practice this is alway FALSE.
-#' @field new_batches_per_batch How many batches of candidate points are added
-#'          for each batch taken.
-#' @field X_tracker data.frame tracking the points of X, such as when they were
-#'          selected.
-#' @field X0 An initial matrix of points to be used.
-#' @field Xopts A matrix of candidate (option) points.
-#' @field Xopts_tracker A data.frame tracking the points of Xopts.
 #' @field batch.tracker Tracks when points were added to Xopts.
 #' @field Xopts_removed A matrix of points removed from Xopts.
 #' @field s The design object for generating candidate points.

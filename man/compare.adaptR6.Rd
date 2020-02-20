@@ -51,39 +51,23 @@ ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
-\item{\code{X}}{Design matrix}
+\item{\code{L}}{batch size}
 
-\item{\code{Z}}{Responses}
+\item{\code{batches}}{Number of batches to run each for}
+
+\item{\code{reps}}{Number of replicates of each}
+
+\item{\code{forces}}{Can force values}
+
+\item{\code{force_vals}}{Can force values}
 
 \item{\code{b}}{batch size}
 
 \item{\code{func}}{Actual function to get experiment values from}
 
-\item{\code{nb}}{Number of batches, if you know before starting}
-
 \item{\code{D}}{Dimension of data}
 
 \item{\code{package}}{Which GP package to use in IGP}
-
-\item{\code{mod}}{The GP model from}
-
-\item{\code{func_run_together}}{Whether points should be passed to func separately
-as vectors or all together as a matrix whose rows are the points.}
-
-\item{\code{func_fast}}{If the function is fast. If TRUE then full plots are made.
-In practice this is alway FALSE.}
-
-\item{\code{new_batches_per_batch}}{How many batches of candidate points are added
-for each batch taken.}
-
-\item{\code{X_tracker}}{data.frame tracking the points of X, such as when they were
-selected.}
-
-\item{\code{X0}}{An initial matrix of points to be used.}
-
-\item{\code{Xopts}}{A matrix of candidate (option) points.}
-
-\item{\code{Xopts_tracker}}{A data.frame tracking the points of Xopts.}
 
 \item{\code{batch.tracker}}{Tracks when points were added to Xopts.}
 
@@ -136,32 +120,6 @@ minimal, 1 is medium, 2 is a lot.}
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-\item{\code{X}}{Design matrix}
-
-\item{\code{Z}}{Responses}
-
-\item{\code{nb}}{Number of batches, if you know before starting}
-
-\item{\code{mod}}{The GP model from}
-
-\item{\code{func_run_together}}{Whether points should be passed to func separately
-as vectors or all together as a matrix whose rows are the points.}
-
-\item{\code{func_fast}}{If the function is fast. If TRUE then full plots are made.
-In practice this is alway FALSE.}
-
-\item{\code{new_batches_per_batch}}{How many batches of candidate points are added
-for each batch taken.}
-
-\item{\code{X_tracker}}{data.frame tracking the points of X, such as when they were
-selected.}
-
-\item{\code{X0}}{An initial matrix of points to be used.}
-
-\item{\code{Xopts}}{A matrix of candidate (option) points.}
-
-\item{\code{Xopts_tracker}}{A data.frame tracking the points of Xopts.}
-
 \item{\code{batch.tracker}}{Tracks when points were added to Xopts.}
 
 \item{\code{Xopts_removed}}{A matrix of points removed from Xopts.}
