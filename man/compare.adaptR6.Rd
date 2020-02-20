@@ -69,17 +69,7 @@ ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
 
 \item{\code{package}}{Which GP package to use in IGP}
 
-\item{\code{batch.tracker}}{Tracks when points were added to Xopts.}
-
-\item{\code{Xopts_removed}}{A matrix of points removed from Xopts.}
-
-\item{\code{s}}{The design object for generating candidate points.}
-
 \item{\code{design}}{A string saying which design object should be used.}
-
-\item{\code{stats}}{A list giving stats for each iteration.}
-
-\item{\code{iteration}}{The current iteration.}
 
 \item{\code{obj}}{A string saying what the objective is.}
 
@@ -120,16 +110,6 @@ minimal, 1 is medium, 2 is a lot.}
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-\item{\code{batch.tracker}}{Tracks when points were added to Xopts.}
-
-\item{\code{Xopts_removed}}{A matrix of points removed from Xopts.}
-
-\item{\code{s}}{The design object for generating candidate points.}
-
-\item{\code{stats}}{A list giving stats for each iteration.}
-
-\item{\code{iteration}}{The current iteration.}
-
 \item{\code{obj_func}}{A function for the objective.}
 
 \item{\code{take_until_maxpvar_below}}{A number, if the proportion of points near

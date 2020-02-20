@@ -412,6 +412,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       invisible(self)
     },
     #' @description Run a single iteration
+    #' @param plotit Should the plots be made for this iteration?
     run1 = function(plotit=TRUE) {
       # Run single iteration
       if (is.null(self$s)) { # If no design s, then we can only add points when
@@ -1567,7 +1568,13 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
         apply(X, 1, self$func)
       }
     },
-    # The weight function 1 + alpha * delta()
+    #' @description The weight function 1 + alpha * delta()
+    #' @param ... Forces you to name arguments
+    #' @param XX input points
+    #' @param mod GP model
+    #' @param des_func Desirability function or des values for each XX
+    #' @param alpha alpha
+    #' @weight_const The weight constant
     weight_func = function(..., XX, mod=self$mod, des_func=self$des_func,
                            alpha=self$alpha_des, weight_const=self$weight_const) {
       if (is.function(des_func)) {

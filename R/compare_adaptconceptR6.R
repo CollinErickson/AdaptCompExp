@@ -45,12 +45,7 @@ base_breaks <- function(n = 10){
 #' @field func Actual function to get experiment values from
 #' @field D Dimension of data
 #' @field package Which GP package to use in IGP
-#' @field batch.tracker Tracks when points were added to Xopts.
-#' @field Xopts_removed A matrix of points removed from Xopts.
-#' @field s The design object for generating candidate points.
 #' @field design A string saying which design object should be used.
-#' @field stats A list giving stats for each iteration.
-#' @field iteration The current iteration.
 #' @field obj A string saying what the objective is.
 #' @field obj_func A function for the objective.
 #' @field n0 The initial number of points to be selected.

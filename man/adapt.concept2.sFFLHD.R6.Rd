@@ -339,6 +339,13 @@ Run a single iteration
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$run1(plotit = TRUE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{plotit}}{Should the plots be made for this iteration?}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_data"></a>}}
@@ -754,6 +761,7 @@ Evaluate chosen X points using given function
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-weight_func"></a>}}
 \subsection{Method \code{weight_func()}}{
+The weight function 1 + alpha * delta()
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$weight_func(
   ...,
@@ -765,6 +773,21 @@ Evaluate chosen X points using given function
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{Forces you to name arguments}
+
+\item{\code{XX}}{input points}
+
+\item{\code{mod}}{GP model}
+
+\item{\code{des_func}}{Desirability function or des values for each XX}
+
+\item{\code{alpha}}{alpha}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-werror_func"></a>}}
