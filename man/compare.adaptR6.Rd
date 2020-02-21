@@ -73,13 +73,7 @@ ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
 
 \item{\code{obj}}{A string saying what the objective is.}
 
-\item{\code{obj_func}}{A function for the objective.}
-
 \item{\code{n0}}{The initial number of points to be selected.}
-
-\item{\code{take_until_maxpvar_below}}{A number, if the proportion of points near
-the maximum variance of the GP model, then it will take
-space-filling points.}
 
 \item{\code{force_old}}{A number saying how often the oldest candidate points
 should be forced into the design.}
@@ -88,8 +82,6 @@ should be forced into the design.}
 predictive variance should be forced into the design.}
 
 \item{\code{des_func}}{The desirability function.}
-
-\item{\code{des_func_fast}}{Whether the des_func is fast for candidate points.}
 
 \item{\code{alpha_des}}{The alpha constant for the weight function.}
 
@@ -101,25 +93,6 @@ not known in practice}
 \item{\code{selection_method}}{What the selection method should be.}
 
 \item{\code{parallel}}{Should new values be calculated in parallel?}
-
-\item{\code{verbose}}{How much detail should be printed to the console. 0 is
-minimal, 1 is medium, 2 is a lot.}
-}
-\if{html}{\out{</div>}}
-}
-\section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{obj_func}}{A function for the objective.}
-
-\item{\code{take_until_maxpvar_below}}{A number, if the proportion of points near
-the maximum variance of the GP model, then it will take
-space-filling points.}
-
-\item{\code{des_func_fast}}{Whether the des_func is fast for candidate points.}
-
-\item{\code{verbose}}{How much detail should be printed to the console. 0 is
-minimal, 1 is medium, 2 is a lot.}
 }
 \if{html}{\out{</div>}}
 }
