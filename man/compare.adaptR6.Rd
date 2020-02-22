@@ -93,6 +93,29 @@ not known in practice}
 \item{\code{selection_method}}{What the selection method should be.}
 
 \item{\code{parallel}}{Should new values be calculated in parallel?}
+
+\item{\code{seed_start}}{A seed to be set for each run}
+
+\item{\code{func_string}}{The name of the function}
+
+\item{\code{save_output}}{Should the output be saved regularly?}
+
+\item{\code{stage1batches}}{Number of batches to be run in "stage 1,"
+aka nonadaptively, chosen to be space filling}
+
+\item{\code{folder_name}}{Where should the files be saved?}
+
+\item{\code{folder_path}}{What is the path for the folder?}
+
+\item{\code{design_seed_start}}{Random seed for the designs}
+
+\item{\code{outdf}}{A data frame with all the output}
+
+\item{\code{outrawdf}}{A data frame with all the raw output}
+
+\item{\code{plotdf}}{A data frame with data to be plotted}
+
+\item{\code{enddf}}{A data frame with the output at the end of each simulation}
 }
 \if{html}{\out{</div>}}
 }

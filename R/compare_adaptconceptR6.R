@@ -59,6 +59,18 @@ base_breaks <- function(n = 10){
 #' @field weight_const The weight constant in the weight function, usually 1.
 #' @field selection_method What the selection method should be.
 #' @field parallel Should new values be calculated in parallel?
+#' @field seed_start A seed to be set for each run
+#' @field func_string The name of the function
+#' @field save_output Should the output be saved regularly?
+#' @field stage1batches Number of batches to be run in "stage 1,"
+#' aka nonadaptively, chosen to be space filling
+#' @field folder_name Where should the files be saved?
+#' @field folder_path What is the path for the folder?
+#' @field design_seed_start Random seed for the designs
+#' @field outdf A data frame with all the output
+#' @field outrawdf A data frame with all the raw output
+#' @field plotdf A data frame with data to be plotted
+#' @field enddf A data frame with the output at the end of each simulation
 #' @section Methods:
 #' \describe{
 #'   \item{Documentation}{For full documentation of each method go to
