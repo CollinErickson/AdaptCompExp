@@ -116,6 +116,29 @@ aka nonadaptively, chosen to be space filling}
 \item{\code{plotdf}}{A data frame with data to be plotted}
 
 \item{\code{enddf}}{A data frame with the output at the end of each simulation}
+
+\item{\code{meandf}}{A data frame of the output that has been grouped and taken the mean}
+
+\item{\code{meanlogdf}}{Same as meandf except some stats have been put on log scale}
+
+\item{\code{endmeandf}}{A data frame of the means at the end}
+
+\item{\code{rungridlist}}{A list of all runs}
+
+\item{\code{rungrid}}{A data frame of all runs}
+
+\item{\code{error_power}}{What power to put the error to for stat calculations.
+Either 0, 1, or c(0,1).}
+
+\item{\code{number_runs}}{Total number of runs to be done}
+
+\item{\code{completed_runs}}{Logical of whether each run is completed}
+
+\item{\code{pass_list}}{List of names of objects to be passed when using parallel}
+
+\item{\code{parallel_cores}}{Number of cores to use when running in parallel}
+
+\item{\code{parallel_cluster}}{If running in parallel, the parallel cluster}
 }
 \if{html}{\out{</div>}}
 }

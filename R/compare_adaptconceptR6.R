@@ -71,6 +71,18 @@ base_breaks <- function(n = 10){
 #' @field outrawdf A data frame with all the raw output
 #' @field plotdf A data frame with data to be plotted
 #' @field enddf A data frame with the output at the end of each simulation
+#' @field meandf A data frame of the output that has been grouped and taken the mean
+#' @field meanlogdf Same as meandf except some stats have been put on log scale
+#' @field endmeandf A data frame of the means at the end
+#' @field rungridlist A list of all runs
+#' @field rungrid A data frame of all runs
+#' @field error_power What power to put the error to for stat calculations.
+#' Either 0, 1, or c(0,1).
+#' @field number_runs Total number of runs to be done
+#' @field completed_runs Logical of whether each run is completed
+#' @field pass_list List of names of objects to be passed when using parallel
+#' @field parallel_cores Number of cores to use when running in parallel
+#' @field parallel_cluster If running in parallel, the parallel cluster
 #' @section Methods:
 #' \describe{
 #'   \item{Documentation}{For full documentation of each method go to
