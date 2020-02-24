@@ -209,6 +209,15 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
     #' how many batches of points should be added as candidates
     #' @param parallel Should points be evaluated in parallel
     #' @param parallel_cores Number of parallel cores to be used.
+    #' @param error_power Power to put the error to. Either 0, 1, or c(0,1).
+    #' @param nconsider Number of points to consider when adding each
+    #' point of the batch.
+    #' Designed to be reduced as you go. E.g., adding a batch of 3, you could
+    #' use c(Inf, 50, 20) to reduce computation as you go. It would keep the
+    #' 50/20 best from the previous iteration in consideration.
+    #' @param nconsider_random If using nconsider, how many random points
+    #' should be added back in each iteration?
+    #' @param ... You can pass in actual_des_func like this.
     initialize = function(D,L,b=NULL, package=NULL, obj=NULL,
                           n0=0, stage1batches=NULL,
                           force_old=0, force_pvar=0,
@@ -1574,7 +1583,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
     #' @param mod GP model
     #' @param des_func Desirability function or des values for each XX
     #' @param alpha alpha
-    #' @weight_const The weight constant
+    #' @param weight_const The weight constant
     weight_func = function(..., XX, mod=self$mod, des_func=self$des_func,
                            alpha=self$alpha_des, weight_const=self$weight_const) {
       if (is.function(des_func)) {
