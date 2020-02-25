@@ -72,8 +72,6 @@ a$run(2)
 
 \item{\code{func}}{Actual function to get experiment values from}
 
-\item{\code{nb}}{Number of batches, if you know before starting}
-
 \item{\code{D}}{Dimension of data}
 
 \item{\code{mod}}{The GP model from}
@@ -144,20 +142,27 @@ not known in practice}
 \item{\code{verbose}}{How much detail should be printed to the console. 0 is
 minimal, 1 is medium, 2 is a lot.}
 
-\item{\code{twoplot}}{If yes, only the two main plots are shown. Default it FALSE.}
+\item{\code{L}}{Batch size}
 
-\item{\code{cex}}{Size of plot.}
-}
-\if{html}{\out{</div>}}
-}
-\section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{nb}}{Number of batches, if you know before starting}
+\item{\code{obj_nu}}{Objective nu, a weight that shouldn't be used.}
 
-\item{\code{twoplot}}{If yes, only the two main plots are shown. Default it FALSE.}
+\item{\code{stage1batches}}{Number of batches to use in the first stage
+where space-filling batches are chosen.}
 
-\item{\code{cex}}{Size of plot.}
+\item{\code{useSMEDtheta}}{Should theta be used when SMED is used?
+Theta is the correlation parameter in each dimension. Helps
+space things properly}
+
+\item{\code{nconsider}}{Number of points to consider when adding each
+point of the batch.
+Designed to be reduced as you go. E.g., adding a batch of 3, you could
+use c(Inf, 50, 20) to reduce computation as you go. It would keep the
+50/20 best from the previous iteration in consideration.}
+
+\item{\code{nconsider_random}}{If using nconsider, how many random points
+should be added back in each iteration?}
+
+\item{\code{error_power}}{Power to put the error to. Either 0, 1, or c(0,1).}
 }
 \if{html}{\out{</div>}}
 }
@@ -278,6 +283,8 @@ space things properly}
 D columns, each row is an X point. Or just each point as a vector,
 depends on func_run_together}
 
+\item{\code{func_run_together}}{If TRUE, X points will be passed to func as a matrix}
+
 \item{\code{func_fast}}{Is func, the true function, fast to evaluate? If yes,
 will be run repeatedly to calculate true MSE. Never true in practice.}
 
@@ -306,6 +313,18 @@ how many batches of points should be added as candidates}
 \item{\code{parallel}}{Should points be evaluated in parallel}
 
 \item{\code{parallel_cores}}{Number of parallel cores to be used.}
+
+\item{\code{nugget}}{Value to set the nugget to. To keep it at this value,
+set estimate.nugget=TRUE.}
+
+\item{\code{estimate.nugget}}{Should the nugget be estimated? Logical.}
+
+\item{\code{verbose}}{Amount of printing to do. 0 is minimal, 1 is some,
+2 is a lot.}
+
+\item{\code{design_seed}}{Random seed to set before creating the design.}
+
+\item{\code{weight_const}}{Constant to put in front of weight.}
 
 \item{\code{error_power}}{Power to put the error to. Either 0, 1, or c(0,1).}
 
@@ -1007,6 +1026,7 @@ Either 1, 2, or c(1,2)}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print_results"></a>}}
 \subsection{Method \code{print_results()}}{
+Print the results so far.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$print_results()}\if{html}{\out{</div>}}
 }
@@ -1015,6 +1035,8 @@ Either 1, 2, or c(1,2)}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-delete"></a>}}
 \subsection{Method \code{delete()}}{
+This is run when deleting the object.
+It'll delete the GP model and stop the parallel cluster.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{adapt.concept2.sFFLHD.R6$delete()}\if{html}{\out{</div>}}
 }

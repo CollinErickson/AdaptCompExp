@@ -49,7 +49,6 @@
 #' @field Z Responses
 #' @field b batch size
 #' @field func Actual function to get experiment values from
-#' @field nb Number of batches, if you know before starting
 #' @field D Dimension of data
 #' @field mod The GP model from
 #' @field func_run_together Whether points should be passed to func separately
@@ -90,8 +89,21 @@
 #' @field parallel Should new values be calculated in parallel?
 #' @field verbose How much detail should be printed to the console. 0 is
 #'          minimal, 1 is medium, 2 is a lot.
-#' @field twoplot If yes, only the two main plots are shown. Default it FALSE.
-#' @field cex Size of plot.
+#' @field L Batch size
+#' @field obj_nu Objective nu, a weight that shouldn't be used.
+#' @field stage1batches Number of batches to use in the first stage
+#' where space-filling batches are chosen.
+#' @field useSMEDtheta Should theta be used when SMED is used?
+#' Theta is the correlation parameter in each dimension. Helps
+#' space things properly
+#' @field nconsider Number of points to consider when adding each
+#' point of the batch.
+#' Designed to be reduced as you go. E.g., adding a batch of 3, you could
+#' use c(Inf, 50, 20) to reduce computation as you go. It would keep the
+#' 50/20 best from the previous iteration in consideration.
+#' @field nconsider_random If using nconsider, how many random points
+#' should be added back in each iteration?
+#' @field error_power Power to put the error to. Either 0, 1, or c(0,1).
 #' @section Methods:
 #' \describe{
 #'   \item{Documentation}{For full documentation of each method go to
@@ -120,7 +132,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
     #   design gives when taking a single batch
     b = NULL, # batch size to add each iteration, probably the same as L
     new_batches_per_batch = NULL,
-    g = NULL, # "numeric", # g not used but I'll leave it for now
+    # g = NULL, # "numeric", # g not used but I'll leave it for now
     X = NULL, # "matrix", Z = "numeric", Xopts = "matrix",
     X_tracker = NULL, # tracks points that are in X
     X0 = NULL,
@@ -191,7 +203,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
     #' @param func The true function. Should take a matrix as input with
     #' D columns, each row is an X point. Or just each point as a vector,
     #' depends on func_run_together
-    #' @func_run_together If TRUE, X points will be passed to func as a matrix
+    #' @param func_run_together If TRUE, X points will be passed to func as a matrix
     #' @param func_fast Is func, the true function, fast to evaluate? If yes,
     #' will be run repeatedly to calculate true MSE. Never true in practice.
     #' @param take_until_maxpvar_below If given, nonadaptive batches will
@@ -210,6 +222,13 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
     #' @param parallel Should points be evaluated in parallel
     #' @param parallel_cores Number of parallel cores to be used.
     #' @param error_power Power to put the error to. Either 0, 1, or c(0,1).
+    #' @param weight_const Constant to put in front of weight.
+    #' @param design_seed Random seed to set before creating the design.
+    #' @param verbose Amount of printing to do. 0 is minimal, 1 is some,
+    #' 2 is a lot.
+    #' @param estimate.nugget Should the nugget be estimated? Logical.
+    #' @param nugget Value to set the nugget to. To keep it at this value,
+    #' set estimate.nugget=TRUE.
     #' @param nconsider Number of points to consider when adding each
     #' point of the batch.
     #' Designed to be reduced as you go. E.g., adding a batch of 3, you could
@@ -1772,6 +1791,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       }
       return(t1)
     },
+    #' @description Print the results so far.
     print_results = function() {
       best_index <- which.max(self$Z)
       bestZ <- self$Z[best_index]
@@ -1780,6 +1800,8 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
           " with objective value ", bestZ, '\n')
 
     },
+    #' @description This is run when deleting the object.
+    #' It'll delete the GP model and stop the parallel cluster.
     delete = function() {
       self$mod$delete()
       if (self$parallel) {
