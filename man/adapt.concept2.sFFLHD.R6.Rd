@@ -163,6 +163,15 @@ use c(Inf, 50, 20) to reduce computation as you go. It would keep the
 should be added back in each iteration?}
 
 \item{\code{error_power}}{Power to put the error to. Either 0, 1, or c(0,1).}
+
+\item{\code{actual_werror_func}}{Function to calculate the actual weighted
+error.}
+
+\item{\code{parallel_cores}}{Number of parallel cores to use.}
+
+\item{\code{parallel_cluster}}{The parallel cluster object being used.}
+
+\item{\code{options}}{Options.}
 }
 \if{html}{\out{</div>}}
 }

@@ -104,6 +104,11 @@
 #' @field nconsider_random If using nconsider, how many random points
 #' should be added back in each iteration?
 #' @field error_power Power to put the error to. Either 0, 1, or c(0,1).
+#' @field actual_werror_func Function to calculate the actual weighted
+#' error.
+#' @field parallel_cores Number of parallel cores to use.
+#' @field parallel_cluster The parallel cluster object being used.
+#' @field options Options.
 #' @section Methods:
 #' \describe{
 #'   \item{Documentation}{For full documentation of each method go to
