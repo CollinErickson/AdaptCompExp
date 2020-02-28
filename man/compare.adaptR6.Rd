@@ -6,8 +6,10 @@
 \title{Class providing object with methods for adapt.concept2.sFFLHD.R6}
 \format{\code{\link{R6Class}} object.}
 \value{
-Object of \code{\link{R6Class}} with methods for running an
-adaptive experiment.
+Object of \code{\link{R6Class}} with methods for running a
+comparison of adaptive experiments. You can set which parameters
+to use, and it will run experiments using all combinations.
+This object is used to run experiments and examine and plot output.
 }
 \description{
 Class providing object with methods for adapt.concept2.sFFLHD.R6
@@ -17,7 +19,7 @@ Class providing object with methods for adapt.concept2.sFFLHD.R6
 \section{Methods}{
 
 \describe{
-  \item{Documentation}{For full documentation of each method go to
+  \item{Documentation}{For source code, go to
   https://github.com/CollinErickson/DOE-Code}
   \item{\code{new(X, Z, corr="Gauss", verbose=0, separable=T,
   useC=F,useGrad=T,

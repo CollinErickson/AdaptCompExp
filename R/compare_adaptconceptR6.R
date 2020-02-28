@@ -25,8 +25,10 @@ base_breaks <- function(n = 10){
 #' @importFrom stats optim
 #' @keywords data, experiments, adaptive, sequential, simulation,
 #' Gaussian process, regression
-#' @return Object of \code{\link{R6Class}} with methods for running an
-#' adaptive experiment.
+#' @return Object of \code{\link{R6Class}} with methods for running a
+#' comparison of adaptive experiments. You can set which parameters
+#' to use, and it will run experiments using all combinations.
+#' This object is used to run experiments and examine and plot output.
 #' @format \code{\link{R6Class}} object.
 #' @examples
 #' ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
@@ -85,7 +87,7 @@ base_breaks <- function(n = 10){
 #' @field parallel_cluster If running in parallel, the parallel cluster
 #' @section Methods:
 #' \describe{
-#'   \item{Documentation}{For full documentation of each method go to
+#'   \item{Documentation}{For source code, go to
 #'   https://github.com/CollinErickson/DOE-Code}
 #'   \item{\code{new(X, Z, corr="Gauss", verbose=0, separable=T,
 #'   useC=F,useGrad=T,
@@ -303,6 +305,7 @@ compare.adaptR6 <- R6Class(
                         'force_old', 'force_pvar', 'n0','package',
                         'selection_method', 'design', 'des_func')) {
         evalparsei <- eval(parse(text=i_input))
+        print(evalparsei)
         if (length(evalparsei) > 1 && !all(evalparsei == evalparsei[1])) {
           #self$rungrid$Group <- paste(self$rungrid$Group, self$rungrid[,i_input])
           group_names <- c(group_names, i_input)
