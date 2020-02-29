@@ -1,4 +1,4 @@
-test_that("multiplication works", {
+test_that("adapt works", {
   a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=TestFunctions::gaussian1,obj="desirability",
                                     des_func=des_func_relmax, n0=20, take_until_maxpvar_below=.9,
                                     package="GauPro", design='sFFLHD', selection_method="max_des_red",
@@ -8,7 +8,7 @@ test_that("multiplication works", {
   expect_is(a, "R6")
 })
 
-test_that("multiplication works", {
+test_that("compare adapt works", {
 
   ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
                              batches=2, reps=2,
