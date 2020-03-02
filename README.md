@@ -41,7 +41,7 @@ a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=TestFunctions::gaussian1,obj="des
 #>   method           from       
 #>   factorize.factor conf.design
 a$run(2)
-#> Starting iteration 1 at 2020-02-01 11:27:17 
+#> Starting iteration 1 at 2020-03-01 20:39:43 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
@@ -50,7 +50,7 @@ a$run(2)
 
 <img src="man/figures/README-example_exp1-1.png" width="100%" />
 
-    #> Starting iteration 2 at 2020-02-01 11:27:20
+    #> Starting iteration 2 at 2020-03-01 20:39:46
 
 <img src="man/figures/README-example_exp1-2.png" width="100%" />
 
@@ -63,52 +63,45 @@ ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
                            selection_method=c('max_des', 'SMED'),
                            des_func=c('des_func_relmax', 'des_func_relmax')
 )
+#> [1] "TestFunctions::gaussian1"
+#> [1] 2
+#> [1] 3
+#> [1] 3
+#> [1] 2
+#> [1] 2
+#> [1] "desirability"
+#> [1] 0
+#> [1] 0
+#> [1] 6
+#> [1] "laGP"
+#> [1] "max_des" "SMED"   
+#> [1] "sFFLHD"
+#> [1] "des_func_relmax" "des_func_relmax"
 ca1$run_all(noplot = T)
-#> Running 1, completed 0/4 Sat Feb 01 11:27:25 AM 2020
-#> Starting iteration 1 at 2020-02-01 11:27:25 
+#> Running 1, completed 0/4 Sun Mar 01 8:39:51 PM 2020
+#> Starting iteration 1 at 2020-03-01 20:39:51 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-02-01 11:27:25
-#> Warning in self$select_new_points_from_max_des_red(): uses_ALM, why was this a
-#> browser spot?
-#> Warning in int_werrors_red_func(add_points_indices = Xopts_inds_to_consider):
-#> This was a browser spot too #92348
-
-#> Warning in int_werrors_red_func(add_points_indices = Xopts_inds_to_consider):
-#> This was a browser spot too #92348
-
-#> Warning in int_werrors_red_func(add_points_indices = Xopts_inds_to_consider):
-#> This was a browser spot too #92348
-#> Running 2, completed 1/4 Sat Feb 01 11:27:26 AM 2020
-#> Starting iteration 1 at 2020-02-01 11:27:26 
+#> Starting iteration 2 at 2020-03-01 20:39:51 
+#> Running 2, completed 1/4 Sun Mar 01 8:39:52 PM 2020
+#> Starting iteration 1 at 2020-03-01 20:39:52 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-02-01 11:27:26
-#> Warning in self$select_new_points_from_max_des_red(): uses_ALM, why was this a
-#> browser spot?
-
-#> Warning in self$select_new_points_from_max_des_red(): This was a browser spot
-#> too #92348
-
-#> Warning in self$select_new_points_from_max_des_red(): This was a browser spot
-#> too #92348
-
-#> Warning in self$select_new_points_from_max_des_red(): This was a browser spot
-#> too #92348
-#> Running 3, completed 2/4 Sat Feb 01 11:27:27 AM 2020
-#> Starting iteration 1 at 2020-02-01 11:27:27 
+#> Starting iteration 2 at 2020-03-01 20:39:52 
+#> Running 3, completed 2/4 Sun Mar 01 8:39:53 PM 2020
+#> Starting iteration 1 at 2020-03-01 20:39:53 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-02-01 11:27:27 
-#> Running 4, completed 3/4 Sat Feb 01 11:27:27 AM 2020
-#> Starting iteration 1 at 2020-02-01 11:27:27 
+#> Starting iteration 2 at 2020-03-01 20:39:53 
+#> Running 4, completed 3/4 Sun Mar 01 8:39:53 PM 2020
+#> Starting iteration 1 at 2020-03-01 20:39:54 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-02-01 11:27:28
+#> Starting iteration 2 at 2020-03-01 20:39:54
 ca1$plot()
 ```
 
@@ -119,3 +112,7 @@ ca1$plot()
     #> Warning: Removed 8 rows containing missing values (geom_point).
 
 <img src="man/figures/README-compare_adapt_example_1-4.png" width="100%" />
+
+## Code from papers
+
+Below is some code that was used to create the results shown in papers.
