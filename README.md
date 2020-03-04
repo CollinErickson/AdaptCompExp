@@ -16,17 +16,21 @@ computer experiments.
 
 ## Installation
 
-You can install the released version of AdaptCompExp from
-[CRAN](https://CRAN.R-project.org) with:
+<!-- You can install the released version of AdaptCompExp from [CRAN](https://CRAN.R-project.org) with: -->
 
-    # install.packages("AdaptCompExp")
+<!-- ``` -->
 
-And the development version from [GitHub](https://github.com/) with:
+<!-- # install.packages("AdaptCompExp") -->
+
+<!-- ``` -->
+
+You can install the development version of AdaptCompExp from
+[GitHub](https://github.com/) with:
 
     # install.packages("devtools")
     devtools::install_github("CollinErickson/AdaptCompExp")
 
-## Example
+## Example of `adapt.concept2.sFFLHD.R6`
 
 ``` r
 library(AdaptCompExp)
@@ -41,7 +45,7 @@ a <- adapt.concept2.sFFLHD.R6$new(D=2,L=3,func=TestFunctions::gaussian1,obj="des
 #>   method           from       
 #>   factorize.factor conf.design
 a$run(2)
-#> Starting iteration 1 at 2020-03-02 06:34:06 
+#> Starting iteration 1 at 2020-03-03 21:19:17 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
@@ -50,7 +54,7 @@ a$run(2)
 
 <img src="man/figures/README-example_exp1-1.png" width="100%" />
 
-    #> Starting iteration 2 at 2020-03-02 06:34:10
+    #> Starting iteration 2 at 2020-03-03 21:19:21
 
 <img src="man/figures/README-example_exp1-2.png" width="100%" />
 
@@ -78,30 +82,30 @@ ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
 #> [1] "sFFLHD"
 #> [1] "des_func_relmax" "des_func_relmax"
 ca1$run_all(noplot = T)
-#> Running 1, completed 0/4 Mon Mar 02 6:34:14 AM 2020
-#> Starting iteration 1 at 2020-03-02 06:34:14 
+#> Running 1, completed 0/4 Tue Mar 03 9:19:27 PM 2020
+#> Starting iteration 1 at 2020-03-03 21:19:27 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-02 06:34:15 
-#> Running 2, completed 1/4 Mon Mar 02 6:34:15 AM 2020
-#> Starting iteration 1 at 2020-03-02 06:34:16 
+#> Starting iteration 2 at 2020-03-03 21:19:27 
+#> Running 2, completed 1/4 Tue Mar 03 9:19:28 PM 2020
+#> Starting iteration 1 at 2020-03-03 21:19:28 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-02 06:34:16 
-#> Running 3, completed 2/4 Mon Mar 02 6:34:16 AM 2020
-#> Starting iteration 1 at 2020-03-02 06:34:16 
+#> Starting iteration 2 at 2020-03-03 21:19:28 
+#> Running 3, completed 2/4 Tue Mar 03 9:19:29 PM 2020
+#> Starting iteration 1 at 2020-03-03 21:19:29 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-02 06:34:17 
-#> Running 4, completed 3/4 Mon Mar 02 6:34:17 AM 2020
-#> Starting iteration 1 at 2020-03-02 06:34:17 
+#> Starting iteration 2 at 2020-03-03 21:19:29 
+#> Running 4, completed 3/4 Tue Mar 03 9:19:30 PM 2020
+#> Starting iteration 1 at 2020-03-03 21:19:30 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-02 06:34:17
+#> Starting iteration 2 at 2020-03-03 21:19:30
 ca1$plot()
 ```
 

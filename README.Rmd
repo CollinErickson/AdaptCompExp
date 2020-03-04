@@ -27,20 +27,21 @@ experiments.
 
 ## Installation
 
-You can install the released version of AdaptCompExp from [CRAN](https://CRAN.R-project.org) with:
+<!-- You can install the released version of AdaptCompExp from [CRAN](https://CRAN.R-project.org) with: -->
 
-```
-# install.packages("AdaptCompExp")
-```
+<!-- ``` -->
+<!-- # install.packages("AdaptCompExp") -->
+<!-- ``` -->
 
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version of AdaptCompExp
+from [GitHub](https://github.com/) with:
 
 ```
 # install.packages("devtools")
 devtools::install_github("CollinErickson/AdaptCompExp")
 ```
 
-## Example
+## Example of `adapt.concept2.sFFLHD.R6`
 
 ```{r library}
 library(AdaptCompExp)
