@@ -51,6 +51,14 @@ library(AdaptCompExp)
 meaning that you create a new instance using
 `adapt.concept2.sFFLHD.R6$new()`.
 
+Some of the important parameters to see when making a new object:
+
+- D: the number of input dimensions
+
+- L: the number of points in each batch
+
+- func: the function to evaluate inputs
+
 ```{r example_exp1}
 a <- adapt.concept2.sFFLHD.R6$new(
   D=2,L=3,func=TestFunctions::gaussian1,obj="desirability",
