@@ -59,6 +59,13 @@ Some of the important parameters to see when making a new object:
 
 - func: the function to evaluate inputs
 
+- obj: The objective to maximize when selecting points.
+
+- des_func: The desirability function.
+
+- n0: The number of points to begin with before adding
+points in batches.
+
 ```{r example_exp1}
 a <- adapt.concept2.sFFLHD.R6$new(
   D=2,L=3,func=TestFunctions::gaussian1,obj="desirability",

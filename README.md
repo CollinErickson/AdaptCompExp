@@ -47,6 +47,13 @@ Some of the important parameters to see when making a new object:
 
   - func: the function to evaluate inputs
 
+  - obj: The objective to maximize when selecting points.
+
+  - des\_func: The desirability function.
+
+  - n0: The number of points to begin with before adding points in
+    batches.
+
 <!-- end list -->
 
 ``` r
@@ -60,7 +67,7 @@ a <- adapt.concept2.sFFLHD.R6$new(
 #>   method           from       
 #>   factorize.factor conf.design
 a$run(2)
-#> Starting iteration 1 at 2020-03-04 22:44:40 
+#> Starting iteration 1 at 2020-03-05 22:24:18 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
@@ -69,7 +76,7 @@ a$run(2)
 
 <img src="man/figures/README-example_exp1-1.png" width="100%" />
 
-    #> Starting iteration 2 at 2020-03-04 22:44:43
+    #> Starting iteration 2 at 2020-03-05 22:24:21
 
 <img src="man/figures/README-example_exp1-2.png" width="100%" />
 
@@ -97,30 +104,30 @@ ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
 #> [1] "sFFLHD"
 #> [1] "des_func_relmax" "des_func_relmax"
 ca1$run_all(noplot = T)
-#> Running 1, completed 0/4 Wed Mar 04 10:44:48 PM 2020
-#> Starting iteration 1 at 2020-03-04 22:44:49 
+#> Running 1, completed 0/4 Thu Mar 05 10:24:25 PM 2020
+#> Starting iteration 1 at 2020-03-05 22:24:25 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-04 22:44:49 
-#> Running 2, completed 1/4 Wed Mar 04 10:44:49 PM 2020
-#> Starting iteration 1 at 2020-03-04 22:44:49 
+#> Starting iteration 2 at 2020-03-05 22:24:26 
+#> Running 2, completed 1/4 Thu Mar 05 10:24:26 PM 2020
+#> Starting iteration 1 at 2020-03-05 22:24:26 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-04 22:44:50 
-#> Running 3, completed 2/4 Wed Mar 04 10:44:50 PM 2020
-#> Starting iteration 1 at 2020-03-04 22:44:50 
+#> Starting iteration 2 at 2020-03-05 22:24:27 
+#> Running 3, completed 2/4 Thu Mar 05 10:24:27 PM 2020
+#> Starting iteration 1 at 2020-03-05 22:24:27 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-04 22:44:50 
-#> Running 4, completed 3/4 Wed Mar 04 10:44:51 PM 2020
-#> Starting iteration 1 at 2020-03-04 22:44:51 
+#> Starting iteration 2 at 2020-03-05 22:24:27 
+#> Running 4, completed 3/4 Thu Mar 05 10:24:28 PM 2020
+#> Starting iteration 1 at 2020-03-05 22:24:28 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-04 22:44:51
+#> Starting iteration 2 at 2020-03-05 22:24:28
 ca1$plot()
 ```
 
