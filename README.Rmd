@@ -73,6 +73,13 @@ a <- adapt.concept2.sFFLHD.R6$new(
   package="GauPro", design='sFFLHD', selection_method="max_des_red",
   alpha_des=1
 )
+```
+
+To run batches of the experiment, use `$run()`.
+By default it runs one batch, but you can set how many.
+You can also tell it not to make plots.
+
+```{r example_exp1_2}
 a$run(2)
 ```
 

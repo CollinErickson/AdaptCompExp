@@ -66,19 +66,25 @@ a <- adapt.concept2.sFFLHD.R6$new(
 #> Registered S3 method overwritten by 'DoE.base':
 #>   method           from       
 #>   factorize.factor conf.design
+```
+
+To run batches of the experiment, use `$run()`. By default it runs one
+batch, but you can set how many. You can also tell it not to make plots
+
+``` r
 a$run(2)
-#> Starting iteration 1 at 2020-03-05 22:24:18 
+#> Starting iteration 1 at 2020-03-08 21:51:58 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
 #> Below nug.min, setting nug to nug.min and reoptimizing #82387
 ```
 
-<img src="man/figures/README-example_exp1-1.png" width="100%" />
+<img src="man/figures/README-example_exp1_2-1.png" width="100%" />
 
-    #> Starting iteration 2 at 2020-03-05 22:24:21
+    #> Starting iteration 2 at 2020-03-08 21:52:01
 
-<img src="man/figures/README-example_exp1-2.png" width="100%" />
+<img src="man/figures/README-example_exp1_2-2.png" width="100%" />
 
 ## Example of a comparison
 
@@ -104,30 +110,30 @@ ca1 <- compare.adaptR6$new(func=TestFunctions::gaussian1, D=2, L=3,
 #> [1] "sFFLHD"
 #> [1] "des_func_relmax" "des_func_relmax"
 ca1$run_all(noplot = T)
-#> Running 1, completed 0/4 Thu Mar 05 10:24:25 PM 2020
-#> Starting iteration 1 at 2020-03-05 22:24:25 
+#> Running 1, completed 0/4 Sun Mar 08 9:52:09 PM 2020
+#> Starting iteration 1 at 2020-03-08 21:52:09 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-05 22:24:26 
-#> Running 2, completed 1/4 Thu Mar 05 10:24:26 PM 2020
-#> Starting iteration 1 at 2020-03-05 22:24:26 
+#> Starting iteration 2 at 2020-03-08 21:52:10 
+#> Running 2, completed 1/4 Sun Mar 08 9:52:11 PM 2020
+#> Starting iteration 1 at 2020-03-08 21:52:11 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-05 22:24:27 
-#> Running 3, completed 2/4 Thu Mar 05 10:24:27 PM 2020
-#> Starting iteration 1 at 2020-03-05 22:24:27 
+#> Starting iteration 2 at 2020-03-08 21:52:12 
+#> Running 3, completed 2/4 Sun Mar 08 9:52:13 PM 2020
+#> Starting iteration 1 at 2020-03-08 21:52:13 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-05 22:24:27 
-#> Running 4, completed 3/4 Thu Mar 05 10:24:28 PM 2020
-#> Starting iteration 1 at 2020-03-05 22:24:28 
+#> Starting iteration 2 at 2020-03-08 21:52:13 
+#> Running 4, completed 3/4 Sun Mar 08 9:52:14 PM 2020
+#> Starting iteration 1 at 2020-03-08 21:52:14 
 #> no suitable  resolution IV or more  array found
 #> Warning in DoE.base::oa.design(nruns = L^2, nfactors = D + 1, nlevels = L, :
 #> resources were not sufficient for optimizing column selection
-#> Starting iteration 2 at 2020-03-05 22:24:28
+#> Starting iteration 2 at 2020-03-08 21:52:15
 ca1$plot()
 ```
 
