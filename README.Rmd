@@ -83,6 +83,11 @@ You can also tell it not to make plots.
 a$run(2)
 ```
 
+```{r example_exp1_stats}
+a$stats
+```
+
+
 
 ## Example of a comparison
 
