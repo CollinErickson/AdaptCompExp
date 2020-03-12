@@ -47,23 +47,23 @@ simple.random <- function(n,d,scaledto=NULL) {
 #m <- simple.LHS(10,2)
 #plot(m,xlim=0:1,ylim=0:1,pch=19)
 
-#' phi_p
-#'
-#' @param X design matrix
-#' @param p Power
-#' @param t distance metric, don't change
-#'
-#' @return design phi_p value
-# @export
-#' @importFrom stats dist
-#'
-# @examples
-phi_p <- function(X,p=50,t=1) {
-  if(t==1) method='manhattan'
-  else stop('no method')
-  #sum(X^-p)^(1/p)
-  sum(dist(X,method=method)^-p)^(1/p)
-}
+#' #' phi_p
+#' #'
+#' #' @param X design matrix
+#' #' @param p Power
+#' #' @param t distance metric, don't change
+#' #'
+#' #' @return design phi_p value
+#' #' @export
+#' #' @importFrom stats dist
+#' #'
+#' # @examples
+#' phi_p <- function(X,p=50,t=1) {
+#'   if(t==1) method='manhattan'
+#'   else stop('no method')
+#'   #sum(X^-p)^(1/p)
+#'   sum(dist(X,method=method)^-p)^(1/p)
+#' }
 
 # trans.prop.LHS.2D <- function(np,nv,s,scaled=TRUE) {
 #   # np: # points in desired design

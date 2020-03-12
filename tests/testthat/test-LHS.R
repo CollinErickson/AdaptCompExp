@@ -9,3 +9,9 @@ test_that("LHS", {
   expect_true(is.matrix(g))
   expect_equal(dim(g), c(1000, 3))
 })
+
+# test_that("phi_p", {
+#   phi_p(
+#     matrix(runif(2*10), ncol=2)
+#   )
+# })
