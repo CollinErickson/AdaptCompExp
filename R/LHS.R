@@ -14,9 +14,9 @@ is.LHS <- function(m,scaled=TRUE) {
   }
   stop('Error 0239357')
 }
-is.OA <- function(m,strength=2) {
-  stop("Not yet implemented (is.OA)")
-}
+# is.OA <- function(m,strength=2) {
+#   stop("Not yet implemented (is.OA)")
+# }
 simple.grid <- function(n,d,scaled=TRUE,random=TRUE,centered=FALSE,scaledto=NULL) {
   m <- matrix(1:n,ncol=1)
   if (d>1) {
