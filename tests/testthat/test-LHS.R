@@ -1,3 +1,4 @@
+require(testthat)
 test_that("LHS", {
   a <- simple.LHS(n=10, d=3)
   expect_is(a, 'matrix')
@@ -9,7 +10,7 @@ test_that("LHS", {
   expect_is(a, 'matrix')
   expect_equal(nrow(a), 10)
   expect_equal(ncol(a), 3)
-  expect_true(is.LHS(a))
+  expect_true(is.LHS(a + .5))
 
 
 
