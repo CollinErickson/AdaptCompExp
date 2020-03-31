@@ -4,7 +4,9 @@
 \name{adapt.concept2.sFFLHD.R6}
 \alias{adapt.concept2.sFFLHD.R6}
 \title{Class providing object with methods for adapt.concept2.sFFLHD.R6}
-\format{\code{\link{R6Class}} object.}
+\format{
+\code{\link{R6Class}} object.
+}
 \value{
 Object of \code{\link{R6Class}} with methods for running an
 adaptive experiment.
@@ -220,6 +222,7 @@ error.}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new adapt concept object
 \subsection{Usage}{
@@ -353,6 +356,7 @@ should be added back in each iteration?}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-run"></a>}}
+\if{latex}{\out{\hypertarget{method-run}{}}}
 \subsection{Method \code{run()}}{
 Run multiple iterations
 \subsection{Usage}{
@@ -374,6 +378,7 @@ after the last iteration (when maxit>1)}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-run1"></a>}}
+\if{latex}{\out{\hypertarget{method-run1}{}}}
 \subsection{Method \code{run1()}}{
 Run a single iteration
 \subsection{Usage}{
@@ -390,6 +395,7 @@ Run a single iteration
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_data"></a>}}
+\if{latex}{\out{\hypertarget{method-add_data}{}}}
 \subsection{Method \code{add_data()}}{
 Add data from Xopts to X
 \subsection{Usage}{
@@ -399,6 +405,7 @@ Add data from Xopts to X
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-update_obj_nu"></a>}}
+\if{latex}{\out{\hypertarget{method-update_obj_nu}{}}}
 \subsection{Method \code{update_obj_nu()}}{
 Update nu for objective
 \subsection{Usage}{
@@ -417,6 +424,7 @@ Update nu for objective
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-update_mod"></a>}}
+\if{latex}{\out{\hypertarget{method-update_mod}{}}}
 \subsection{Method \code{update_mod()}}{
 Update the GP model on all the data.
 \subsection{Usage}{
@@ -426,6 +434,7 @@ Update the GP model on all the data.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-update_stats"></a>}}
+\if{latex}{\out{\hypertarget{method-update_stats}{}}}
 \subsection{Method \code{update_stats()}}{
 Update stats after every iteration
 \subsection{Usage}{
@@ -435,6 +444,7 @@ Update stats after every iteration
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-mse_func"></a>}}
+\if{latex}{\out{\hypertarget{method-mse_func}{}}}
 \subsection{Method \code{mse_func()}}{
 Calculate mean squared error using random sample
 of points. Only works when func_fast is TRUE and the
@@ -446,6 +456,7 @@ true function func is given.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_mean"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_mean}{}}}
 \subsection{Method \code{plot_mean()}}{
 Contour plot of the predicted mean. Only for 2D input.
 \subsection{Usage}{
@@ -464,6 +475,7 @@ Contour plot of the predicted mean. Only for 2D input.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_se"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_se}{}}}
 \subsection{Method \code{plot_se()}}{
 Contour plot of the predicted standard error. Only for 2D input.
 \subsection{Usage}{
@@ -482,6 +494,7 @@ Contour plot of the predicted standard error. Only for 2D input.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_abserr"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_abserr}{}}}
 \subsection{Method \code{plot_abserr()}}{
 Contour plot of the absolute error. Only for 2D input.
 \subsection{Usage}{
@@ -500,6 +513,7 @@ Contour plot of the absolute error. Only for 2D input.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_mse"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_mse}{}}}
 \subsection{Method \code{plot_mse()}}{
 Plot MSE and PVar over iterations
 \subsection{Usage}{
@@ -518,6 +532,7 @@ Plot MSE and PVar over iterations
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_iwe"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_iwe}{}}}
 \subsection{Method \code{plot_iwe()}}{
 Plot integrate weighted error
 \subsection{Usage}{
@@ -536,6 +551,7 @@ Plot integrate weighted error
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_ppu"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_ppu}{}}}
 \subsection{Method \code{plot_ppu()}}{
 Plot percentage of points used by iteration
 \subsection{Usage}{
@@ -554,6 +570,7 @@ Plot percentage of points used by iteration
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_des_v_acc"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_des_v_acc}{}}}
 \subsection{Method \code{plot_des_v_acc()}}{
 Plot desirability vs prediction accuracy
 \subsection{Usage}{
@@ -572,6 +589,7 @@ Plot desirability vs prediction accuracy
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_y_acc"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_y_acc}{}}}
 \subsection{Method \code{plot_y_acc()}}{
 Plot predicted vs actual with error bars
 \subsection{Usage}{
@@ -588,6 +606,7 @@ Plot predicted vs actual with error bars
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_1D"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_1D}{}}}
 \subsection{Method \code{plot_1D()}}{
 Plot for experiments with 1D input
 \subsection{Usage}{
@@ -597,6 +616,7 @@ Plot for experiments with 1D input
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_2D"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_2D}{}}}
 \subsection{Method \code{plot_2D()}}{
 Plot for experiments with 2D input
 \subsection{Usage}{
@@ -616,6 +636,7 @@ and predicted error be shown, or more plots?}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot1"></a>}}
+\if{latex}{\out{\hypertarget{method-plot1}{}}}
 \subsection{Method \code{plot1()}}{
 Plot at one instance
 \subsection{Usage}{
@@ -635,6 +656,7 @@ and predicted error be shown, or more plots?}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_new_batches_to_Xopts"></a>}}
+\if{latex}{\out{\hypertarget{method-add_new_batches_to_Xopts}{}}}
 \subsection{Method \code{add_new_batches_to_Xopts()}}{
 Add new batches of points to Xopts matrix
 \subsection{Usage}{
@@ -654,6 +676,7 @@ to add to Xopts from the design $s}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Xopts_tracker_add"></a>}}
+\if{latex}{\out{\hypertarget{method-Xopts_tracker_add}{}}}
 \subsection{Method \code{Xopts_tracker_add()}}{
 Points to add to Xopts_tracker
 \subsection{Usage}{
@@ -670,6 +693,7 @@ Points to add to Xopts_tracker
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Xopts_tracker_remove"></a>}}
+\if{latex}{\out{\hypertarget{method-Xopts_tracker_remove}{}}}
 \subsection{Method \code{Xopts_tracker_remove()}}{
 Remove points from Xopts_tracker
 \subsection{Usage}{
@@ -686,6 +710,7 @@ Remove points from Xopts_tracker
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-select_new_points_from_old_or_pvar"></a>}}
+\if{latex}{\out{\hypertarget{method-select_new_points_from_old_or_pvar}{}}}
 \subsection{Method \code{select_new_points_from_old_or_pvar()}}{
 Select new points from Xopts that are oldest
 or have highest predictive variance
@@ -696,6 +721,7 @@ or have highest predictive variance
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-select_new_points_from_SMED"></a>}}
+\if{latex}{\out{\hypertarget{method-select_new_points_from_SMED}{}}}
 \subsection{Method \code{select_new_points_from_SMED()}}{
 Select new points from Xopts using SMED
 \subsection{Usage}{
@@ -705,6 +731,7 @@ Select new points from Xopts using SMED
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-select_new_points_from_max_des"></a>}}
+\if{latex}{\out{\hypertarget{method-select_new_points_from_max_des}{}}}
 \subsection{Method \code{select_new_points_from_max_des()}}{
 Select new points from Xopts with maximum
 desirability
@@ -715,6 +742,7 @@ desirability
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-select_new_points_from_max_des_red"></a>}}
+\if{latex}{\out{\hypertarget{method-select_new_points_from_max_des_red}{}}}
 \subsection{Method \code{select_new_points_from_max_des_red()}}{
 Select new points from Xopts using maximum
 reduction in desirability
@@ -725,6 +753,7 @@ reduction in desirability
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-int_werror_after_adding"></a>}}
+\if{latex}{\out{\hypertarget{method-int_werror_after_adding}{}}}
 \subsection{Method \code{int_werror_after_adding()}}{
 Calculate integrated weighted error after adding Xnew
 \subsection{Usage}{
@@ -761,6 +790,7 @@ Calculate integrated weighted error after adding Xnew
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_newL_points_to_design"></a>}}
+\if{latex}{\out{\hypertarget{method-add_newL_points_to_design}{}}}
 \subsection{Method \code{add_newL_points_to_design()}}{
 Add new L points to design
 \subsection{Usage}{
@@ -785,6 +815,7 @@ Add new L points to design
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-calculate_Z"></a>}}
+\if{latex}{\out{\hypertarget{method-calculate_Z}{}}}
 \subsection{Method \code{calculate_Z()}}{
 Evaluate chosen X points using given function
 \subsection{Usage}{
@@ -801,6 +832,7 @@ Evaluate chosen X points using given function
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-weight_func"></a>}}
+\if{latex}{\out{\hypertarget{method-weight_func}{}}}
 \subsection{Method \code{weight_func()}}{
 The weight function 1 + alpha * delta()
 \subsection{Usage}{
@@ -834,6 +866,7 @@ The weight function 1 + alpha * delta()
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-werror_func"></a>}}
+\if{latex}{\out{\hypertarget{method-werror_func}{}}}
 \subsection{Method \code{werror_func()}}{
 The weighted error function sigmahat * (1 + alpha * delta())
 \subsection{Usage}{
@@ -873,6 +906,7 @@ The weighted error function sigmahat * (1 + alpha * delta())
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-intwerror_func"></a>}}
+\if{latex}{\out{\hypertarget{method-intwerror_func}{}}}
 \subsection{Method \code{intwerror_func()}}{
 Calculate integrated weighted error
 \subsection{Usage}{
@@ -915,6 +949,7 @@ Calculate integrated weighted error
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-int_pvar_red_for_opts"></a>}}
+\if{latex}{\out{\hypertarget{method-int_pvar_red_for_opts}{}}}
 \subsection{Method \code{int_pvar_red_for_opts()}}{
 Calculate integrated predictive variance reduction for
 candidate points.
@@ -961,6 +996,7 @@ candidate points.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-int_pvar_red_for_one"></a>}}
+\if{latex}{\out{\hypertarget{method-int_pvar_red_for_one}{}}}
 \subsection{Method \code{int_pvar_red_for_one()}}{
 Calculate the integrated predictive variance reduction
 \subsection{Usage}{
@@ -1000,6 +1036,7 @@ Calculate the integrated predictive variance reduction
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-actual_intwerror_func"></a>}}
+\if{latex}{\out{\hypertarget{method-actual_intwerror_func}{}}}
 \subsection{Method \code{actual_intwerror_func()}}{
 Calculate the actual integrated weighted error
 \subsection{Usage}{
@@ -1034,6 +1071,7 @@ Either 1, 2, or c(1,2)}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print_results"></a>}}
+\if{latex}{\out{\hypertarget{method-print_results}{}}}
 \subsection{Method \code{print_results()}}{
 Print the results so far.
 \subsection{Usage}{
@@ -1043,6 +1081,7 @@ Print the results so far.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-delete"></a>}}
+\if{latex}{\out{\hypertarget{method-delete}{}}}
 \subsection{Method \code{delete()}}{
 This is run when deleting the object.
 It'll delete the GP model and stop the parallel cluster.
@@ -1053,6 +1092,7 @@ It'll delete the GP model and stop the parallel cluster.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

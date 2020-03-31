@@ -4,7 +4,9 @@
 \name{compare.adaptR6}
 \alias{compare.adaptR6}
 \title{Class providing object with methods for adapt.concept2.sFFLHD.R6}
-\format{\code{\link{R6Class}} object.}
+\format{
+\code{\link{R6Class}} object.
+}
 \value{
 Object of \code{\link{R6Class}} with methods for running a
 comparison of adaptive experiments. You can set which parameters
@@ -170,6 +172,7 @@ Either 0, 1, or c(0,1).}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize the R6 object
 \subsection{Usage}{
@@ -282,6 +285,7 @@ how many batches of points should be added as candidates}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-set_folder_name"></a>}}
+\if{latex}{\out{\hypertarget{method-set_folder_name}{}}}
 \subsection{Method \code{set_folder_name()}}{
 Set the folder name where this will be saved
 \subsection{Usage}{
@@ -300,6 +304,7 @@ Set the folder name where this will be saved
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-create_output_folder"></a>}}
+\if{latex}{\out{\hypertarget{method-create_output_folder}{}}}
 \subsection{Method \code{create_output_folder()}}{
 Create the folder to save the output
 \subsection{Usage}{
@@ -316,6 +321,7 @@ Create the folder to save the output
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-run_all"></a>}}
+\if{latex}{\out{\hypertarget{method-run_all}{}}}
 \subsection{Method \code{run_all()}}{
 Run all remaining simulations
 \subsection{Usage}{
@@ -352,6 +358,7 @@ can just recover from the files afterward.}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-run_one"></a>}}
+\if{latex}{\out{\hypertarget{method-run_one}{}}}
 \subsection{Method \code{run_one()}}{
 Run a single simulation
 \subsection{Usage}{
@@ -379,6 +386,7 @@ Run a single simulation
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_result_of_one"></a>}}
+\if{latex}{\out{\hypertarget{method-add_result_of_one}{}}}
 \subsection{Method \code{add_result_of_one()}}{
 Add result of one simulation run to the results
 \subsection{Usage}{
@@ -399,6 +407,7 @@ Add result of one simulation run to the results
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-postprocess_outdf"></a>}}
+\if{latex}{\out{\hypertarget{method-postprocess_outdf}{}}}
 \subsection{Method \code{postprocess_outdf()}}{
 Postprocess the output in outdf
 \subsection{Usage}{
@@ -415,6 +424,7 @@ Postprocess the output in outdf
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_MSE_over_batch"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_MSE_over_batch}{}}}
 \subsection{Method \code{plot_MSE_over_batch()}}{
 Plot MSE by batch
 \subsection{Usage}{
@@ -436,6 +446,7 @@ Plot MSE by batch
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_AWE_over_batch"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_AWE_over_batch}{}}}
 \subsection{Method \code{plot_AWE_over_batch()}}{
 Ploted average weighted integrated weighted error
 by batch.
@@ -453,6 +464,7 @@ by batch.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_AWE_over_group"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_AWE_over_group}{}}}
 \subsection{Method \code{plot_AWE_over_group()}}{
 Plot actual integrated weighted error by group
 \subsection{Usage}{
@@ -477,6 +489,7 @@ Plot actual integrated weighted error by group
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_MSE_PVar"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_MSE_PVar}{}}}
 \subsection{Method \code{plot_MSE_PVar()}}{
 Plot Predicted variance vs mean squared error
 \subsection{Usage}{
@@ -493,6 +506,7 @@ Plot Predicted variance vs mean squared error
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_RMSE_PRMSE"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_RMSE_PRMSE}{}}}
 \subsection{Method \code{plot_RMSE_PRMSE()}}{
 Plot Predicted RMSE vs RMSE
 \subsection{Usage}{
@@ -509,6 +523,7 @@ Plot Predicted RMSE vs RMSE
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot"></a>}}
+\if{latex}{\out{\hypertarget{method-plot}{}}}
 \subsection{Method \code{plot()}}{
 Make plots
 \subsection{Usage}{
@@ -525,6 +540,7 @@ Make plots
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-plot_run_times"></a>}}
+\if{latex}{\out{\hypertarget{method-plot_run_times}{}}}
 \subsection{Method \code{plot_run_times()}}{
 Plot the time it took to run each one.
 \subsection{Usage}{
@@ -534,6 +550,7 @@ Plot the time it took to run each one.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-save_self"></a>}}
+\if{latex}{\out{\hypertarget{method-save_self}{}}}
 \subsection{Method \code{save_self()}}{
 Save this object to file.
 \subsection{Usage}{
@@ -551,6 +568,7 @@ By default it is "object".}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-delete_save_folder_if_empty"></a>}}
+\if{latex}{\out{\hypertarget{method-delete_save_folder_if_empty}{}}}
 \subsection{Method \code{delete_save_folder_if_empty()}}{
 Deletes the save folder if empty.
 Prevents empty folders from being left behind.
@@ -561,6 +579,7 @@ Prevents empty folders from being left behind.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-recover_parallel_temp_save"></a>}}
+\if{latex}{\out{\hypertarget{method-recover_parallel_temp_save}{}}}
 \subsection{Method \code{recover_parallel_temp_save()}}{
 Recover temporary files that were saved while
 running in parallel if it crashed previously while running.
@@ -579,6 +598,7 @@ if it was able to recover files?}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-parallel_efficiency"></a>}}
+\if{latex}{\out{\hypertarget{method-parallel_efficiency}{}}}
 \subsection{Method \code{parallel_efficiency()}}{
 Calculate the parallel efficiency
 \subsection{Usage}{
@@ -588,6 +608,7 @@ Calculate the parallel efficiency
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
