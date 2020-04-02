@@ -378,8 +378,12 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
 
       # This can be used even when not using desirability in order to
       #   make comparisons
+      # browser()
       if ('actual_des_func' %in% names(list(...))) {
         self$actual_des_func <- list(...)$actual_des_func
+        if (length(self$actual_des_func) != 1) {
+          stop("$actual_des_func should be length 1")
+        }
         if (is.character(self$actual_des_func)) {
           if (grepl(pattern="\\(", x=self$actual_des_func)) {
             # If parentheses, then
@@ -391,7 +395,9 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
           }
         }
       }
-      if (!is.null(self$actual_des_func) && self$actual_des_func == "NULL") {
+      if (!is.null(self$actual_des_func) &&
+          !is.function(self$actual_des_func) &&
+          self$actual_des_func == "NULL") {
         self$actual_des_func <- NULL
       }
       if ('actual_intwerror_func' %in% names(list(...))) {
