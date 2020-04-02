@@ -519,6 +519,7 @@ actual_des_func_grad_norm2_mean_quad_peaks <- function(XX, mod) {
     sum(numDeriv::grad(TestFunctions::quad_peaks, x) ^ 2)
   })
 }
+#' @export
 actual_des_func_grad_norm2_mean_branin <- function(XX, mod) {
   brd <- deriv(~ 1 * (bb - (5.1/(4*pi^2)) * aa^2 + (5/pi) * aa - 6)^2 + 10 * (1 - (1/(8*pi))) * cos(aa) + 10
                , namevec=c("aa", "bb"))
@@ -801,7 +802,7 @@ get_num_actual_des_func_grad_norm2_mean <- function(funcforgrad) {
 #' @param n number of points
 #'
 #' @return value
-# @export
+#' @export
 # @importFrom lhs randomLHS
 # @examples
 test_des_func_grad_norm2_mean <- function(func, actual, d, n=1e3) {
