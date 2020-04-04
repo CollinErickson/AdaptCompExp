@@ -379,7 +379,7 @@ adapt.concept2.sFFLHD.R6 <- R6Class(
       # This can be used even when not using desirability in order to
       #   make comparisons
       # browser()
-      if ('actual_des_func' %in% names(list(...))) {
+      if ('actual_des_func' %in% names(list(...)) && !is.null(list(...)$actual_des_func)) {
         self$actual_des_func <- list(...)$actual_des_func
         if (length(self$actual_des_func) != 1) {
           stop("$actual_des_func should be length 1")
