@@ -519,6 +519,14 @@ actual_des_func_grad_norm2_mean_quad_peaks <- function(XX, mod) {
     sum(numDeriv::grad(TestFunctions::quad_peaks, x) ^ 2)
   })
 }
+
+#' Actual desirability function for the grad norm squared mean of
+#' the Branin function
+#'
+#' @param XX Matrix of points in rows
+#' @param mod GP model used
+#'
+#' @return desirability values
 #' @export
 actual_des_func_grad_norm2_mean_branin <- function(XX, mod) {
   brd <- deriv(~ 1 * (bb - (5.1/(4*pi^2)) * aa^2 + (5/pi) * aa - 6)^2 + 10 * (1 - (1/(8*pi))) * cos(aa) + 10
