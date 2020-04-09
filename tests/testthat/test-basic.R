@@ -6,6 +6,9 @@ test_that("adapt works", {
   a$run(2)
   expect_is(a, "adapt.concept2.sFFLHD.seq")
   expect_is(a, "R6")
+  # Check other functions that are easy to run
+  expect_error(a$plot_des_v_acc(1,1), NA)
+  expect_error(a$plot_iwe(), NA)
 })
 
 test_that("compare adapt works", {
